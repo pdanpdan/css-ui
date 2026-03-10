@@ -1,0 +1,39 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "jsPlugins": [
+    "@stylistic/eslint-plugin"
+  ],
+  "plugins": [
+    "oxc",
+    "typescript",
+    "vue"
+  ],
+  "categories": {
+    "correctness": "off"
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "rules": {
+    "no-undef": "error",
+    "@stylistic/semi": [
+      "error",
+      "always"
+    ],
+    "@stylistic/comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "@stylistic/indent": [
+      "error",
+      2
+    ],
+    "@stylistic/max-statements-per-line": [
+      "error",
+      {
+        "max": 1
+      }
+    ]
+  }
+}
