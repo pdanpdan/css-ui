@@ -1,0 +1,15 @@
+@import './modes.css';
+@import './sizes.css';
+@import './themes.css';
+@import './variants.css';
+
+@import './components/surface.css';
+@import './components/btn.css';
+@import './components/card.css';
+
+@layer base {
+  :root,
+  :host {
+    --transition-timing: 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}

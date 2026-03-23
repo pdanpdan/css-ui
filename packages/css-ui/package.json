@@ -1,0 +1,13 @@
+{
+  "name": "@pdanpdan/css-ui",
+  "version": "1.0.0",
+  "type": "module",
+  "files": ["styles"],
+  "scripts": {
+    "format": "oxfmt styles"
+  },
+
+  "devDependencies": {
+    "oxfmt": "catalog:"
+  }
+}

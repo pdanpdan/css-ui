@@ -1,0 +1,31 @@
+{
+  "name": "playground",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vike dev --host",
+    "build": "vike build",
+    "lint": "oxlint pages packages.json tsconfig.json vite.config.ts",
+    "format": "oxfmt pages packages.json tsconfig.json vite.config.ts",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@pdanpdan/css-ui": "workspace:*",
+    "vike": "catalog:",
+    "vike-vue": "catalog:",
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "catalog:",
+    "@types/node": "catalog:",
+    "@vitejs/plugin-vue": "catalog:",
+    "autoprefixer": "catalog:",
+    "oxlint": "catalog:",
+    "oxfmt": "catalog:",
+    "postcss": "catalog:",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

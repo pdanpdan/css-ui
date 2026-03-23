@@ -1,0 +1,54 @@
+@utility mode--mixin {
+  --m-bg: oklch(var(--m-bg-l) var(--m-bg-c, 0.01) var(--m-bg-h, 0));
+  --m-surface-1: oklch(calc(var(--m-bg-l) - (var(--m-step) * var(--m-direction))) var(--m-bg-c, 0.01) var(--m-bg-h, 0));
+  --m-surface-2: oklch(
+    calc(var(--m-bg-l) - (var(--m-step) * 2 * var(--m-direction))) var(--m-bg-c, 0.01) var(--m-bg-h, 0)
+  );
+  --m-surface-3: oklch(
+    calc(var(--m-bg-l) - (var(--m-step) * 3 * var(--m-direction))) calc(2 * var(--m-bg-c, 0.01)) var(--m-bg-h, 0)
+  );
+
+  --m-text: oklch(var(--m-text-l) var(--m-text-c, 0.01) var(--m-text-h, 0));
+  --m-text-muted: color-mix(in oklab, var(--m-text), transparent 40%);
+  --m-ring-opacity: 0.45;
+  --m-ring-opacity: calc(0.6 - 0.2 * var(--m-direction));
+
+  --m-shadow-sm: 0 1px 2px var(--m-shadow-color);
+  --m-shadow-md: 0 4px 12px -2px var(--m-shadow-color);
+}
+
+@utility mode-light {
+  @scope (&) {
+    :scope,
+    * {
+      @apply mode--mixin;
+      --m-direction: 1;
+      --m-bg-l: 98%;
+      --m-text-l: 12%;
+      --m-step: 3%;
+      --m-shadow-color: color-mix(in oklab, var(--m-text), transparent 85%);
+    }
+  }
+}
+
+@utility mode-dark {
+  @scope (&) {
+    :scope,
+    * {
+      @apply mode--mixin;
+      --m-direction: -1;
+      --m-bg-l: 12%;
+      --m-text-l: 96%;
+      --m-step: 5%;
+      --m-shadow-color: color-mix(in oklab, var(--m-text), transparent 60%);
+    }
+  }
+}
+
+@utility mode-auto {
+  @apply mode-light;
+
+  @media (prefers-color-scheme: dark) {
+    @apply mode-dark;
+  }
+}

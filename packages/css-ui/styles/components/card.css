@@ -1,0 +1,161 @@
+.card {
+  @layer components.cssui {
+    @apply grid content-start overflow-hidden;
+    grid-template-columns: fit-content(50%) var(--s-px) 1fr var(--s-px) fit-content(50%);
+    border-radius: var(--s-radius);
+    border: var(--s-border-w) solid var(--v-border, transparent);
+    background-color: var(--m-surface-1);
+    color: var(--m-text);
+    box-shadow: var(--m-shadow-sm);
+    position: relative;
+    aspect-ratio: var(--s-aspect);
+    font-size: var(--s-font-size-sm);
+    line-height: var(--s-line-height-relaxed);
+    outline: 0 solid transparent;
+    outline-offset: var(--s-outline-offset, 4px);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: var(--transition, all var(--transition-timing));
+    }
+
+    & > * {
+      @apply z-1;
+      grid-column: 3;
+      padding-block: calc(var(--s-py) * 0.5);
+    }
+
+    & > :first-child {
+      padding-top: var(--s-py);
+    }
+
+    & > :last-child {
+      padding-bottom: var(--s-py);
+    }
+  }
+}
+
+@utility card-interactive {
+  @layer components.cssui {
+    &[tabindex]:not(
+        [tabindex^='-'],
+        :disabled,
+        [disabled]:not([disabled='false']),
+        [aria-disabled]:not([aria-disabled='false']),
+        .state-disabled
+      ) {
+      @apply cursor-pointer;
+    }
+
+    &:where(:hover, .state-hover):not(
+        :disabled,
+        [disabled]:not([disabled='false']),
+        [aria-disabled]:not([aria-disabled='false']),
+        .state-disabled
+      ) {
+      box-shadow: var(--m-shadow-md);
+      background-color: var(--v-bg-hover, var(--m-surface-2));
+      transform: var(--transform-hover);
+    }
+
+    &:where(
+        :active,
+        :target,
+        [aria-current='page'],
+        [aria-pressed]:not([aria-pressed='false']),
+        [aria-selected]:not([aria-selected='false']),
+        .state-active,
+        :has(.card-selector:checked)
+      ):not(
+        :disabled,
+        [disabled]:not([disabled='false']),
+        [aria-disabled]:not([aria-disabled='false']),
+        .state-disabled
+      ) {
+      background-color: var(--v-bg-active, var(--m-surface-3));
+    }
+
+    &:where(:active):not(
+        :disabled,
+        [disabled]:not([disabled='false']),
+        [aria-disabled]:not([aria-disabled='false']),
+        .state-disabled
+      ) {
+      transform: var(--transform-active, translateY(1px));
+    }
+
+    &:where(:focus-visible, .state-focus, :has(.card-selector:focus-visible)):not(
+        :disabled,
+        [disabled]:not([disabled='false']),
+        [aria-disabled]:not([aria-disabled='false']),
+        .state-disabled
+      ) {
+      outline: var(--s-outline-w) solid var(--t-ring, var(--m-text));
+    }
+
+    &:where(
+      :disabled,
+      [disabled]:not([disabled='false']),
+      [aria-disabled]:not([aria-disabled='false']),
+      .state-disabled
+    ) {
+      @apply cursor-not-allowed opacity-60;
+      filter: grayscale(1) contrast(0.8);
+      background-color: var(--v-bg-disabled, var(--m-surface-1));
+      color: var(--v-fg-disabled, var(--m-text-muted));
+    }
+  }
+}
+
+@utility card-selector {
+  @layer components.cssui {
+    @apply appearance-none;
+  }
+}
+
+@utility card-title {
+  @layer components.cssui {
+    @apply m-0;
+    font-size: var(--s-font-size-lg);
+    font-weight: var(--s-font-weight-bold);
+    line-height: var(--s-line-height-tight);
+    padding-top: var(--s-py);
+  }
+}
+
+@utility card-actions {
+  @layer components.cssui {
+    @apply flex flex-wrap;
+    gap: calc(var(--s-gap) * 2);
+    padding-block: var(--s-py);
+  }
+}
+
+@utility card-bleed {
+  @layer components.cssui {
+    @apply w-full border-0 object-cover py-0;
+    grid-column: 2 / 5;
+  }
+}
+
+@utility card-bleed-start {
+  @layer components.cssui {
+    @apply h-full border-0 object-cover py-0;
+    grid-column: 1;
+    grid-row: 1 / 9999;
+  }
+}
+
+@utility card-bleed-end {
+  @layer components.cssui {
+    @apply h-full border-0 object-cover py-0;
+    grid-column: 5;
+    grid-row: 1 / 9999;
+  }
+}
+
+@utility card-bleed-full {
+  @layer components.cssui {
+    @apply absolute inset-0 z-0 size-full border-0 object-cover py-0;
+    grid-column: 1;
+  }
+}

@@ -1,0 +1,121 @@
+@utility variant--mixin {
+  @scope (&) {
+    :scope,
+    * {
+      --v-bg-disabled: var(--t-disabled-bg);
+      --v-fg-disabled: var(--t-disabled-fg);
+      --v-border-disabled: color-mix(in oklab, var(--t-disabled-fg), transparent 85%);
+    }
+  }
+}
+
+@utility variant-soft {
+  @scope (&) {
+    :scope,
+    * {
+      @apply variant--mixin;
+      --v-bg: var(--t-surface);
+      --v-bg-hover: var(--t-surface-hover);
+      --v-bg-active: var(--t-surface-active);
+      --v-fg: var(--t-on-surface);
+      --v-border: var(--t-soft-border);
+    }
+  }
+}
+
+@utility variant-filled {
+  @scope (&) {
+    :scope,
+    * {
+      @apply variant--mixin;
+      --v-bg: var(--t-main);
+      --v-bg-hover: var(--t-hover);
+      --v-bg-active: var(--t-active);
+      --v-fg: var(--t-on-main);
+      --v-border: transparent;
+    }
+  }
+}
+
+@utility variant-outlined {
+  @scope (&) {
+    :scope,
+    * {
+      @apply variant--mixin;
+      --v-bg: transparent;
+      --v-bg-hover: var(--t-surface);
+      --v-bg-active: var(--t-surface-active);
+      --v-fg: var(--t-main);
+      --v-border: var(--t-main);
+    }
+  }
+}
+
+@utility variant-ghost {
+  @scope (&) {
+    :scope,
+    * {
+      @apply variant--mixin;
+      --v-bg: transparent;
+      --v-bg-hover: var(--t-surface);
+      --v-bg-active: var(--t-surface-active);
+      --v-fg: var(--t-main);
+      --v-border: transparent;
+    }
+  }
+}
+
+@utility variant-dense {
+  @scope (&) {
+    :scope,
+    * {
+      --s-py: calc(var(--s-base) * 0.25);
+      --s-px: calc(var(--s-base) * 0.75);
+      --s-gap: calc(var(--s-base) * 0.25);
+      --s-line-height-tight: 1.1;
+      --s-line-height: 1.3;
+      --s-line-height-relaxed: 1.5;
+    }
+  }
+}
+
+@utility variant-lax {
+  @scope (&) {
+    :scope,
+    * {
+      --s-py: calc(var(--s-base) * 0.75);
+      --s-px: calc(var(--s-base) * 1.75);
+      --s-gap: calc(var(--s-base) * 0.75);
+      --s-line-height-tight: 1.4;
+      --s-line-height: 1.7;
+      --s-line-height-relaxed: 1.925;
+    }
+  }
+}
+
+@utility variant-pill {
+  @scope (&) {
+    :scope,
+    * {
+      --s-radius: 100vmax;
+    }
+  }
+}
+
+@utility variant-sharp {
+  @scope (&) {
+    :scope,
+    * {
+      --s-radius: 0;
+    }
+  }
+}
+
+@utility variant-square {
+  @scope (&) {
+    :scope,
+    * {
+      --s-aspect: 1/1;
+    }
+  }
+}

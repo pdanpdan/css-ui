@@ -1,0 +1,119 @@
+@utility theme--mixin {
+  --t-main: oklch(var(--t-l) var(--t-c) var(--t-h));
+  --t-on-main: oklch(99% 0.01 var(--t-h));
+
+  /* Fill-based States */
+  --t-hover: oklch(calc(var(--t-l) - (8% * var(--m-direction))) var(--t-c) var(--t-h));
+  --t-active: oklch(calc(var(--t-l) - (15% * var(--m-direction))) var(--t-c) var(--t-h));
+
+  /* Subtle-based States */
+  --t-surface: color-mix(in oklab, var(--t-main), transparent calc(88% + 4% * var(--m-direction)));
+  --t-surface-hover: color-mix(in oklab, var(--t-main), transparent calc(80% + 5% * var(--m-direction)));
+  --t-surface-active: color-mix(in oklab, var(--t-main), transparent calc(68% + 7% * var(--m-direction)));
+  --t-on-surface: oklch(calc(var(--t-l) - (5% * var(--m-direction))) var(--t-c) var(--t-h));
+
+  /* Subtle Border Tint */
+  --t-soft-border: color-mix(in oklab, var(--t-main), transparent calc(80% + 5% * var(--m-direction)));
+
+  /* --- TINTED DISABLED STATE --- */
+  --t-disabled-fg: oklch(calc(var(--m-text-l) + (40% * var(--m-direction))) 0.02 var(--t-h));
+  --t-disabled-bg: oklch(calc(var(--m-bg-l) - (8% * var(--m-direction))) 0.01 var(--t-h));
+
+  --t-ring: color-mix(in oklab, var(--t-main), transparent calc(100% - (100% * var(--m-ring-opacity))));
+}
+
+@utility theme-neutral {
+  @scope (&) {
+    :scope,
+    * {
+      @apply theme--mixin;
+      --t-h: 0;
+      --t-c: 0;
+      --t-l: 45%;
+    }
+  }
+}
+
+@utility theme-primary {
+  @scope (&) {
+    :scope,
+    * {
+      @apply theme--mixin;
+      --t-h: 260;
+      --t-c: 0.2;
+      --t-l: 50%;
+    }
+  }
+}
+
+@utility theme-secondary {
+  @scope (&) {
+    :scope,
+    * {
+      @apply theme--mixin;
+      --t-h: 310;
+      --t-c: 0.18;
+      --t-l: 50%;
+    }
+  }
+}
+
+@utility theme-accent {
+  @scope (&) {
+    :scope,
+    * {
+      @apply theme--mixin;
+      --t-h: 195;
+      --t-c: 0.28;
+      --t-l: 52%;
+    }
+  }
+}
+
+@utility theme-success {
+  @scope (&) {
+    :scope,
+    * {
+      @apply theme--mixin;
+      --t-h: 145;
+      --t-c: 0.16;
+      --t-l: 42%;
+    }
+  }
+}
+
+@utility theme-warning {
+  @scope (&) {
+    :scope,
+    * {
+      @apply theme--mixin;
+      --t-h: 90;
+      --t-c: 0.24;
+      --t-l: 50%;
+    }
+  }
+}
+
+@utility theme-error {
+  @scope (&) {
+    :scope,
+    * {
+      @apply theme--mixin;
+      --t-h: 25;
+      --t-c: 0.18;
+      --t-l: 52%;
+    }
+  }
+}
+
+@utility theme-info {
+  @scope (&) {
+    :scope,
+    * {
+      @apply theme--mixin;
+      --t-h: 225;
+      --t-c: 0.15;
+      --t-l: 50%;
+    }
+  }
+}

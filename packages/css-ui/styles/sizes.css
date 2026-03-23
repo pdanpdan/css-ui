@@ -1,0 +1,83 @@
+@utility size--mixin {
+  --s-font-size-xs: calc(var(--s-base) * 0.75);
+  --s-font-size-sm: calc(var(--s-base) * 0.875);
+  --s-font-size: var(--s-base);
+  --s-font-size-lg: calc(var(--s-base) * 1.25);
+  --s-font-size-xl: calc(var(--s-base) * 1.5);
+  --s-font-size-2xl: calc(var(--s-base) * 2);
+
+  --s-font-weight: 500;
+  --s-font-weight-semibold: 600;
+  --s-font-weight-bold: 800;
+
+  --s-line-height-tight: 1.2;
+  --s-line-height: 1.5;
+  --s-line-height-relaxed: 1.625;
+
+  --s-py: calc(var(--s-base) * 0.5);
+  --s-px: calc(var(--s-base) * 1.25);
+  --s-gap: calc(var(--s-base) * 0.5);
+  --s-radius: calc(var(--s-base) * 0.5);
+  --s-border-w: 1.5px;
+  --s-outline-w: 3px;
+}
+
+@utility size-xs {
+  @scope (&) {
+    :scope,
+    * {
+      @apply size--mixin;
+      --s-base: 0.75rem;
+    }
+  }
+}
+
+@utility size-sm {
+  @scope (&) {
+    :scope,
+    * {
+      @apply size--mixin;
+      --s-base: 0.875rem;
+    }
+  }
+}
+
+@utility size-md {
+  @scope (&) {
+    :scope,
+    * {
+      @apply size--mixin;
+      --s-base: 1rem;
+    }
+  }
+}
+
+@utility size-lg {
+  @scope (&) {
+    :scope,
+    * {
+      @apply size--mixin;
+      --s-base: 1.125rem;
+    }
+  }
+}
+
+@utility size-xl {
+  @scope (&) {
+    :scope,
+    * {
+      @apply size--mixin;
+      --s-base: 1.525rem;
+    }
+  }
+}
+
+@utility size-2xl {
+  @scope (&) {
+    :scope,
+    * {
+      @apply size--mixin;
+      --s-base: 1.875rem;
+    }
+  }
+}

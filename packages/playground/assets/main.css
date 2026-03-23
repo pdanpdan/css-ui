@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@import '@pdanpdan/css-ui/styles/main.css';
+
+:root {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  @apply relative tracking-tight;
+
+  &:before {
+    @apply w-1.5 rounded-full absolute me-3;
+    content: "";
+    background-color: var(--t-main);
+    inset-block: --spacing(1);
+    inset-inline-end: 100%;
+  }
+}
+
+h1 {
+  @apply text-4xl font-black;
+}
+
+h2 {
+  @apply text-2xl font-extrabold;
+}
+
+h3 {
+  @apply text-xl font-bold;
+}
+
+h4 {
+  @apply text-lg font-semibold;
+}
+
+dt {
+  @apply font-bold;
+}
+
+dd {
+  @apply ms-4;
+}
+
+.inspect-class {
+  @apply absolute top-1 end-1 text-xs z-1 text-end px-2 py-0.5 rounded-sm;
+  color: var(--m-text-muted);
+  background-color: var(--m-surface-3);
+
+  &:hover {
+    color: var(--m-text);
+  }
+}
+
+.separator-vertical {
+  @apply h-8 w-0.5 border-0;
+  background-color: var(--m-surface-3);
+}
