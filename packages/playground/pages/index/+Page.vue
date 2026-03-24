@@ -123,9 +123,9 @@
 </template>
 
 <script setup lang="ts">
-import type { VariantTypes } from '../settings';
+import type { VariantTypes } from '../../settings';
 
-import { modes, sizes, themes, variants, surfaces } from '../settings';
+import { modes, sizes, themes, variants, surfaces } from '../../settings';
 
 const modesAll = ['mode-auto', ...modes];
 const modesList = modesAll.map((v) => `<code>${v}</code>`).join(' | ');

@@ -1,5 +1,5 @@
 @utility btn {
-  @layer components.cssui {
+  @layer cssui.l1.l2.l3 {
     @apply inline-flex cursor-pointer items-center justify-center select-none;
     font-family: inherit;
     font-size: var(--s-font-size);
@@ -12,6 +12,18 @@
     background-color: var(--v-bg);
     color: var(--v-fg);
     aspect-ratio: var(--s-aspect);
+
+    &[aria-label]:empty {
+      @apply appearance-none;
+
+      &::after {
+        --tw-content: attr(aria-label);
+        content: var(--tw-content);
+      }
+    }
+  }
+
+  @layer cssui.l1 {
     outline: 0 solid transparent;
     outline-offset: var(--s-outline-offset, 2px);
 
@@ -75,15 +87,6 @@
       background-color: var(--v-bg-disabled);
       color: var(--v-fg-disabled);
       border-color: var(--v-border-disabled);
-    }
-
-    &[aria-label]:empty {
-      @apply appearance-none;
-
-      &::after {
-        --tw-content: attr(aria-label);
-        content: var(--tw-content);
-      }
     }
   }
 }

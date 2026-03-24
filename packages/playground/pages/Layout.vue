@@ -11,7 +11,7 @@
       </nav>
     </aside>
 
-    <main class="mx-auto max-w-5xl grow-1 p-8">
+    <main class="mx-auto max-w-[1920px] grow-1 p-8">
       <slot />
     </main>
   </div>

@@ -1,5 +1,5 @@
 @utility surface {
-  @layer utilities.cssui {
+  @layer cssui.l1.l2 {
     background-color: var(--m-bg);
     color: var(--m-text);
     /* transition: var(--transition, background-color var(--transition-timing), color var(--transition-timing)); */
@@ -7,28 +7,28 @@
 }
 
 @utility surface-lv-1 {
-  @layer utilities.cssui {
+  @layer cssui.l1.l2 {
     background-color: var(--m-surface-1);
     color: var(--m-text);
   }
 }
 
 @utility surface-lv-2 {
-  @layer utilities.cssui {
+  @layer cssui.l1.l2 {
     background-color: var(--m-surface-2);
     color: var(--m-text);
   }
 }
 
 @utility surface-lv-3 {
-  @layer utilities.cssui {
+  @layer cssui.l1.l2 {
     background-color: var(--m-surface-3);
     color: var(--m-text);
   }
 }
 
 @utility surface-themed {
-  @layer utilities.cssui {
+  @layer cssui.l1.l2 {
     background-color: var(--v-bg);
     color: var(--v-fg);
   }

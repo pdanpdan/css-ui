@@ -1,5 +1,5 @@
-.card {
-  @layer components.cssui {
+@utility card {
+  @layer cssui.l1.l2.l3 {
     @apply grid content-start overflow-hidden;
     grid-template-columns: fit-content(50%) var(--s-px) 1fr var(--s-px) fit-content(50%);
     border-radius: var(--s-radius);
@@ -11,12 +11,6 @@
     aspect-ratio: var(--s-aspect);
     font-size: var(--s-font-size-sm);
     line-height: var(--s-line-height-relaxed);
-    outline: 0 solid transparent;
-    outline-offset: var(--s-outline-offset, 4px);
-
-    @media (prefers-reduced-motion: no-preference) {
-      transition: var(--transition, all var(--transition-timing));
-    }
 
     & > * {
       @apply z-1;
@@ -35,7 +29,14 @@
 }
 
 @utility card-interactive {
-  @layer components.cssui {
+  @layer cssui.l1 {
+    outline: 0 solid transparent;
+    outline-offset: var(--s-outline-offset, 4px);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: var(--transition, all var(--transition-timing));
+    }
+
     &[tabindex]:not(
         [tabindex^='-'],
         :disabled,
@@ -107,13 +108,13 @@
 }
 
 @utility card-selector {
-  @layer components.cssui {
+  @layer cssui.l1.l2.l3 {
     @apply appearance-none;
   }
 }
 
 @utility card-title {
-  @layer components.cssui {
+  @layer cssui.l1.l2.l3 {
     @apply m-0;
     font-size: var(--s-font-size-lg);
     font-weight: var(--s-font-weight-bold);
@@ -123,7 +124,7 @@
 }
 
 @utility card-actions {
-  @layer components.cssui {
+  @layer cssui.l1.l2.l3 {
     @apply flex flex-wrap;
     gap: calc(var(--s-gap) * 2);
     padding-block: var(--s-py);
@@ -131,14 +132,14 @@
 }
 
 @utility card-bleed {
-  @layer components.cssui {
+  @layer cssui.l1.l2 {
     @apply w-full border-0 object-cover py-0;
     grid-column: 2 / 5;
   }
 }
 
 @utility card-bleed-start {
-  @layer components.cssui {
+  @layer cssui.l1.l2 {
     @apply h-full border-0 object-cover py-0;
     grid-column: 1;
     grid-row: 1 / 9999;
@@ -146,7 +147,7 @@
 }
 
 @utility card-bleed-end {
-  @layer components.cssui {
+  @layer cssui.l1.l2 {
     @apply h-full border-0 object-cover py-0;
     grid-column: 5;
     grid-row: 1 / 9999;
@@ -154,8 +155,8 @@
 }
 
 @utility card-bleed-full {
-  @layer components.cssui {
-    @apply absolute inset-0 z-0 size-full border-0 object-cover py-0;
+  @layer cssui.l1.l2 {
+    @apply absolute inset-0 z-0 size-full border-0 object-cover p-0;
     grid-column: 1;
   }
 }
