@@ -1,16 +1,12 @@
 @utility variant--mixin {
-  @scope (&) {
-    :scope,
-    * {
-      --v-bg-disabled: var(--t-disabled-bg);
-      --v-fg-disabled: var(--t-disabled-fg);
-      --v-border-disabled: color-mix(in oklab, var(--t-disabled-fg), transparent 85%);
-    }
-  }
+  --v-bg-disabled: var(--t-disabled-bg);
+  --v-fg-disabled: var(--t-disabled-fg);
+  --v-border-disabled: color-mix(in oklab, var(--t-disabled-fg), transparent 85%);
+  --v-separator: var(--t-soft-border);
 }
 
 @utility variant-soft {
-  @scope (&) {
+  @scope (&) to ([class~="variant-"]) {
     :scope,
     * {
       @apply variant--mixin;
@@ -24,7 +20,7 @@
 }
 
 @utility variant-filled {
-  @scope (&) {
+  @scope (&) to ([class~="variant-"]) {
     :scope,
     * {
       @apply variant--mixin;
@@ -33,12 +29,13 @@
       --v-bg-active: var(--t-active);
       --v-fg: var(--t-on-main);
       --v-border: transparent;
+      --v-separator: var(--t-soft-separator);
     }
   }
 }
 
 @utility variant-outlined {
-  @scope (&) {
+  @scope (&) to ([class~="variant-"]) {
     :scope,
     * {
       @apply variant--mixin;
@@ -52,7 +49,7 @@
 }
 
 @utility variant-ghost {
-  @scope (&) {
+  @scope (&) to ([class~="variant-"]) {
     :scope,
     * {
       @apply variant--mixin;
@@ -66,7 +63,7 @@
 }
 
 @utility variant-dense {
-  @scope (&) {
+  @scope (&) to ([class~="variant-"]) {
     :scope,
     * {
       --s-py: calc(var(--s-base) * 0.25);
@@ -80,7 +77,7 @@
 }
 
 @utility variant-lax {
-  @scope (&) {
+  @scope (&) to ([class~="variant-"]) {
     :scope,
     * {
       --s-py: calc(var(--s-base) * 0.75);
@@ -94,7 +91,7 @@
 }
 
 @utility variant-pill {
-  @scope (&) {
+  @scope (&) to ([class~="variant-"]) {
     :scope,
     * {
       --s-radius: 100vmax;
@@ -103,7 +100,7 @@
 }
 
 @utility variant-sharp {
-  @scope (&) {
+  @scope (&) to ([class~="variant-"]) {
     :scope,
     * {
       --s-radius: 0;
@@ -112,7 +109,7 @@
 }
 
 @utility variant-square {
-  @scope (&) {
+  @scope (&) to ([class~="variant-"]) {
     :scope,
     * {
       --s-aspect: 1/1;

@@ -18,7 +18,7 @@
 }
 
 @utility mode-light {
-  @scope (&) {
+  @scope (&) to ([class~="mode-"]) {
     :scope,
     * {
       @apply mode--mixin;
@@ -32,7 +32,7 @@
 }
 
 @utility mode-dark {
-  @scope (&) {
+  @scope (&) to ([class~="mode-"]) {
     :scope,
     * {
       @apply mode--mixin;

@@ -18,12 +18,13 @@
   --s-px: calc(var(--s-base) * 1.25);
   --s-gap: calc(var(--s-base) * 0.5);
   --s-radius: calc(var(--s-base) * 0.5);
-  --s-border-w: 1.5px;
+  --s-separator-w: 1px;
+  --s-border-w: 2px;
   --s-outline-w: 3px;
 }
 
 @utility size-xs {
-  @scope (&) {
+  @scope (&) to ([class~="size-"]) {
     :scope,
     * {
       @apply size--mixin;
@@ -33,7 +34,7 @@
 }
 
 @utility size-sm {
-  @scope (&) {
+  @scope (&) to ([class~="size-"]) {
     :scope,
     * {
       @apply size--mixin;
@@ -43,7 +44,7 @@
 }
 
 @utility size-md {
-  @scope (&) {
+  @scope (&) to ([class~="size-"]) {
     :scope,
     * {
       @apply size--mixin;
@@ -53,7 +54,7 @@
 }
 
 @utility size-lg {
-  @scope (&) {
+  @scope (&) to ([class~="size-"]) {
     :scope,
     * {
       @apply size--mixin;
@@ -63,7 +64,7 @@
 }
 
 @utility size-xl {
-  @scope (&) {
+  @scope (&) to ([class~="size-"]) {
     :scope,
     * {
       @apply size--mixin;
@@ -73,7 +74,7 @@
 }
 
 @utility size-2xl {
-  @scope (&) {
+  @scope (&) to ([class~="size-"]) {
     :scope,
     * {
       @apply size--mixin;
