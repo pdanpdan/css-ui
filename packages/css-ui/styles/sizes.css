@@ -18,6 +18,7 @@
   --s-px: calc(var(--s-base) * 1.25);
   --s-gap: calc(var(--s-base) * 0.5);
   --s-radius: calc(var(--s-base) * 0.5);
+  --s-aspect: unset;
   --s-separator-w: 1px;
   --s-border-w: 2px;
   --s-outline-w: 3px;
