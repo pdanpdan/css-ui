@@ -1,11 +1,11 @@
 <template>
-  <div class="flex min-h-screen size-md theme-neutral variant-soft">
+  <div class="flex min-h-screen size-md theme-neutral variant-style-soft">
     <aside class="sticky top-0 h-screen w-80 shrink-0 surface-lv-1 p-6 theme-primary" v-once>
       <h1 class="my-4 ms-4 flex items-center justify-between">
         CSS-UI
         <a
           href="https://github.com/pdanpdan/css-ui"
-          class="btn size-xs theme-neutral variant-ghost variant-dense variant-pill variant-square"
+          class="btn size-xs theme-neutral variant-style-ghost variant-density-dense variant-shape-pill variant-aspect-square"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub Repository"
@@ -21,16 +21,16 @@
       <nav class="flex flex-col gap-2">
         <button type="button" class="btn justify-start theme-accent" @click="toggleMode">Toggle Mode</button>
         <AppLink href="/" v-slot="{ active, href }">
-          <a :href="href" class="btn justify-start" :class="{ 'variant-filled': active }">Home</a>
+          <a :href="href" class="btn justify-start" :class="{ 'variant-style-filled': active }">Home</a>
         </AppLink>
         <AppLink href="/btn" v-slot="{ active, href }">
-          <a :href="href" class="btn justify-start" :class="{ 'variant-filled': active }">Buttons</a>
+          <a :href="href" class="btn justify-start" :class="{ 'variant-style-filled': active }">Buttons</a>
         </AppLink>
         <AppLink href="/card" v-slot="{ active, href }">
-          <a :href="href" class="btn justify-start" :class="{ 'variant-filled': active }">Cards</a>
+          <a :href="href" class="btn justify-start" :class="{ 'variant-style-filled': active }">Cards</a>
         </AppLink>
         <AppLink href="/list" v-slot="{ active, href }">
-          <a :href="href" class="btn justify-start" :class="{ 'variant-filled': active }">List</a>
+          <a :href="href" class="btn justify-start" :class="{ 'variant-style-filled': active }">List</a>
         </AppLink>
       </nav>
     </aside>

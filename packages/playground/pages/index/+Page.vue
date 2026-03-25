@@ -60,9 +60,9 @@
                   }}
                 </div>
                 <p>Text aspect on surface</p>
-                <button type="button" class="btn theme-primary variant-soft">Button</button>
-                <button type="button" class="btn theme-secondary variant-outlined">Button</button>
-                <button type="button" class="btn theme-accent variant-filled">Button</button>
+                <button type="button" class="btn theme-primary variant-style-soft">Button</button>
+                <button type="button" class="btn theme-secondary variant-style-outlined">Button</button>
+                <button type="button" class="btn theme-accent variant-style-filled">Button</button>
               </div>
             </div>
           </template>
@@ -85,7 +85,7 @@
                     .join('')
                 }}
               </div>
-              <button type="button" class="btn theme-primary variant-soft" :class="s">Button</button>
+              <button type="button" class="btn theme-primary variant-style-soft" :class="s">Button</button>
             </div>
           </div>
         </template>
@@ -96,10 +96,10 @@
       <h3>Variant examples</h3>
 
       <div class="flex flex-wrap theme-primary max-lg:flex-col">
-        <template v-for="v in ['', ...variants.color]" :key="v">
+        <template v-for="v in ['', ...variants.style]" :key="v">
           <template v-for="m in ['', ...variants.density]" :key="m">
-            <template v-for="r in ['', ...variants.radius]" :key="r">
-              <template v-for="s in ['', ...variants.shape]" :key="s">
+            <template v-for="r in ['', ...variants.shape]" :key="r">
+              <template v-for="s in ['', ...variants.aspect]" :key="s">
                 <div class="flex-1/3 p-2">
                   <div class="relative flex h-full flex-col items-center justify-center gap-2 surface-lv-1 p-4 pt-12">
                     <div class="inspect-class">

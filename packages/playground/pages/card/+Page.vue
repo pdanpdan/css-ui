@@ -5,7 +5,7 @@
     <section class="group space-y-4">
       <h3>Playground</h3>
 
-      <h4>Options (page defaults are <code>size-md</code> + <code>theme-neutral</code> + <code>variant-soft</code>)</h4>
+      <h4>Options (page defaults are <code>size-md</code> + <code>theme-neutral</code> + <code>variant-style-soft</code>)</h4>
       <DemoSelector />
 
       <h4>Basic Cards</h4>
@@ -32,9 +32,9 @@
             quas harumSed atque.
           </p>
           <div class="card-actions justify-between">
-            <button type="button" class="btn theme-neutral variant-ghost">Cancel</button>
+            <button type="button" class="btn theme-neutral variant-style-ghost">Cancel</button>
 
-            <button type="button" class="btn variant-soft">Subscribe</button>
+            <button type="button" class="btn variant-style-soft">Subscribe</button>
           </div>
         </article>
 
@@ -181,9 +181,9 @@
             quas harumSed atque.
           </p>
           <div class="card-actions justify-between">
-            <button type="button" class="btn theme-neutral variant-ghost">Cancel</button>
+            <button type="button" class="btn theme-neutral variant-style-ghost">Cancel</button>
 
-            <button type="button" class="btn variant-soft">Subscribe</button>
+            <button type="button" class="btn variant-style-soft">Subscribe</button>
           </div>
         </article>
 
@@ -197,9 +197,9 @@
             quas harumSed atque.
           </p>
           <div class="card-actions flex-col items-end">
-            <button type="button" class="btn theme-neutral variant-ghost">Cancel</button>
+            <button type="button" class="btn theme-neutral variant-style-ghost">Cancel</button>
 
-            <button type="button" class="btn variant-soft">Subscribe</button>
+            <button type="button" class="btn variant-style-soft">Subscribe</button>
           </div>
         </article>
 
@@ -213,9 +213,9 @@
             quas harumSed atque.
           </p>
           <div class="card-actions flex-col items-end">
-            <button type="button" class="btn theme-neutral variant-ghost">Cancel</button>
+            <button type="button" class="btn theme-neutral variant-style-ghost">Cancel</button>
 
-            <button type="button" class="btn variant-soft">Subscribe</button>
+            <button type="button" class="btn variant-style-soft">Subscribe</button>
           </div>
         </article>
 
@@ -229,9 +229,9 @@
             quas harumSed atque.
           </p>
           <div class="card-actions flex-col items-end">
-            <button type="button" class="btn theme-neutral variant-filled">Cancel</button>
+            <button type="button" class="btn theme-neutral variant-style-filled">Cancel</button>
 
-            <button type="button" class="btn variant-filled">Subscribe</button>
+            <button type="button" class="btn variant-style-filled">Subscribe</button>
           </div>
         </article>
       </div>

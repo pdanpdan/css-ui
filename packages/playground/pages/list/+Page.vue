@@ -5,7 +5,7 @@
     <section class="group space-y-4">
       <h3>Playground</h3>
 
-      <h4>Options (page defaults are <code>size-md</code> + <code>theme-neutral</code> + <code>variant-soft</code>)</h4>
+      <h4>Options (page defaults are <code>size-md</code> + <code>theme-neutral</code> + <code>variant-style-soft</code>)</h4>
       <DemoSelector />
 
       <h3>Basic List</h3>
@@ -65,7 +65,7 @@
         <div class="list-row">
           <div class="bg-accent h-6 w-6 rounded-sm"></div>
           <div class="list-col-grow list-title">Growing Column</div>
-          <div class="btn size-xs variant-soft">Action</div>
+          <div class="btn size-xs variant-style-soft">Action</div>
         </div>
         <div class="list-row">
           <div class="bg-info h-6 w-6 rounded-sm"></div>
@@ -76,7 +76,7 @@
               parent is a grid.
             </div>
           </div>
-          <div class="btn size-xs variant-ghost">Edit</div>
+          <div class="btn size-xs variant-style-ghost">Edit</div>
         </div>
       </div>
     </section>

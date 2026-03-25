@@ -1,17 +1,17 @@
 <template>
   <div
-    v-for="(sel, i) in [themes, sizes, variants.color, variants.density, variants.radius, variants.shape]"
-    class="flex items-center gap-4"
+    v-for="(sel, i) in [themes, sizes, variants.style, variants.density, variants.shape, variants.aspect]"
+    class="flex items-center gap-4 variant-density-dense"
   >
     <input
       v-for="v in ['', ...sel]"
       :key="v"
-      class="btn checked:variant-filled"
+      class="btn checked:variant-style-filled"
       :class="v"
       type="radio"
       :name="`group${i}`"
       :value="v"
-      :aria-label="v.split('-').at(-1) || (i > 2 ? 'default' : 'inherited')"
+      :aria-label="v.split('-').at(-1) || 'inherited'"
       :checked="v === ''"
     />
   </div>

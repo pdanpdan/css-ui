@@ -5,8 +5,8 @@
   --v-separator: var(--t-soft-border);
 }
 
-@utility variant-soft {
-  @scope (&) to ([class~="variant-"]) {
+@utility variant-style-soft {
+  @scope (&) to ([class~="variant-style-"]) {
     &,
     * {
       @apply variant--mixin;
@@ -19,8 +19,8 @@
   }
 }
 
-@utility variant-filled {
-  @scope (&) to ([class~="variant-"]) {
+@utility variant-style-filled {
+  @scope (&) to ([class~="variant-style-"]) {
     &,
     * {
       @apply variant--mixin;
@@ -34,8 +34,8 @@
   }
 }
 
-@utility variant-outlined {
-  @scope (&) to ([class~="variant-"]) {
+@utility variant-style-outlined {
+  @scope (&) to ([class~="variant-style-"]) {
     &,
     * {
       @apply variant--mixin;
@@ -48,8 +48,8 @@
   }
 }
 
-@utility variant-ghost {
-  @scope (&) to ([class~="variant-"]) {
+@utility variant-style-ghost {
+  @scope (&) to ([class~="variant-style-"]) {
     &,
     * {
       @apply variant--mixin;
@@ -62,8 +62,22 @@
   }
 }
 
-@utility variant-dense {
-  @scope (&) to ([class~="variant-"]) {
+@utility variant-density-default {
+  @scope (&) to ([class~="variant-density-"]) {
+    &,
+    * {
+      --s-py: calc(var(--s-base) * 0.5);
+      --s-px: calc(var(--s-base) * 1.25);
+      --s-gap: calc(var(--s-base) * 0.5);
+      --s-line-height-tight: 1.2;
+      --s-line-height: 1.5;
+      --s-line-height-relaxed: 1.625;
+    }
+  }
+}
+
+@utility variant-density-dense {
+  @scope (&) to ([class~="variant-density-"]) {
     &,
     * {
       --s-py: calc(var(--s-base) * 0.25);
@@ -76,8 +90,8 @@
   }
 }
 
-@utility variant-lax {
-  @scope (&) to ([class~="variant-"]) {
+@utility variant-density-lax {
+  @scope (&) to ([class~="variant-density-"]) {
     &,
     * {
       --s-py: calc(var(--s-base) * 0.75);
@@ -90,8 +104,17 @@
   }
 }
 
-@utility variant-pill {
-  @scope (&) to ([class~="variant-"]) {
+@utility variant-shape-default {
+  @scope (&) to ([class~="variant-shape-"]) {
+    &,
+    * {
+      --s-radius: calc(var(--s-base) * 0.5);
+    }
+  }
+}
+
+@utility variant-shape-pill {
+  @scope (&) to ([class~="variant-shape-"]) {
     &,
     * {
       --s-radius: 100vmax;
@@ -99,8 +122,8 @@
   }
 }
 
-@utility variant-sharp {
-  @scope (&) to ([class~="variant-"]) {
+@utility variant-shape-sharp {
+  @scope (&) to ([class~="variant-shape-"]) {
     &,
     * {
       --s-radius: 0;
@@ -108,8 +131,17 @@
   }
 }
 
-@utility variant-square {
-  @scope (&) to ([class~="variant-"]) {
+@utility variant-aspect-default {
+  @scope (&) to ([class~="variant-aspect-"]) {
+    &,
+    * {
+      --s-aspect: unset;
+    }
+  }
+}
+
+@utility variant-aspect-square {
+  @scope (&) to ([class~="variant-aspect-"]) {
     &,
     * {
       --s-aspect: 1/1;
