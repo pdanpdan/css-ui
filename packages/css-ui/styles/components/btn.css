@@ -31,14 +31,23 @@
       transition: var(--transition, all var(--transition-timing));
     }
 
-    &:where(:hover, .state-hover):not(
-        :disabled,
-        [disabled]:not([disabled='false']),
-        [aria-disabled]:not([aria-disabled='false']),
-        .state-disabled
-      ) {
-      background-color: var(--v-bg-hover);
-      transform: var(--transform-hover);
+    &:not(
+      :disabled,
+      [disabled]:not([disabled='false']),
+      [aria-disabled]:not([aria-disabled='false']),
+      .state-disabled
+    ) {
+      @media (hover: hover) and (pointer: fine) {
+        &:where(:hover) {
+          background-color: var(--v-bg-hover);
+          transform: var(--transform-hover);
+        }
+      }
+
+      &:where(.state-hover) {
+        background-color: var(--v-bg-hover);
+        transform: var(--transform-hover);
+      }
     }
 
     &:where(

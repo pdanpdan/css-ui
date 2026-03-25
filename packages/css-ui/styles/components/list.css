@@ -77,14 +77,23 @@
       @apply cursor-pointer;
     }
 
-    &:where(:hover, .state-hover):not(
-        :disabled,
-        [disabled]:not([disabled='false']),
-        [aria-disabled]:not([aria-disabled='false']),
-        .state-disabled
-      ) {
-      background-color: var(--v-bg-hover, var(--m-surface-2));
-      transform: var(--transform-hover);
+    &:not(
+      :disabled,
+      [disabled]:not([disabled='false']),
+      [aria-disabled]:not([aria-disabled='false']),
+      .state-disabled
+    ) {
+      @media (hover: hover) and (pointer: fine) {
+        &:where(:hover) {
+          background-color: var(--v-bg-hover, var(--m-surface-2));
+          transform: var(--transform-hover);
+        }
+      }
+
+      &:where(.state-hover) {
+        background-color: var(--v-bg-hover, var(--m-surface-2));
+        transform: var(--transform-hover);
+      }
     }
 
     &:where(
