@@ -25,7 +25,7 @@
 
 @utility size-xs {
   @scope (&) to ([class~="size-"]) {
-    :scope,
+    &,
     * {
       @apply size--mixin;
       --s-base: 0.75rem;
@@ -35,7 +35,7 @@
 
 @utility size-sm {
   @scope (&) to ([class~="size-"]) {
-    :scope,
+    &,
     * {
       @apply size--mixin;
       --s-base: 0.875rem;
@@ -45,7 +45,7 @@
 
 @utility size-md {
   @scope (&) to ([class~="size-"]) {
-    :scope,
+    &,
     * {
       @apply size--mixin;
       --s-base: 1rem;
@@ -55,7 +55,7 @@
 
 @utility size-lg {
   @scope (&) to ([class~="size-"]) {
-    :scope,
+    &,
     * {
       @apply size--mixin;
       --s-base: 1.125rem;
@@ -65,7 +65,7 @@
 
 @utility size-xl {
   @scope (&) to ([class~="size-"]) {
-    :scope,
+    &,
     * {
       @apply size--mixin;
       --s-base: 1.525rem;
@@ -75,7 +75,7 @@
 
 @utility size-2xl {
   @scope (&) to ([class~="size-"]) {
-    :scope,
+    &,
     * {
       @apply size--mixin;
       --s-base: 1.875rem;

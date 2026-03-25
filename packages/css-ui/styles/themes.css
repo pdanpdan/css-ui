@@ -25,7 +25,7 @@
 
 @utility theme-neutral {
   @scope (&) to ([class~="theme-"]) {
-    :scope,
+    &,
     * {
       @apply theme--mixin;
       --t-h: 0;
@@ -37,7 +37,7 @@
 
 @utility theme-primary {
   @scope (&) to ([class~="theme-"]) {
-    :scope,
+    &,
     * {
       @apply theme--mixin;
       --t-h: 260;
@@ -49,7 +49,7 @@
 
 @utility theme-secondary {
   @scope (&) to ([class~="theme-"]) {
-    :scope,
+    &,
     * {
       @apply theme--mixin;
       --t-h: 310;
@@ -61,7 +61,7 @@
 
 @utility theme-accent {
   @scope (&) to ([class~="theme-"]) {
-    :scope,
+    &,
     * {
       @apply theme--mixin;
       --t-h: 195;
@@ -73,7 +73,7 @@
 
 @utility theme-success {
   @scope (&) to ([class~="theme-"]) {
-    :scope,
+    &,
     * {
       @apply theme--mixin;
       --t-h: 145;
@@ -85,7 +85,7 @@
 
 @utility theme-warning {
   @scope (&) to ([class~="theme-"]) {
-    :scope,
+    &,
     * {
       @apply theme--mixin;
       --t-h: 90;
@@ -97,7 +97,7 @@
 
 @utility theme-error {
   @scope (&) to ([class~="theme-"]) {
-    :scope,
+    &,
     * {
       @apply theme--mixin;
       --t-h: 25;
@@ -109,7 +109,7 @@
 
 @utility theme-info {
   @scope (&) to ([class~="theme-"]) {
-    :scope,
+    &,
     * {
       @apply theme--mixin;
       --t-h: 225;

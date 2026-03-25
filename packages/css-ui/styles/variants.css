@@ -7,7 +7,7 @@
 
 @utility variant-soft {
   @scope (&) to ([class~="variant-"]) {
-    :scope,
+    &,
     * {
       @apply variant--mixin;
       --v-bg: var(--t-surface);
@@ -21,7 +21,7 @@
 
 @utility variant-filled {
   @scope (&) to ([class~="variant-"]) {
-    :scope,
+    &,
     * {
       @apply variant--mixin;
       --v-bg: var(--t-main);
@@ -36,7 +36,7 @@
 
 @utility variant-outlined {
   @scope (&) to ([class~="variant-"]) {
-    :scope,
+    &,
     * {
       @apply variant--mixin;
       --v-bg: transparent;
@@ -50,7 +50,7 @@
 
 @utility variant-ghost {
   @scope (&) to ([class~="variant-"]) {
-    :scope,
+    &,
     * {
       @apply variant--mixin;
       --v-bg: transparent;
@@ -64,7 +64,7 @@
 
 @utility variant-dense {
   @scope (&) to ([class~="variant-"]) {
-    :scope,
+    &,
     * {
       --s-py: calc(var(--s-base) * 0.25);
       --s-px: calc(var(--s-base) * 0.75);
@@ -78,7 +78,7 @@
 
 @utility variant-lax {
   @scope (&) to ([class~="variant-"]) {
-    :scope,
+    &,
     * {
       --s-py: calc(var(--s-base) * 0.75);
       --s-px: calc(var(--s-base) * 1.75);
@@ -92,7 +92,7 @@
 
 @utility variant-pill {
   @scope (&) to ([class~="variant-"]) {
-    :scope,
+    &,
     * {
       --s-radius: 100vmax;
     }
@@ -101,7 +101,7 @@
 
 @utility variant-sharp {
   @scope (&) to ([class~="variant-"]) {
-    :scope,
+    &,
     * {
       --s-radius: 0;
     }
@@ -110,7 +110,7 @@
 
 @utility variant-square {
   @scope (&) to ([class~="variant-"]) {
-    :scope,
+    &,
     * {
       --s-aspect: 1/1;
     }
