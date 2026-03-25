@@ -122,11 +122,9 @@
 </template>
 
 <script setup lang="ts">
-import { modes, states, demoSelectors } from '../../settings';
 import DemoSelector from '/components/DemoSelector.vue';
 
-const componentClass = [
-  `btn`,
-  ...demoSelectors,
-];
+import { modes, states, demoSelectors } from '../../settings';
+
+const componentClass = [`btn`, ...demoSelectors];
 </script>

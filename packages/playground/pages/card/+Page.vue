@@ -241,7 +241,9 @@
         <em class="self-center">{{ mode }}</em>
         <template v-for="s in ['', ...states]" :key="s">
           <article :class="[...componentClass, s]" tabindex="0" class="max-w-80 min-w-60 flex-1 card-interactive">
-            <h5 class="card-title"><code>surface-lv-1</code> - <code>{{ s || 'rest' }}</code></h5>
+            <h5 class="card-title">
+              <code>surface-lv-1</code> - <code>{{ s || 'rest' }}</code>
+            </h5>
 
             <p>
               Et soluta neque <strong>Id sint</strong> in quia exercitationem ad illo reiciendis. Non possimus velit est
@@ -257,8 +259,14 @@
         </template>
         <div class="w-full" />
         <template v-for="s in ['', ...states]" :key="s">
-          <article :class="[...componentClass, s]" tabindex="0" class="max-w-80 min-w-60 flex-1 card-interactive surface-themed">
-            <h5 class="card-title"><code>surface-themed</code> - <code>{{ s || 'rest' }}</code></h5>
+          <article
+            :class="[...componentClass, s]"
+            tabindex="0"
+            class="max-w-80 min-w-60 flex-1 card-interactive surface-themed"
+          >
+            <h5 class="card-title">
+              <code>surface-themed</code> - <code>{{ s || 'rest' }}</code>
+            </h5>
 
             <p>
               Et soluta neque <strong>Id sint</strong> in quia exercitationem ad illo reiciendis. Non possimus velit est
@@ -278,11 +286,9 @@
 </template>
 
 <script setup lang="ts">
-import { modes, states, demoSelectors } from '../../settings';
 import DemoSelector from '/components/DemoSelector.vue';
 
-const componentClass = [
-  `card`,
-  ...demoSelectors,
-];
+import { modes, states, demoSelectors } from '../../settings';
+
+const componentClass = [`card`, ...demoSelectors];
 </script>

@@ -5,9 +5,15 @@
 
       <nav class="flex flex-col gap-2">
         <button type="button" class="btn justify-start theme-accent" @click="toggleMode">Toggle Mode</button>
-        <a href="/" class="btn justify-start">Home</a>
-        <a href="/btn" class="btn justify-start">Buttons</a>
-        <a href="/card" class="btn justify-start">Cards</a>
+        <AppLink href="/" v-slot="{ active, href }">
+          <a :href="href" class="btn justify-start" :class="{ 'variant-filled': active }">Home</a>
+        </AppLink>
+        <AppLink href="/btn" v-slot="{ active, href }">
+          <a :href="href" class="btn justify-start" :class="{ 'variant-filled': active }">Buttons</a>
+        </AppLink>
+        <AppLink href="/card" v-slot="{ active, href }">
+          <a :href="href" class="btn justify-start" :class="{ 'variant-filled': active }">Cards</a>
+        </AppLink>
       </nav>
     </aside>
 
@@ -19,6 +25,7 @@
 
 <script setup lang="ts">
 import '../assets/main.css';
+import AppLink from '../components/AppLink.vue';
 
 function toggleMode() {
   const { body } = document;
