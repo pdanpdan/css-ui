@@ -14,6 +14,9 @@
         <AppLink href="/card" v-slot="{ active, href }">
           <a :href="href" class="btn justify-start" :class="{ 'variant-filled': active }">Cards</a>
         </AppLink>
+        <AppLink href="/list" v-slot="{ active, href }">
+          <a :href="href" class="btn justify-start" :class="{ 'variant-filled': active }">List</a>
+        </AppLink>
       </nav>
     </aside>
 

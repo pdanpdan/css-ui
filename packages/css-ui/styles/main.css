@@ -6,6 +6,7 @@
 @import './components/surface.css';
 @import './components/btn.css';
 @import './components/card.css';
+@import './components/list.css';
 
 @layer base {
   :root,
