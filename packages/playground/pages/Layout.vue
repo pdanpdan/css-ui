@@ -5,7 +5,7 @@
         CSS-UI
         <a
           href="https://github.com/pdanpdan/css-ui"
-          class="btn size-xs theme-neutral variant-style-ghost variant-density-dense variant-shape-pill variant-aspect-square"
+          class="btn size-xs theme-neutral variant-style-ghost variant-density-dense variant-aspect-square variant-shape-pill"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub Repository"

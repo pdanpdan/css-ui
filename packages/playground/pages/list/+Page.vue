@@ -5,7 +5,9 @@
     <section class="group space-y-4">
       <h3>Playground</h3>
 
-      <h4>Options (page defaults are <code>size-md</code> + <code>theme-neutral</code> + <code>variant-style-soft</code>)</h4>
+      <h4>
+        Options (page defaults are <code>size-md</code> + <code>theme-neutral</code> + <code>variant-style-soft</code>)
+      </h4>
       <DemoSelector />
 
       <h3>Basic List</h3>
