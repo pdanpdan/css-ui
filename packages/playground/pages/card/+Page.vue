@@ -12,7 +12,7 @@
 
       <h4>Basic Cards</h4>
       <div v-for="mode in modes" class="flex flex-wrap items-start gap-4 surface p-4" :class="mode">
-        <em class="self-center">{{ mode }}</em>
+        <em class="w-full">{{ mode }}</em>
         <article :class="componentClass" class="max-w-80 min-w-60 flex-1">
           <p>
             Lorem ipsum dolor sit amet. Eum repellendus recusandae
@@ -120,7 +120,7 @@
 
       <h4>Cards with Media</h4>
       <div v-for="mode in modes" class="flex flex-wrap items-start gap-4 surface p-4" :class="mode">
-        <em class="self-center">{{ mode }}</em>
+        <em class="w-full">{{ mode }}</em>
         <article :class="componentClass" class="max-w-80 min-w-60 flex-1">
           <img class="card-bleed" src="https://picsum.photos/id/200/400/300" />
           <p>
@@ -240,7 +240,7 @@
 
       <h4>Interactive Cards</h4>
       <div v-for="mode in modes" class="flex flex-wrap items-start justify-end gap-4 surface p-4" :class="mode">
-        <em class="self-center">{{ mode }}</em>
+        <em class="w-full">{{ mode }}</em>
         <template v-for="s in ['', ...states]" :key="s">
           <article :class="[...componentClass, s]" tabindex="0" class="max-w-80 min-w-60 flex-1 card-interactive">
             <h5 class="card-title">

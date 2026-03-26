@@ -16,15 +16,15 @@
         <ul :class="componentClass" class="max-w-100 min-w-80 flex-1">
           <li class="list-row">
             <span class="list-title">Item 1</span>
-            <span class="list-subtitle">Description for item 1</span>
+            <span class="list-subtitle">default separator</span>
           </li>
           <li class="list-row list-row-separator-inset">
             <span class="list-title">Item 2</span>
-            <span class="list-subtitle">Description for item 2</span>
+            <span class="list-subtitle">inset separator</span>
           </li>
           <li class="list-row list-row-separator-hidden">
             <span class="list-title">Item 3</span>
-            <span class="list-subtitle">Description for item 3</span>
+            <span class="list-subtitle">no separator</span>
           </li>
           <li class="list-row">
             <span class="list-title">Item 4</span>
@@ -55,34 +55,43 @@
             <div class="text-xs opacity-50">1h ago</div>
           </li>
 
-          <li class="state-disabled list-row list-row-interactive" tabindex="-1">
-            <div class="bg-error/20 flex h-10 w-10 items-center justify-center rounded-full">C</div>
+          <li
+            v-for="(state, index) in ['', ...states]"
+            class="list-row list-row-interactive"
+            :class="state"
+            tabindex="0"
+            :inert="state === 'state-disabled'"
+          >
+            <div class="bg-error/20 flex h-10 w-10 items-center justify-center rounded-full">{{ index + 1 }}</div>
             <div class="list-col-grow">
-              <h5 class="list-title">Charlie Brown (Disabled)</h5>
-              <p class="list-subtitle">QA Analyst</p>
+              <h5 class="list-title">State example</h5>
+              <p class="list-subtitle">{{ state || 'rest' }}</p>
             </div>
-            <div class="text-xs opacity-50">Yesterday</div>
+            <div class="text-xs opacity-50">Now</div>
           </li>
         </ul>
       </div>
 
       <h3>Layout Utilities (Grow & Wrap)</h3>
-      <div :class="componentClass" class="rounded-box list surface-lv-1 p-4">
-        <div class="list-row">
-          <div class="bg-accent h-6 w-6 rounded-sm"></div>
-          <div class="list-col-grow list-title">Growing Column</div>
-          <div class="btn size-xs variant-style-soft">Action</div>
-        </div>
-        <div class="list-row">
-          <div class="bg-info h-6 w-6 rounded-sm"></div>
-          <div class="list-col-grow">
-            <div class="list-title">Wrapped Content</div>
-            <div class="list-col-wrap list-subtitle">
-              This subtitle is marked as list-col-wrap, so it should span across all columns on a second row if the
-              parent is a grid.
-            </div>
+      <div v-for="mode in modes" class="flex flex-wrap items-start gap-4 surface p-4" :class="mode">
+        <em class="self-center">{{ mode }}</em>
+        <div :class="componentClass">
+          <div class="list-row">
+            <div class="bg-accent h-6 w-6 rounded-sm"></div>
+            <div class="list-col-grow list-title">Growing Column</div>
+            <div class="btn size-xs variant-style-soft">Action</div>
           </div>
-          <div class="btn size-xs variant-style-ghost">Edit</div>
+          <div class="list-row">
+            <div class="bg-info h-6 w-6 rounded-sm"></div>
+            <div class="list-col-grow">
+              <div class="list-title">Wrapped Content</div>
+              <div class="list-col-wrap list-subtitle">
+                This subtitle is marked as list-col-wrap, so it should span across all columns on a second row if the
+                parent is a grid.
+              </div>
+            </div>
+            <div class="btn size-xs variant-style-ghost">Edit</div>
+          </div>
         </div>
       </div>
     </section>
