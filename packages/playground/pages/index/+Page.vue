@@ -93,6 +93,43 @@
     </section>
 
     <section class="space-y-4">
+      <h3>Inheritance and override examples</h3>
+
+      <div
+        class="relative flex flex-wrap items-center gap-2 surface-lv-1 p-2 pt-12 size-lg theme-accent variant-style-filled variant-shape-pill"
+      >
+        <div class="inspect-class">size-lg variant-style-filled variant-shape-pill theme-accent</div>
+        <button type="button" class="btn">Btn</button>
+        <button type="button" class="btn size-xs theme-error variant-style-soft">Btn xs soft error</button>
+
+        <div class="relative flex flex-wrap items-center gap-2 surface-lv-2 p-2 pt-12 mode-light">
+          <div class="inspect-class">mode-light</div>
+          <button type="button" class="btn">Btn</button>
+          <button type="button" class="btn size-xs theme-error variant-style-soft">Btn xs soft error</button>
+        </div>
+
+        <div class="relative flex flex-wrap items-center gap-2 surface-lv-2 p-2 pt-12 mode-dark">
+          <div class="inspect-class">mode-light</div>
+          <button type="button" class="btn">Btn</button>
+          <button type="button" class="btn size-xs theme-error variant-style-soft">Btn xs soft error</button>
+        </div>
+
+        <div
+          class="relative flex flex-wrap items-center gap-2 surface-themed p-2 pt-12 size-xs variant-style-soft variant-density-dense variant-aspect-square"
+        >
+          <div class="inspect-class">size-xs variant-style-soft variant-density-dense variant-aspect-square</div>
+          <button type="button" class="btn">Btn</button>
+          <button
+            type="button"
+            class="btn size-xl theme-info variant-style-filled variant-density-default variant-aspect-default"
+          >
+            Btn xl filled info not-dense
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="space-y-4">
       <h3>Variant examples</h3>
 
       <div class="flex flex-wrap theme-primary max-lg:flex-col">

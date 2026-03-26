@@ -2,7 +2,7 @@
   <div class="flex min-h-screen size-md theme-neutral variant-style-soft" @touchstart="">
     <label
       for="drawer-toggle"
-      class="fixed inset-s-1 top-1 z-10 btn surface size-xs theme-neutral variant-style-ghost variant-density-dense variant-aspect-square variant-shape-pill md:hidden"
+      class="fixed inset-s-1 top-1 z-10 btn surface size-xs theme-neutral variant-style-ghost variant-density-dense variant-aspect-square variant-shape-pill lg:hidden"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -15,10 +15,10 @@
     </label>
     <input type="checkbox" class="peer appearance-none" id="drawer-toggle" />
 
-    <aside class="group sticky inset-s-0 top-0 z-5 h-screen w-0 shrink-0 overflow-visible md:w-80" v-once>
-      <label for="drawer-toggle" class="fixed inset-0 hidden max-md:group-peer-checked:block" />
+    <aside class="group sticky inset-s-0 top-0 z-5 h-screen w-0 shrink-0 overflow-visible lg:w-80" v-once>
+      <label for="drawer-toggle" class="fixed inset-0 hidden bg-black/60 max-lg:group-peer-checked:block" />
       <div
-        class="absolute inset-0 w-80 overflow-auto surface-lv-1 p-6 theme-primary max-md:-translate-x-full max-md:transition-transform max-md:group-peer-checked:translate-x-0"
+        class="absolute inset-0 w-80 overflow-auto surface-lv-1 p-6 theme-primary max-lg:-translate-x-full max-lg:transition-transform max-lg:group-peer-checked:translate-x-0"
       >
         <h1 class="my-4 ms-4 flex items-center justify-between">
           CSS-UI
