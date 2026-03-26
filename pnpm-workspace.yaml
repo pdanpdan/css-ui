@@ -14,6 +14,6 @@ catalog:
   '@stylistic/eslint-plugin': '^5.10.0'
   'vike': '^0.4.255'
   'vike-vue': '^0.9.11'
-  'vite': '^8.0.2'
+  'vite': '^8.0.3'
   'vue': '^3.5.31'
   'vue-tsc': '^3.2.6'
