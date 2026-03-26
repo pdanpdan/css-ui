@@ -5,16 +5,16 @@ import vikeVue from 'vike-vue/config';
 import Layout from './Layout.vue';
 
 export default {
-  prerender: true,
-  stream: true,
-
-  title: 'CSS-UI Library Demo',
-
+  Layout,
   bodyAttributes: {
     class: 'surface mode-auto',
   },
 
-  Layout,
-
   extends: [vikeVue],
+
+  prerender: true,
+
+  stream: true,
+
+  title: 'CSS-UI Library Demo',
 } satisfies Config;

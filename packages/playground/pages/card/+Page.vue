@@ -288,9 +288,8 @@
 </template>
 
 <script setup lang="ts">
-import DemoSelector from '/components/DemoSelector.vue';
-
-import { modes, states, demoSelectors } from '../../settings';
+import DemoSelector from '../../components/DemoSelector.vue';
+import { demoSelectors, modes, states } from '../../settings';
 
 const componentClass = [`card`, ...demoSelectors];
 </script>

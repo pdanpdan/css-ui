@@ -4,18 +4,15 @@ import { computed } from 'vue';
 
 import { matchHref, normalizeHref } from '../lib/url';
 
-const props = defineProps<{
+const { href } = defineProps<{
   href: string;
 }>();
 
-
 const pageContext = usePageContext();
 
+const normalizedHref = computed(() => normalizeHref(href));
 
-const normalizedHref = computed(() => normalizeHref(props.href));
-
-
-const active = computed(() => matchHref(props.href, pageContext.urlPathname));
+const active = computed(() => matchHref(href, pageContext.urlPathname));
 </script>
 
 <template>

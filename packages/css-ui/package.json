@@ -1,12 +1,13 @@
 {
   "name": "@pdanpdan/css-ui",
   "version": "1.0.0",
+  "files": [
+    "styles"
+  ],
   "type": "module",
-  "files": ["styles"],
   "scripts": {
-    "format": "oxfmt styles"
+    "format": "oxfmt styles package.json"
   },
-
   "devDependencies": {
     "oxfmt": "catalog:"
   }

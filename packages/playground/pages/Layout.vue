@@ -21,16 +21,16 @@
       <nav class="flex flex-col gap-2">
         <button type="button" class="btn justify-start theme-accent" @click="toggleMode">Toggle Mode</button>
         <AppLink href="/" v-slot="{ active, href }">
-          <a :href="href" class="btn justify-start" :class="{ 'variant-style-filled': active }">Home</a>
+          <a :href="href" class="btn justify-start" :class="{ 'state-active': active }">Home</a>
         </AppLink>
         <AppLink href="/btn" v-slot="{ active, href }">
-          <a :href="href" class="btn justify-start" :class="{ 'variant-style-filled': active }">Buttons</a>
+          <a :href="href" class="btn justify-start" :class="{ 'state-active': active }">Buttons</a>
         </AppLink>
         <AppLink href="/card" v-slot="{ active, href }">
-          <a :href="href" class="btn justify-start" :class="{ 'variant-style-filled': active }">Cards</a>
+          <a :href="href" class="btn justify-start" :class="{ 'state-active': active }">Cards</a>
         </AppLink>
         <AppLink href="/list" v-slot="{ active, href }">
-          <a :href="href" class="btn justify-start" :class="{ 'variant-style-filled': active }">List</a>
+          <a :href="href" class="btn justify-start" :class="{ 'state-active': active }">List</a>
         </AppLink>
       </nav>
     </aside>
@@ -45,10 +45,9 @@
 import '../assets/main.css';
 import AppLink from '../components/AppLink.vue';
 
-function toggleMode() {
+function toggleMode(): void {
   const { body } = document;
   const { classList } = body;
-
 
   if (classList.contains('mode-light')) {
     classList.remove('mode-light');

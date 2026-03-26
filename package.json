@@ -2,20 +2,20 @@
   "name": "cssui",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
   "type": "module",
   "scripts": {
-    "dev": "pnpm --filter playground dev",
     "build": "pnpm -r build",
-    "lint": "pnpm -r lint",
+    "dev": "pnpm --filter playground dev",
     "format": "pnpm -r format",
-    "type-check": "pnpm -r type-check"
+    "lint": "pnpm -r lint && pnpm -r type-check"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.32.1",
   "devDependencies": {
     "@stylistic/eslint-plugin": "catalog:",
+    "oxfmt": "catalog:",
     "oxlint": "catalog:"
-  }
+  },
+  "packageManager": "pnpm@10.33.0"
 }

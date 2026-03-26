@@ -54,8 +54,8 @@
                 <div class="inspect-class">
                   {{
                     [m, s]
-                      .filter((t) => t)
-                      .map((t) => `.${t}`)
+                      .filter((part) => part)
+                      .map((part) => `.${part}`)
                       .join('')
                   }}
                 </div>
@@ -80,8 +80,8 @@
               <div class="inspect-class">
                 {{
                   [s]
-                    .filter((t) => t)
-                    .map((t) => `.${t}`)
+                    .filter((part) => part)
+                    .map((part) => `.${part}`)
                     .join('')
                 }}
               </div>
@@ -105,8 +105,8 @@
                     <div class="inspect-class">
                       {{
                         [v, m, r, s]
-                          .filter((t) => t)
-                          .map((t) => `.${t}`)
+                          .filter((part) => part)
+                          .map((part) => `.${part}`)
                           .join('') || 'default'
                       }}
                     </div>
@@ -125,13 +125,13 @@
 <script setup lang="ts">
 import type { VariantTypes } from '../../settings';
 
-import { modes, sizes, themes, variants, surfaces } from '../../settings';
+import { modes, sizes, surfaces, themes, variants } from '../../settings';
 
 const modesAll = ['mode-auto', ...modes];
-const modesList = modesAll.map((v) => `<code>${v}</code>`).join(' | ');
-const sizesList = sizes.map((v) => `<code>${v}</code>`).join(' | ');
-const themesList = themes.map((v) => `<code>${v}</code>`).join(' | ');
+const modesList = modesAll.map((value) => `<code>${value}</code>`).join(' | ');
+const sizesList = sizes.map((value) => `<code>${value}</code>`).join(' | ');
+const themesList = themes.map((value) => `<code>${value}</code>`).join(' | ');
 const variantsList = Object.keys(variants).map(
-  (v) => `<em>${v}</em>: ${variants[v as VariantTypes].map((v) => `<code>${v}</code>`).join(' | ')}`,
+  (key) => `<em>${key}</em>: ${variants[key as VariantTypes].map((value) => `<code>${value}</code>`).join(' | ')}`,
 );
 </script>
