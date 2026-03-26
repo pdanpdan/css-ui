@@ -135,7 +135,7 @@
   @scope (&) to ([class~="variant-aspect-"]) {
     &,
     * {
-      --s-aspect: unset;
+      --s-aspect: auto;
       --s-px: calc(var(--s-base) * 0.75);
     }
   }
