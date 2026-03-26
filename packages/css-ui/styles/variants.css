@@ -136,6 +136,7 @@
     &,
     * {
       --s-aspect: unset;
+      --s-px: calc(var(--s-base) * 0.75);
     }
   }
 }
@@ -145,6 +146,7 @@
     &,
     * {
       --s-aspect: 1/1;
+      --s-px: calc(var(--s-base) * 0.25);
     }
   }
 }
