@@ -12,7 +12,7 @@
 
       <h4>Button</h4>
       <div v-for="mode in modes" class="flex flex-wrap items-center gap-4 surface p-4" :class="mode">
-        <em>{{ mode }}</em>
+        <em class="max-md:w-full">{{ mode }}</em>
         <template v-for="s in ['', ...states]" :key="s">
           <button type="button" :class="[...componentClass, s]">{{ s || 'rest' }}</button>
         </template>
@@ -20,7 +20,7 @@
 
       <h4>Link</h4>
       <div v-for="mode in modes" class="flex flex-wrap items-center gap-4 surface p-4" :class="mode">
-        <em>{{ mode }}</em>
+        <em class="max-md:w-full">{{ mode }}</em>
         <template v-for="s in ['', ...states]" :key="s">
           <a href="#" :class="[...componentClass, s]" :inert="s === 'state-disabled'">{{ s || 'rest' }}</a>
         </template>
@@ -28,7 +28,7 @@
 
       <h4>Radio</h4>
       <div v-for="(mode, i) in modes" class="flex flex-wrap items-center gap-4 surface p-4" :class="mode">
-        <em>{{ mode }}</em>
+        <em class="max-md:w-full">{{ mode }}</em>
         <div class="flex flex-1 flex-wrap items-center gap-4">
           <template v-for="s in ['', ...states]" :key="s">
             <input
@@ -55,7 +55,7 @@
 
       <h4>Checkbox</h4>
       <div v-for="(mode, i) in modes" class="flex flex-wrap items-center gap-4 surface p-4" :class="mode">
-        <em>{{ mode }}</em>
+        <em class="max-md:w-full">{{ mode }}</em>
         <div class="flex flex-1 flex-wrap items-center gap-4">
           <template v-for="s in ['', ...states]" :key="s">
             <input
@@ -82,7 +82,7 @@
 
       <h4>Radio label</h4>
       <div v-for="(mode, i) in modes" class="flex flex-wrap items-center gap-4 surface p-4" :class="mode">
-        <em>{{ mode }}</em>
+        <em class="max-md:w-full">{{ mode }}</em>
         <div class="flex flex-1 flex-wrap items-center gap-4">
           <template v-for="s in ['', ...states]" :key="s">
             <label :class="[...componentClass, s]" :disabled="s === 'state-disabled'" inert>
@@ -102,7 +102,7 @@
 
       <h4>Checkbox label</h4>
       <div v-for="(mode, i) in modes" class="flex flex-wrap items-center gap-4 surface p-4" :class="mode">
-        <em>{{ mode }}</em>
+        <em class="max-md:w-full">{{ mode }}</em>
         <div class="flex flex-1 flex-wrap items-center gap-4">
           <template v-for="s in ['', ...states]" :key="s">
             <label :class="[...componentClass, s]" :disabled="s === 'state-disabled'" inert>

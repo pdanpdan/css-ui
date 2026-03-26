@@ -1,12 +1,12 @@
 <template>
   <div
     v-for="(sel, i) in [themes, sizes, variants.style, variants.density, variants.shape, variants.aspect]"
-    class="flex items-center gap-4 variant-density-dense"
+    class="flex flex-wrap items-center gap-4 size-sm variant-density-dense"
   >
     <input
       v-for="v in ['', ...sel]"
       :key="v"
-      class="btn checked:variant-style-filled"
+      class="btn shrink-0 checked:variant-style-filled"
       :class="v"
       type="radio"
       :name="`group${i}`"

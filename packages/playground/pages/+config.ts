@@ -2,10 +2,7 @@ import type { Config } from 'vike/types';
 
 import vikeVue from 'vike-vue/config';
 
-import Layout from './Layout.vue';
-
 export default {
-  Layout,
   bodyAttributes: {
     class: 'surface mode-auto',
   },
