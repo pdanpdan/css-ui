@@ -2,7 +2,6 @@
   @layer cssui.l1.l2 {
     background-color: var(--m-bg);
     color: var(--m-text);
-    /* transition: var(--transition, background-color var(--transition-timing), color var(--transition-timing)); */
   }
 }
 

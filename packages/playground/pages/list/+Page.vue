@@ -14,17 +14,21 @@
       <div v-for="mode in modes" class="flex flex-wrap items-start gap-4 surface p-4" :class="mode">
         <em class="self-center">{{ mode }}</em>
         <ul :class="componentClass" class="max-w-100 min-w-80 flex-1">
-          <li class="list-row list-row-separator-bleed">
+          <li class="list-row">
             <span class="list-title">Item 1</span>
             <span class="list-subtitle">Description for item 1</span>
           </li>
-          <li class="list-row">
+          <li class="list-row list-row-separator-inset">
             <span class="list-title">Item 2</span>
             <span class="list-subtitle">Description for item 2</span>
           </li>
-          <li class="list-row">
+          <li class="list-row list-row-separator-hidden">
             <span class="list-title">Item 3</span>
             <span class="list-subtitle">Description for item 3</span>
+          </li>
+          <li class="list-row">
+            <span class="list-title">Item 4</span>
+            <span class="list-subtitle">Description for item 4</span>
           </li>
         </ul>
       </div>

@@ -1,31 +1,27 @@
 @utility list {
   @layer cssui.l1.l2.l3 {
-    @apply flex flex-col overflow-hidden;
+    @apply flex appearance-none flex-col overflow-hidden;
     border-radius: var(--s-radius);
     border: var(--s-border-w) solid var(--v-border, transparent);
-    background-color: var(--v-bg);
-    color: var(--v-fg);
-    font-size: var(--s-font-size-sm);
-    line-height: var(--s-line-height-relaxed);
   }
 }
 
 @utility list-row {
   @layer cssui.l1.l2.l3 {
-    @apply relative grid grid-flow-col items-center;
+    @apply relative grid appearance-none grid-flow-col items-center;
     --list-grid-cols: minmax(0, auto) 1fr;
     grid-template-columns: var(--list-grid-cols);
     gap: var(--s-gap);
     padding: var(--s-py) var(--s-px);
-
-    & > * {
-      @apply z-1;
-    }
+    background-color: var(--v-bg);
+    color: var(--v-fg);
+    font-size: var(--s-font-size-sm);
+    line-height: var(--s-line-height-relaxed);
 
     &:not(:last-child)::after {
       @apply absolute bottom-0;
-      content: '';
-      inset-inline: var(--s-px);
+      content: var(--tw-content, '');
+      inset-inline: 0;
       border-bottom: var(--s-separator-w) solid var(--v-separator, var(--m-surface-1));
     }
 
@@ -50,16 +46,25 @@
   }
 }
 
-@utility list-row-separator-bleed {
+@utility list-row-separator-inset {
   @layer cssui.l1.l2 {
     &::after {
-      inset-inline: 0;
+      inset-inline: var(--s-px);
+    }
+  }
+}
+
+@utility list-row-separator-hidden {
+  @layer cssui.l1.l2 {
+    &::after {
+      @apply hidden;
     }
   }
 }
 
 @utility list-row-interactive {
   @layer cssui.l1 {
+    @apply cursor-pointer;
     outline: 0 solid transparent;
     outline-offset: var(--s-outline-offset, -3px);
 
@@ -67,21 +72,8 @@
       transition: var(--transition, all var(--transition-timing));
     }
 
-    &[tabindex]:not(
-        [tabindex^='-'],
-        :disabled,
-        [disabled]:not([disabled='false']),
-        [aria-disabled]:not([aria-disabled='false']),
-        .state-disabled
-      ) {
-      @apply cursor-pointer;
-    }
-
-    &:not(
-      :disabled,
-      [disabled]:not([disabled='false']),
-      [aria-disabled]:not([aria-disabled='false']),
-      .state-disabled
+    &:where(
+      :not(:disabled, [disabled]:not([disabled='false']), [aria-disabled]:not([aria-disabled='false']), .state-disabled)
     ) {
       @media (hover: hover) and (pointer: fine) {
         &:where(:hover) {
@@ -94,41 +86,26 @@
         background-color: var(--v-bg-hover, var(--m-surface-2));
         transform: var(--transform-hover);
       }
-    }
 
-    &:where(
+      &:where(
         :active,
         :target,
         [aria-current='page'],
         [aria-pressed]:not([aria-pressed='false']),
         [aria-selected]:not([aria-selected='false']),
         .state-active,
-        :has(.card-selector:checked)
-      ):not(
-        :disabled,
-        [disabled]:not([disabled='false']),
-        [aria-disabled]:not([aria-disabled='false']),
-        .state-disabled
+        :has(.list-row-selector:checked)
       ) {
-      background-color: var(--v-bg-active, var(--m-surface-3));
-    }
+        background-color: var(--v-bg-active, var(--m-surface-3));
+      }
 
-    &:where(:active):not(
-        :disabled,
-        [disabled]:not([disabled='false']),
-        [aria-disabled]:not([aria-disabled='false']),
-        .state-disabled
-      ) {
-      transform: var(--transform-active);
-    }
+      &:where(:active) {
+        transform: var(--transform-active);
+      }
 
-    &:where(:focus-visible, .state-focus, :has(.card-selector:focus-visible)):not(
-        :disabled,
-        [disabled]:not([disabled='false']),
-        [aria-disabled]:not([aria-disabled='false']),
-        .state-disabled
-      ) {
-      outline: var(--s-outline-w) solid var(--t-ring, var(--m-text));
+      &:where(:focus-visible, .state-focus, :has(.list-row-selector:focus-visible)) {
+        outline: var(--s-outline-w) solid var(--t-ring, var(--m-text));
+      }
     }
 
     &:where(

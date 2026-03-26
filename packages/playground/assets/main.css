@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-@import '@pdanpdan/css-ui/styles/main.css';
+@import "@pdanpdan/css-ui/styles/main.css";
 
 :root {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
 }
 
 h1, h2, h3, h4 {
@@ -11,7 +11,7 @@ h1, h2, h3, h4 {
 
   &:before {
     @apply w-1.5 rounded-full absolute me-3;
-    content: "";
+    content: var(--tw-content, "");
     background-color: var(--t-main);
     inset-block: --spacing(1);
     inset-inline-end: 100%;
