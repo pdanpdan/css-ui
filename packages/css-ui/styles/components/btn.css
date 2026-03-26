@@ -74,7 +74,7 @@
       @apply cursor-not-allowed opacity-60;
       filter: grayscale(1) contrast(0.8);
       background-color: var(--v-bg-disabled);
-      color: var(--v-fg-disabled, var(--m-text-muted));
+      color: var(--v-fg-disabled);
       border-color: var(--v-border-disabled);
     }
   }

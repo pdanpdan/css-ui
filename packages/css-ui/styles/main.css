@@ -1,12 +1,12 @@
-@import "./modes.css";
-@import "./sizes.css";
-@import "./themes.css";
-@import "./variants.css";
+@import './modes.css';
+@import './sizes.css';
+@import './themes.css';
+@import './variants.css';
 
-@import "./components/surface.css";
-@import "./components/btn.css";
-@import "./components/card.css";
-@import "./components/list.css";
+@import './components/surface.css';
+@import './components/btn.css';
+@import './components/card.css';
+@import './components/list.css';
 
 @layer base {
   :root,

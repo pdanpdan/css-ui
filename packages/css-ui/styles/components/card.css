@@ -4,8 +4,8 @@
     grid-template-columns: fit-content(50%) var(--s-px) 1fr var(--s-px) fit-content(50%);
     border-radius: var(--s-radius);
     border: var(--s-border-w) solid var(--v-border, transparent);
-    background-color: var(--m-surface-1);
-    color: var(--m-text);
+    background-color: var(--v-bg);
+    color: var(--v-fg);
     box-shadow: var(--m-shadow-sm);
     position: relative;
     aspect-ratio: var(--s-aspect);
@@ -44,14 +44,14 @@
       @media (hover: hover) and (pointer: fine) {
         &:where(:hover) {
           box-shadow: var(--m-shadow-md);
-          background-color: var(--v-bg-hover, var(--m-surface-2));
+          background-color: var(--v-bg-hover);
           transform: var(--transform-hover);
         }
       }
 
       &:where(.state-hover) {
         box-shadow: var(--m-shadow-md);
-        background-color: var(--v-bg-hover, var(--m-surface-2));
+        background-color: var(--v-bg-hover);
         transform: var(--transform-hover);
       }
 
@@ -64,7 +64,7 @@
         .state-active,
         :has(.card-selector:checked)
       ) {
-        background-color: var(--v-bg-active, var(--m-surface-3));
+        background-color: var(--v-bg-active);
       }
 
       &:where(:active) {
@@ -85,7 +85,7 @@
       @apply cursor-not-allowed opacity-60;
       filter: grayscale(1) contrast(0.8);
       background-color: var(--v-bg-disabled);
-      color: var(--v-fg-disabled, var(--m-text-muted));
+      color: var(--v-fg-disabled);
       border-color: var(--v-border-disabled);
     }
   }

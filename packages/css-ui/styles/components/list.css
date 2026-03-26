@@ -77,13 +77,13 @@
     ) {
       @media (hover: hover) and (pointer: fine) {
         &:where(:hover) {
-          background-color: var(--v-bg-hover, var(--m-surface-2));
+          background-color: var(--v-bg-hover);
           transform: var(--transform-hover);
         }
       }
 
       &:where(.state-hover) {
-        background-color: var(--v-bg-hover, var(--m-surface-2));
+        background-color: var(--v-bg-hover);
         transform: var(--transform-hover);
       }
 
@@ -96,7 +96,7 @@
         .state-active,
         :has(.list-row-selector:checked)
       ) {
-        background-color: var(--v-bg-active, var(--m-surface-3));
+        background-color: var(--v-bg-active);
       }
 
       &:where(:active) {
@@ -117,7 +117,7 @@
       @apply cursor-not-allowed opacity-60;
       filter: grayscale(1) contrast(0.8);
       background-color: var(--v-bg-disabled);
-      color: var(--v-fg-disabled, var(--m-text-muted));
+      color: var(--v-fg-disabled);
       border-color: var(--v-border-disabled);
     }
   }
