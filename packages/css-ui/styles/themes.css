@@ -16,10 +16,6 @@
   --t-soft-border: color-mix(in oklab, var(--t-main), transparent calc(80% + 5% * var(--m-direction)));
   --t-soft-separator: color-mix(in oklab, var(--t-main), var(--t-on-main) 12%);
 
-  /* Tinted Disabled State */
-  --t-disabled-fg: oklch(calc(var(--m-text-l) + (40% * var(--m-direction))) 0.02 var(--t-h));
-  --t-disabled-bg: oklch(calc(var(--m-bg-l) - (8% * var(--m-direction))) 0.01 var(--t-h));
-
   --t-ring: color-mix(in oklab, var(--t-main), transparent calc(100% - (100% * var(--m-ring-opacity))));
 }
 

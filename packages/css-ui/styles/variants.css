@@ -1,7 +1,4 @@
 @utility variant--mixin {
-  --v-bg-disabled: var(--t-disabled-bg);
-  --v-fg-disabled: var(--t-disabled-fg);
-  --v-border-disabled: color-mix(in oklab, var(--t-disabled-fg), transparent 85%);
   --v-separator: var(--t-soft-border);
 }
 
