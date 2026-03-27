@@ -21,7 +21,7 @@
     color: var(--v-fg);
 
     &:has(+ [class~='list-row'])::after {
-      @apply absolute bottom-0 text-center leading-0;
+      @apply absolute bottom-0 z-1 text-center leading-0;
       --tw-content: '';
       content: var(--tw-content);
       inset-inline: 0;
