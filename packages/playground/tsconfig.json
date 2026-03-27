@@ -9,24 +9,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": [
-      "ESNext",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "noEmit": true,
-    "types": [
-      "vite/client"
-    ],
+    "types": ["vite/client"],
     "paths": {
-      "/*": [
-        "./*"
-      ]
+      "/*": ["./*"]
     }
   },
-  "include": [
-    "**/*.ts",
-    "**/*.vue"
-  ]
+  "include": ["**/*.ts", "**/*.vue"]
 }
