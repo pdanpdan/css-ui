@@ -2,6 +2,7 @@
   @layer cssui.l1.l2 {
     background-color: var(--m-bg);
     color: var(--m-text);
+    --m-current-bg: var(--m-bg);
   }
 }
 
@@ -9,6 +10,7 @@
   @layer cssui.l1.l2 {
     background-color: var(--m-surface-1);
     color: var(--m-text);
+    --m-current-bg: var(--m-surface-1);
   }
 }
 
@@ -16,6 +18,7 @@
   @layer cssui.l1.l2 {
     background-color: var(--m-surface-2);
     color: var(--m-text);
+    --m-current-bg: var(--m-surface-2);
   }
 }
 
@@ -23,6 +26,7 @@
   @layer cssui.l1.l2 {
     background-color: var(--m-surface-3);
     color: var(--m-text);
+    --m-current-bg: var(--m-surface-3);
   }
 }
 
@@ -30,5 +34,6 @@
   @layer cssui.l1.l2 {
     background-color: var(--v-bg);
     color: var(--v-fg);
+    --m-current-bg: var(--m-bg);
   }
 }

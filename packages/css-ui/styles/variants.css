@@ -33,8 +33,8 @@
       --v-bg: transparent;
       --v-bg-hover: var(--t-surface);
       --v-bg-active: var(--t-surface-active);
-      --v-fg: var(--t-main);
-      --v-border: var(--t-main);
+      --v-fg: oklch(calc(var(--t-l) + (10% * (var(--m-direction) - 1) / -2)) var(--t-c) var(--t-h));
+      --v-border: oklch(calc(var(--t-l) + (10% * (var(--m-direction) - 1) / -2)) var(--t-c) var(--t-h));
       --v-separator: var(--t-soft-border);
     }
   }
@@ -47,7 +47,7 @@
       --v-bg: transparent;
       --v-bg-hover: var(--t-surface);
       --v-bg-active: var(--t-surface-active);
-      --v-fg: var(--t-main);
+      --v-fg: oklch(calc(var(--t-l) + (10% * (var(--m-direction) - 1) / -2)) var(--t-c) var(--t-h));
       --v-border: transparent;
       --v-separator: var(--t-soft-border);
     }
