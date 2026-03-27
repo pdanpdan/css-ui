@@ -245,7 +245,7 @@
           <article
             :class="[...componentClass, s]"
             tabindex="0"
-            class="max-w-80 min-w-60 flex-1 card-interactive surface-lv-1"
+            class="card-interactive max-w-80 min-w-60 flex-1 surface-lv-1"
           >
             <h5 class="card-title">
               <code>surface-lv-1</code> - <code>{{ s || 'rest' }}</code>
@@ -268,7 +268,7 @@
           <article
             :class="[...componentClass, s]"
             tabindex="0"
-            class="max-w-80 min-w-60 flex-1 card-interactive surface-themed"
+            class="card-interactive max-w-80 min-w-60 flex-1 surface-themed"
           >
             <h5 class="card-title">
               <code>surface-themed</code> - <code>{{ s || 'rest' }}</code>

@@ -2,7 +2,7 @@
   <div class="flex min-h-screen size-md theme-neutral variant-style-soft" @touchstart="">
     <label
       for="drawer-toggle"
-      class="fixed inset-s-1 top-1 z-10 btn surface size-xs theme-neutral variant-density-dense variant-style-ghost variant-aspect-square variant-shape-pill lg:hidden"
+      class="fixed inset-s-1 top-1 btn z-10 surface size-xs theme-neutral variant-density-dense variant-style-ghost variant-aspect-square variant-shape-pill lg:hidden"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

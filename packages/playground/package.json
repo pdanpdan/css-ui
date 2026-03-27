@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "vike dev --host",
     "build": "vike build",
-    "lint": "oxlint lib components pages packages.json tsconfig.json vite.config.ts",
-    "format": "oxfmt lib components pages packages.json tsconfig.json vite.config.ts",
+    "lint": "oxlint assets components lib pages packages.json tsconfig.json vite.config.ts",
+    "format": "oxfmt assets components lib pages packages.json tsconfig.json vite.config.ts",
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
