@@ -128,7 +128,7 @@
     &,
     * {
       --s-aspect: auto;
-      --s-px: calc(var(--s-base) * 0.75);
+      --s-px: calc(var(--s-base) * 1.25);
     }
   }
 }

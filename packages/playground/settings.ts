@@ -1,6 +1,6 @@
 export const modes = ['mode-light', 'mode-dark'];
 
-export const sizes = ['size-xs', 'size-sm', 'size-md', 'size-lg', 'size-xl'];
+export const sizes = ['size-xs', 'size-sm', 'size-md', 'size-lg', 'size-xl', 'size-2xl'];
 
 export const themes = [
   'theme-neutral',
@@ -33,6 +33,7 @@ export const demoSelectors = [
   `group-has-[[value='size-md']:checked]:size-md`,
   `group-has-[[value='size-lg']:checked]:size-lg`,
   `group-has-[[value='size-xl']:checked]:size-xl`,
+  `group-has-[[value='size-2xl']:checked]:size-2xl`,
 
   `group-has-[[value='theme-neutral']:checked]:theme-neutral`,
   `group-has-[[value='theme-primary']:checked]:theme-primary`,
