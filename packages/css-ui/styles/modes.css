@@ -16,7 +16,8 @@
 
 @utility mode-light {
   @scope (&) to ([class~="mode-"]) {
-    & {
+    &,
+    * {
       @apply mode--mixin;
       color-scheme: light;
       --m-direction: 1;
@@ -30,7 +31,8 @@
 
 @utility mode-dark {
   @scope (&) to ([class~="mode-"]) {
-    & {
+    &,
+    * {
       @apply mode--mixin;
       color-scheme: light;
       --m-direction: -1;
