@@ -109,7 +109,7 @@
         </div>
 
         <div class="relative flex flex-wrap items-center gap-2 surface-lv-2 p-2 pt-12 mode-dark">
-          <div class="inspect-class">mode-light</div>
+          <div class="inspect-class">mode-dark</div>
           <button type="button" class="btn">Btn</button>
           <button type="button" class="btn size-xs theme-error variant-style-soft">Btn xs soft error</button>
         </div>
