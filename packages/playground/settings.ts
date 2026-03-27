@@ -1,15 +1,6 @@
-export const modes = [
-  'mode-light',
-  'mode-dark',
-];
+export const modes = ['mode-light', 'mode-dark'];
 
-export const sizes = [
-  'size-xs',
-  'size-sm',
-  'size-md',
-  'size-lg',
-  'size-xl',
-];
+export const sizes = ['size-xs', 'size-sm', 'size-md', 'size-lg', 'size-xl'];
 
 export const themes = [
   'theme-neutral',
@@ -23,43 +14,18 @@ export const themes = [
 ];
 
 export const variants = {
-  style: [
-    'variant-style-filled',
-    'variant-style-soft',
-    'variant-style-outlined',
-    'variant-style-ghost',
-  ],
-  density: [
-    'variant-density-default',
-    'variant-density-dense',
-    'variant-density-lax',
-  ],
-  aspect: [
-    'variant-aspect-default',
-    'variant-aspect-square',
-  ],
-  shape: [
-    'variant-shape-default',
-    'variant-shape-pill',
-    'variant-shape-sharp',
-  ],
+  aspect: ['variant-aspect-default', 'variant-aspect-square'],
+  density: ['variant-density-default', 'variant-density-dense', 'variant-density-lax'],
+  depth: ['variant-depth-0', 'variant-depth-1'],
+  shape: ['variant-shape-default', 'variant-shape-pill', 'variant-shape-sharp'],
+  style: ['variant-style-filled', 'variant-style-soft', 'variant-style-outlined', 'variant-style-ghost'],
 };
 
 export type VariantTypes = keyof typeof variants;
 
-export const surfaces = [
-  'surface',
-  'surface-lv-1',
-  'surface-lv-2',
-  'surface-lv-3',
-];
+export const surfaces = ['surface', 'surface-lv-1', 'surface-lv-2', 'surface-lv-3'];
 
-export const states = [
-  'state-hover',
-  'state-active',
-  'state-focus',
-  'state-disabled',
-];
+export const states = ['state-hover', 'state-active', 'state-focus', 'state-disabled'];
 
 export const demoSelectors = [
   `group-has-[[value='size-xs']:checked]:size-xs`,
@@ -67,7 +33,6 @@ export const demoSelectors = [
   `group-has-[[value='size-md']:checked]:size-md`,
   `group-has-[[value='size-lg']:checked]:size-lg`,
   `group-has-[[value='size-xl']:checked]:size-xl`,
-
 
   `group-has-[[value='theme-neutral']:checked]:theme-neutral`,
   `group-has-[[value='theme-primary']:checked]:theme-primary`,
@@ -78,23 +43,22 @@ export const demoSelectors = [
   `group-has-[[value='theme-error']:checked]:theme-error`,
   `group-has-[[value='theme-info']:checked]:theme-info`,
 
-
   `group-has-[[value='variant-style-filled']:checked]:variant-style-filled`,
   `group-has-[[value='variant-style-soft']:checked]:variant-style-soft`,
   `group-has-[[value='variant-style-outlined']:checked]:variant-style-outlined`,
   `group-has-[[value='variant-style-ghost']:checked]:variant-style-ghost`,
 
-
   `group-has-[[value='variant-density-default']:checked]:variant-density-default`,
   `group-has-[[value='variant-density-dense']:checked]:variant-density-dense`,
   `group-has-[[value='variant-density-lax']:checked]:variant-density-lax`,
-
 
   `group-has-[[value='variant-shape-default']:checked]:variant-shape-default`,
   `group-has-[[value='variant-shape-pill']:checked]:variant-shape-pill`,
   `group-has-[[value='variant-shape-sharp']:checked]:variant-shape-sharp`,
 
-
   `group-has-[[value='variant-aspect-default']:checked]:variant-aspect-default`,
   `group-has-[[value='variant-aspect-square']:checked]:variant-aspect-square`,
+
+  `group-has-[[value='variant-depth-0']:checked]:variant-depth-0`,
+  `group-has-[[value='variant-depth-1']:checked]:variant-depth-1`,
 ];

@@ -12,9 +12,6 @@
   --m-text-muted: color-mix(in oklab, var(--m-text), transparent 40%);
   --m-ring-opacity: 0.45;
   --m-ring-opacity: calc(0.6 - 0.2 * var(--m-direction));
-
-  --m-shadow-sm: 0 1px 2px var(--m-shadow-color);
-  --m-shadow-md: 0 4px 12px -2px var(--m-shadow-color);
 }
 
 @utility mode-light {
@@ -40,7 +37,7 @@
       --m-bg-l: 12%;
       --m-text-l: 96%;
       --m-step: 5%;
-      --m-shadow-color: color-mix(in oklab, var(--m-text), transparent 60%);
+      --m-shadow-color: color-mix(in oklab, var(--m-text), transparent 80%);
     }
   }
 }

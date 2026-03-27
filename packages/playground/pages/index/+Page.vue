@@ -115,13 +115,13 @@
         </div>
 
         <div
-          class="relative flex flex-wrap items-center gap-2 surface-themed p-2 pt-12 size-xs variant-style-soft variant-density-dense variant-aspect-square"
+          class="relative flex flex-wrap items-center gap-2 surface-themed p-2 pt-12 size-xs variant-density-dense variant-style-soft variant-aspect-square"
         >
           <div class="inspect-class">size-xs variant-style-soft variant-density-dense variant-aspect-square</div>
           <button type="button" class="btn">Btn</button>
           <button
             type="button"
-            class="btn size-xl theme-info variant-style-filled variant-density-default variant-aspect-default"
+            class="btn size-xl theme-info variant-density-default variant-style-filled variant-aspect-default"
           >
             Btn xl filled info not-dense
           </button>
@@ -137,19 +137,23 @@
           <template v-for="m in ['', ...variants.density]" :key="m">
             <template v-for="r in ['', ...variants.shape]" :key="r">
               <template v-for="s in ['', ...variants.aspect]" :key="s">
-                <div class="flex-1/3 p-2">
-                  <div class="relative flex h-full flex-col items-center justify-center gap-2 surface-lv-1 p-4 pt-12">
-                    <div class="inspect-class">
-                      {{
-                        [v, m, r, s]
-                          .filter((part) => part)
-                          .map((part) => `.${part}`)
-                          .join('') || 'default'
-                      }}
+                <template v-for="d in ['', ...variants.depth]" :key="d">
+                  <div class="flex-1/3 p-2">
+                    <div class="relative flex h-full flex-col items-center justify-center gap-2 surface-lv-1 p-4 pt-12">
+                      <div class="inspect-class">
+                        {{
+                          [v, m, r, s, d]
+                            .filter((part) => part)
+                            .map((part) => `.${part}`)
+                            .join('') || 'default'
+                        }}
+                      </div>
+                      <button type="button" class="btn" :class="[v, m, r, s, d]">
+                        {{ s.includes('square') ? 'B' : 'Button' }}
+                      </button>
                     </div>
-                    <button type="button" class="btn" :class="[v, m, r, s]">{{ s !== '' ? 'B' : 'Button' }}</button>
                   </div>
-                </div>
+                </template>
               </template>
             </template>
           </template>

@@ -1,16 +1,16 @@
 @utility card {
   @layer cssui.l1.l2.l3 {
-    @apply grid appearance-none content-start overflow-hidden;
+    @apply relative grid appearance-none content-start overflow-hidden;
     grid-template-columns: fit-content(50%) var(--s-px) 1fr var(--s-px) fit-content(50%);
+    font-size: var(--s-font-size-sm);
+    font-weight: var(--s-font-weight);
+    line-height: var(--s-line-height-relaxed);
     border-radius: var(--s-radius);
     border: var(--s-border-w) solid var(--v-border, transparent);
     background-color: var(--v-bg);
     color: var(--v-fg);
-    box-shadow: var(--m-shadow-sm);
-    position: relative;
     aspect-ratio: var(--s-aspect);
-    font-size: var(--s-font-size-sm);
-    line-height: var(--s-line-height-relaxed);
+    box-shadow: var(--v-shadow);
 
     & > * {
       @apply z-1;
@@ -43,15 +43,17 @@
     ) {
       @media (hover: hover) and (pointer: fine) {
         &:where(:hover) {
-          box-shadow: var(--m-shadow-md);
           background-color: var(--v-bg-hover);
+          color: var(--v-fg);
+          box-shadow: var(--v-shadow-hover);
           transform: var(--transform-hover);
         }
       }
 
       &:where(.state-hover) {
-        box-shadow: var(--m-shadow-md);
         background-color: var(--v-bg-hover);
+        color: var(--v-fg);
+        box-shadow: var(--v-shadow-hover);
         transform: var(--transform-hover);
       }
 
@@ -65,6 +67,8 @@
         :has(.card-selector:checked)
       ) {
         background-color: var(--v-bg-active);
+        color: var(--v-fg);
+        box-shadow: var(--v-shadow-active);
       }
 
       &:where(:active) {

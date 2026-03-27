@@ -22,9 +22,9 @@
             <span class="list-title">Item 2</span>
             <span class="list-subtitle">inset separator</span>
           </li>
-          <li class="list-row list-row-separator-hidden">
+          <li class="list-row list-row-separator-none after:content-['🙜_🙜_🙜']">
             <span class="list-title">Item 3</span>
-            <span class="list-subtitle">no separator</span>
+            <span class="list-subtitle">no separator line</span>
           </li>
           <li class="list-row">
             <span class="list-title">Item 4</span>

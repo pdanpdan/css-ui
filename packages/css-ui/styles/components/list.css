@@ -3,6 +3,7 @@
     @apply flex appearance-none flex-col overflow-hidden;
     border-radius: var(--s-radius);
     border: var(--s-border-w) solid var(--v-border, transparent);
+    box-shadow: var(--v-shadow);
   }
 }
 
@@ -12,17 +13,19 @@
     --list-grid-cols: minmax(0, auto) 1fr;
     grid-template-columns: var(--list-grid-cols);
     gap: var(--s-gap);
+    font-size: var(--s-font-size-sm);
+    font-weight: var(--s-font-weight);
+    line-height: var(--s-line-height-relaxed);
     padding: var(--s-py) var(--s-px);
     background-color: var(--v-bg);
     color: var(--v-fg);
-    font-size: var(--s-font-size-sm);
-    line-height: var(--s-line-height-relaxed);
 
-    &:not(:last-child)::after {
-      @apply absolute bottom-0;
-      content: var(--tw-content, '');
+    &:has(+ [class~='list-row'])::after {
+      @apply absolute bottom-0 z-1 text-center leading-0;
+      --tw-content: '';
+      content: var(--tw-content);
       inset-inline: 0;
-      border-bottom: var(--s-separator-w) solid var(--v-separator, var(--m-surface-1));
+      border-bottom: var(--s-separator-w) solid var(--v-separator);
     }
 
     &:has(.list-col-grow:nth-child(1)) {
@@ -54,10 +57,10 @@
   }
 }
 
-@utility list-row-separator-hidden {
+@utility list-row-separator-none {
   @layer cssui.l1.l2 {
     &::after {
-      @apply hidden;
+      @apply border-transparent;
     }
   }
 }
@@ -78,12 +81,16 @@
       @media (hover: hover) and (pointer: fine) {
         &:where(:hover) {
           background-color: var(--v-bg-hover);
+          color: var(--v-fg);
+          box-shadow: var(--v-shadow-hover);
           transform: var(--transform-hover);
         }
       }
 
       &:where(.state-hover) {
         background-color: var(--v-bg-hover);
+        color: var(--v-fg);
+        box-shadow: var(--v-shadow-hover);
         transform: var(--transform-hover);
       }
 
@@ -97,6 +104,8 @@
         :has(.list-row-selector:checked)
       ) {
         background-color: var(--v-bg-active);
+        color: var(--v-fg);
+        box-shadow: var(--v-shadow-active);
       }
 
       &:where(:active) {
@@ -123,8 +132,8 @@
 @utility list-title {
   @layer cssui.l1.l2.l3 {
     @apply m-0;
-    font-weight: var(--s-font-weight-bold);
     font-size: var(--s-font-size-md);
+    font-weight: var(--s-font-weight-bold);
   }
 }
 
