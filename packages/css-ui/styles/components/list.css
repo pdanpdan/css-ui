@@ -21,7 +21,7 @@
     color: var(--v-fg);
 
     &:has(+ [class~='list-row'])::after {
-      @apply absolute bottom-0 z-1 text-center leading-0;
+      @apply absolute bottom-0 text-center leading-0;
       --tw-content: '';
       content: var(--tw-content);
       inset-inline: 0;
@@ -69,7 +69,7 @@
   @layer cssui.l1 {
     @apply cursor-pointer;
     outline: 0 solid transparent;
-    outline-offset: var(--s-outline-offset, -3px);
+    outline-offset: var(--s-outline-offset, -4px);
 
     @media (prefers-reduced-motion: no-preference) {
       transition: var(--transition, all var(--transition-timing));
@@ -80,6 +80,7 @@
     ) {
       @media (hover: hover) and (pointer: fine) {
         &:where(:hover) {
+          @apply z-1;
           background-color: var(--v-bg-hover);
           color: var(--v-fg);
           box-shadow: var(--v-shadow-hover);
@@ -109,11 +110,12 @@
       }
 
       &:where(:active) {
+        @apply z-1;
         transform: var(--transform-active);
       }
 
       &:where(:focus-visible, .state-focus, :has(.list-row-selector:focus-visible)) {
-        outline: var(--s-outline-w) solid var(--t-ring, var(--m-text));
+        outline: var(--s-outline-w) solid var(--t-ring);
       }
     }
 

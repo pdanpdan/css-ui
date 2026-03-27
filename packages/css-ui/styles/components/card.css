@@ -43,6 +43,7 @@
     ) {
       @media (hover: hover) and (pointer: fine) {
         &:where(:hover) {
+          @apply z-1;
           background-color: var(--v-bg-hover);
           color: var(--v-fg);
           box-shadow: var(--v-shadow-hover);
@@ -72,11 +73,12 @@
       }
 
       &:where(:active) {
+        @apply z-1;
         transform: var(--transform-active, translateY(1px));
       }
 
       &:where(:focus-visible, .state-focus, :has(.card-selector:focus-visible)) {
-        outline: var(--s-outline-w) solid var(--t-ring, var(--m-text));
+        outline: var(--s-outline-w) solid var(--t-ring);
       }
     }
 

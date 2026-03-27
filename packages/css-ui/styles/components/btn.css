@@ -35,6 +35,7 @@
     ) {
       @media (hover: hover) and (pointer: fine) {
         &:where(:hover) {
+          @apply z-1;
           background-color: var(--v-bg-hover);
           color: var(--v-fg);
           box-shadow: var(--v-shadow-hover);
@@ -65,6 +66,7 @@
       }
 
       &:where(:active) {
+        @apply z-1;
         transform: var(--transform-active, translateY(1px));
       }
 
