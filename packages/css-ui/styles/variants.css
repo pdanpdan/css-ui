@@ -1,7 +1,7 @@
 @utility variant-style-soft {
-  @scope (&) to ([class~="variant-style-"]) {
+  @scope (&) {
     &,
-    * {
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
       --v-bg: var(--t-surface);
       --v-bg-hover: var(--t-surface-hover);
       --v-bg-active: var(--t-surface-active);
@@ -13,9 +13,9 @@
 }
 
 @utility variant-style-filled {
-  @scope (&) to ([class~="variant-style-"]) {
+  @scope (&) {
     &,
-    * {
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
       --v-bg: var(--t-main);
       --v-bg-hover: var(--t-hover);
       --v-bg-active: var(--t-active);
@@ -27,9 +27,9 @@
 }
 
 @utility variant-style-outlined {
-  @scope (&) to ([class~="variant-style-"]) {
+  @scope (&) {
     &,
-    * {
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
       --v-bg: transparent;
       --v-bg-hover: var(--t-surface);
       --v-bg-active: var(--t-surface-active);
@@ -41,9 +41,9 @@
 }
 
 @utility variant-style-ghost {
-  @scope (&) to ([class~="variant-style-"]) {
+  @scope (&) {
     &,
-    * {
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
       --v-bg: transparent;
       --v-bg-hover: var(--t-surface);
       --v-bg-active: var(--t-surface-active);
@@ -55,9 +55,9 @@
 }
 
 @utility variant-density-default {
-  @scope (&) to ([class~="variant-density-"]) {
+  @scope (&) {
     &,
-    * {
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
       --s-py: calc(var(--s-base) * 0.5);
       --s-px: calc(var(--s-base) * 1.25);
       --s-gap: calc(var(--s-base) * 0.5);
@@ -69,9 +69,9 @@
 }
 
 @utility variant-density-dense {
-  @scope (&) to ([class~="variant-density-"]) {
+  @scope (&) {
     &,
-    * {
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
       --s-py: calc(var(--s-base) * 0.25);
       --s-px: calc(var(--s-base) * 0.75);
       --s-gap: calc(var(--s-base) * 0.25);
@@ -83,9 +83,9 @@
 }
 
 @utility variant-density-lax {
-  @scope (&) to ([class~="variant-density-"]) {
+  @scope (&) {
     &,
-    * {
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
       --s-py: calc(var(--s-base) * 0.75);
       --s-px: calc(var(--s-base) * 1.75);
       --s-gap: calc(var(--s-base) * 0.75);
@@ -97,36 +97,36 @@
 }
 
 @utility variant-shape-default {
-  @scope (&) to ([class~="variant-shape-"]) {
+  @scope (&) {
     &,
-    * {
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
       --s-radius: calc(var(--s-base) * 0.5);
     }
   }
 }
 
 @utility variant-shape-pill {
-  @scope (&) to ([class~="variant-shape-"]) {
+  @scope (&) {
     &,
-    * {
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
       --s-radius: 100vmax;
     }
   }
 }
 
 @utility variant-shape-sharp {
-  @scope (&) to ([class~="variant-shape-"]) {
+  @scope (&) {
     &,
-    * {
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
       --s-radius: 0;
     }
   }
 }
 
 @utility variant-aspect-default {
-  @scope (&) to ([class~="variant-aspect-"]) {
+  @scope (&) {
     &,
-    * {
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
       --s-aspect: auto;
       --s-px: calc(var(--s-base) * 1.25);
     }
@@ -134,33 +134,37 @@
 }
 
 @utility variant-aspect-square {
-  @scope (&) to ([class~="variant-aspect-"]) {
+  @scope (&) {
     &,
-    * {
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
       --s-aspect: 1/1;
       --s-px: calc(var(--s-base) * 0.25);
     }
   }
 }
 
-@utility variant-depth-0 {
-  @scope (&) to ([class~="variant-depth-"]) {
+@utility variant-depth-* {
+  @scope (&) {
     &,
-    * {
-      --v-shadow: none;
-      --v-shadow-hover: none;
-      --v-shadow-active: none;
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
+      --depth: calc(1 + --value(integer));
+      --depth-hover: calc(1 + 2 * --value(integer));
+      --v-shadow: 0 calc(1px * var(--depth)) calc(3px * var(--depth))
+        color-mix(in oklab, transparent, var(--m-shadow-color) calc(100% * (0.16 + var(--depth) * 0.024)));
+      --v-shadow-hover: 0 calc(1px * var(--depth-hover)) calc(3px * var(--depth-hover))
+        color-mix(in oklab, transparent, var(--m-shadow-color) calc(100% * (0.16 + var(--depth-hover) * 0.024)));
+      --v-shadow-active: var(--v-shadow);
     }
   }
 }
 
-@utility variant-depth-1 {
-  @scope (&) to ([class~="variant-depth-"]) {
+@utility variant-depth-0 {
+  @scope (&) {
     &,
-    * {
-      --v-shadow: 0 1px 2px var(--m-shadow-color);
-      --v-shadow-hover: 0 4px 12px -2px var(--m-shadow-color);
-      --v-shadow-active: 0 1px 2px var(--m-shadow-color);
+    :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
+      --v-shadow: none;
+      --v-shadow-hover: none;
+      --v-shadow-active: none;
     }
   }
 }
