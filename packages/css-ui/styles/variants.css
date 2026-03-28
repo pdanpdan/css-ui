@@ -126,3 +126,14 @@
     }
   }
 }
+
+@utility variant-depth-0 {
+  @scope (&) {
+    &,
+    :where([class*='mode-'], [class*='theme-'], [class*='variant-']) {
+      --v-shadow: none;
+      --v-shadow-hover: none;
+      --v-shadow-active: none;
+    }
+  }
+}
