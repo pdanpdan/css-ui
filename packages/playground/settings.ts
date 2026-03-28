@@ -16,7 +16,7 @@ export const themes = [
 export const variants = {
   aspect: ['variant-aspect-default', 'variant-aspect-square'],
   density: ['variant-density-default', 'variant-density-dense', 'variant-density-lax'],
-  depth: ['variant-depth-0', 'variant-depth-1'],
+  depth: ['variant-depth-0', 'variant-depth-1', 'variant-depth-2', 'variant-depth-3', 'variant-depth-4', 'variant-depth-5'],
   shape: ['variant-shape-default', 'variant-shape-pill', 'variant-shape-sharp'],
   style: ['variant-style-filled', 'variant-style-soft', 'variant-style-outlined', 'variant-style-ghost'],
 };
@@ -62,4 +62,8 @@ export const demoSelectors = [
 
   `group-has-[[value='variant-depth-0']:checked]:variant-depth-0`,
   `group-has-[[value='variant-depth-1']:checked]:variant-depth-1`,
+  `group-has-[[value='variant-depth-2']:checked]:variant-depth-2`,
+  `group-has-[[value='variant-depth-3']:checked]:variant-depth-3`,
+  `group-has-[[value='variant-depth-4']:checked]:variant-depth-4`,
+  `group-has-[[value='variant-depth-5']:checked]:variant-depth-5`,
 ];
