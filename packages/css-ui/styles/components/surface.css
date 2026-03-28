@@ -1,32 +1,24 @@
+@theme inline {
+  --color-surface: var(--m-bg);
+  --color-surface-1: var(--m-surface-1);
+  --color-surface-2: var(--m-surface-2);
+  --color-surface-3: var(--m-surface-3);
+  --color-surface-text: var(--m-text);
+}
+
+@utility surface-lv-* {
+  @layer cssui.l1.l2 {
+    background-color: --value(--color-surface-*);
+    color: var(--m-text);
+    --m-current-bg: --value(--color-surface-*);
+  }
+}
+
 @utility surface {
   @layer cssui.l1.l2 {
     background-color: var(--m-bg);
     color: var(--m-text);
     --m-current-bg: var(--m-bg);
-  }
-}
-
-@utility surface-lv-1 {
-  @layer cssui.l1.l2 {
-    background-color: var(--m-surface-1);
-    color: var(--m-text);
-    --m-current-bg: var(--m-surface-1);
-  }
-}
-
-@utility surface-lv-2 {
-  @layer cssui.l1.l2 {
-    background-color: var(--m-surface-2);
-    color: var(--m-text);
-    --m-current-bg: var(--m-surface-2);
-  }
-}
-
-@utility surface-lv-3 {
-  @layer cssui.l1.l2 {
-    background-color: var(--m-surface-3);
-    color: var(--m-text);
-    --m-current-bg: var(--m-surface-3);
   }
 }
 
