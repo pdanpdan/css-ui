@@ -1,24 +1,30 @@
 @utility btn {
   @layer cssui.l1.l2.l3 {
     @apply inline-flex min-h-fit min-w-fit cursor-pointer appearance-none items-center justify-center select-none;
+
+    --c-bg: var(--v-bg, transparent);
+    --c-fg: var(--v-fg, inherit);
+    --c-border: var(--v-border, transparent);
+    --c-shadow: var(--v-shadow, none);
+    --c-bg-hover: var(--v-bg-hover, color-mix(in oklab, var(--m-text) 8%, var(--c-bg)));
+    --c-bg-active: var(--v-bg-active, color-mix(in oklab, var(--m-text) 16%, var(--c-bg)));
+
     gap: var(--s-gap);
     font-family: inherit;
     font-size: var(--s-font-size);
     font-weight: var(--s-font-weight);
     line-height: var(--s-line-height);
-    padding: var(--v-py, var(--s-py)) var(--v-px, var(--s-px));
+    padding: var(--s-py) var(--s-px);
     border-radius: var(--s-radius);
-    border: var(--s-border-w) solid var(--v-border, transparent);
-    background-color: var(--v-bg);
-    color: var(--v-fg);
+    border: var(--s-border-w) solid var(--c-border);
+    background-color: var(--c-bg);
+    color: var(--c-fg);
     aspect-ratio: var(--s-aspect);
-    box-shadow: var(--v-shadow);
+    box-shadow: var(--c-shadow);
 
-    &[aria-label]:empty {
-      &::after {
-        --tw-content: attr(aria-label);
-        content: var(--tw-content);
-      }
+    &[aria-label]:empty::after {
+      --tw-content: attr(aria-label);
+      content: var(--tw-content);
     }
   }
 
@@ -36,17 +42,17 @@
       @media (hover: hover) and (pointer: fine) {
         &:where(:hover) {
           @apply z-1;
-          background-color: var(--v-bg-hover);
-          color: var(--v-fg);
-          box-shadow: var(--v-shadow-hover);
+          background-color: var(--c-bg-hover);
+          color: var(--c-fg);
+          box-shadow: var(--v-shadow-hover, var(--c-shadow));
           transform: var(--transform-hover);
         }
       }
 
       &:where(.state-hover) {
-        background-color: var(--v-bg-hover);
-        color: var(--v-fg);
-        box-shadow: var(--v-shadow-hover);
+        background-color: var(--c-bg-hover);
+        color: var(--c-fg);
+        box-shadow: var(--v-shadow-hover, var(--c-shadow));
         transform: var(--transform-hover);
       }
 
@@ -60,9 +66,9 @@
         .state-active,
         :has(:checked)
       ) {
-        background-color: var(--v-bg-active);
-        color: var(--v-fg);
-        box-shadow: var(--v-shadow-active);
+        background-color: var(--c-bg-active);
+        color: var(--c-fg);
+        box-shadow: var(--v-shadow-active, var(--c-shadow));
       }
 
       &:where(:active) {

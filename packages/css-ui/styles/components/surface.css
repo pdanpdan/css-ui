@@ -8,24 +8,24 @@
 
 @utility surface-lv-* {
   @layer cssui.l1.l2 {
-    background-color: --value(--color-surface-*);
-    color: var(--m-text);
     --m-current-bg: --value(--color-surface-*);
+    background-color: var(--m-current-bg);
+    color: var(--m-text);
   }
 }
 
 @utility surface {
   @layer cssui.l1.l2 {
-    background-color: var(--m-bg);
-    color: var(--m-text);
     --m-current-bg: var(--m-bg);
+    background-color: var(--m-current-bg);
+    color: var(--m-text);
   }
 }
 
 @utility surface-themed {
   @layer cssui.l1.l2 {
+    --m-current-bg: var(--m-bg);
     background-color: var(--v-bg);
     color: var(--v-fg);
-    --m-current-bg: var(--m-bg);
   }
 }

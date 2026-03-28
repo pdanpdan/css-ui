@@ -9,7 +9,7 @@
       variants.aspect,
       variants.depth,
     ]"
-    class="flex flex-wrap items-center gap-4 size-sm variant-density-dense"
+    class="flex flex-wrap items-center gap-4 variant-density-dense size-sm"
   >
     <input
       v-for="v in ['', ...sel]"

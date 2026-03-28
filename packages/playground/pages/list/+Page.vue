@@ -79,7 +79,7 @@
           <div class="list-row">
             <div class="bg-accent h-6 w-6 rounded-sm"></div>
             <div class="list-col-grow list-title">Growing Column</div>
-            <div class="btn size-xs variant-style-soft">Action</div>
+            <div class="btn variant-style-soft size-xs">Action</div>
           </div>
           <div class="list-row">
             <div class="bg-info h-6 w-6 rounded-sm"></div>
@@ -90,7 +90,7 @@
                 parent is a grid.
               </div>
             </div>
-            <div class="btn size-xs variant-style-ghost">Edit</div>
+            <div class="btn variant-style-ghost size-xs">Edit</div>
           </div>
         </div>
       </div>

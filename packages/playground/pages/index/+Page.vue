@@ -60,9 +60,9 @@
                   }}
                 </div>
                 <p>Text aspect on surface</p>
-                <button type="button" class="btn theme-primary variant-style-soft">Button</button>
-                <button type="button" class="btn theme-secondary variant-style-outlined">Button</button>
-                <button type="button" class="btn theme-accent variant-style-filled">Button</button>
+                <button type="button" class="btn variant-style-soft theme-primary">Button</button>
+                <button type="button" class="btn variant-style-outlined theme-secondary">Button</button>
+                <button type="button" class="btn variant-style-filled theme-accent">Button</button>
               </div>
             </div>
           </template>
@@ -85,7 +85,7 @@
                     .join('')
                 }}
               </div>
-              <button type="button" class="btn theme-primary variant-style-soft" :class="s">Button</button>
+              <button type="button" class="btn variant-style-soft theme-primary" :class="s">Button</button>
             </div>
           </div>
         </template>
@@ -96,32 +96,32 @@
       <h3>Inheritance and override examples</h3>
 
       <div
-        class="relative flex flex-wrap items-center gap-2 surface-lv-1 p-2 pt-12 size-lg theme-accent variant-style-filled variant-shape-pill"
+        class="relative flex flex-wrap items-center gap-2 surface-lv-1 p-2 pt-12 variant-style-filled theme-accent size-lg variant-shape-pill"
       >
         <div class="inspect-class">size-lg variant-style-filled variant-shape-pill theme-accent</div>
         <button type="button" class="btn">Btn</button>
-        <button type="button" class="btn size-xs theme-error variant-style-soft">Btn xs soft error</button>
+        <button type="button" class="btn variant-style-soft theme-error size-xs">Btn xs soft error</button>
 
         <div class="relative flex flex-wrap items-center gap-2 surface-lv-2 p-2 pt-12 mode-light">
           <div class="inspect-class">mode-light</div>
           <button type="button" class="btn">Btn</button>
-          <button type="button" class="btn size-xs theme-error variant-style-soft">Btn xs soft error</button>
+          <button type="button" class="btn variant-style-soft theme-error size-xs">Btn xs soft error</button>
         </div>
 
         <div class="relative flex flex-wrap items-center gap-2 surface-lv-2 p-2 pt-12 mode-dark">
           <div class="inspect-class">mode-dark</div>
           <button type="button" class="btn">Btn</button>
-          <button type="button" class="btn size-xs theme-error variant-style-soft">Btn xs soft error</button>
+          <button type="button" class="btn variant-style-soft theme-error size-xs">Btn xs soft error</button>
         </div>
 
         <div
-          class="relative flex flex-wrap items-center gap-2 surface-themed p-2 pt-12 size-xs variant-density-dense variant-style-soft variant-aspect-square"
+          class="relative flex flex-wrap items-center gap-2 surface-themed p-2 pt-12 variant-density-dense variant-style-soft variant-aspect-square size-xs"
         >
           <div class="inspect-class">size-xs variant-style-soft variant-density-dense variant-aspect-square</div>
           <button type="button" class="btn">Btn</button>
           <button
             type="button"
-            class="btn size-xl theme-info variant-density-default variant-style-filled variant-aspect-default"
+            class="btn variant-density-default variant-style-filled theme-info variant-aspect-default size-xl"
           >
             Btn xl filled info not-dense
           </button>

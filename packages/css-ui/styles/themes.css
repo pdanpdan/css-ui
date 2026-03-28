@@ -15,15 +15,13 @@
 @layer base {
   :root,
   :host,
-  :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
+  :where([class*='theme-']) {
     --t-main: oklch(var(--t-l) var(--t-c) var(--t-h));
     --t-on-main: oklch(99% 0.01 var(--t-h));
 
-    /* Fill-based States */
-    --t-hover: oklch(calc(var(--t-l) - (8% * var(--m-direction))) var(--t-c) var(--t-h));
-    --t-active: oklch(calc(var(--t-l) - (15% * var(--m-direction))) var(--t-c) var(--t-h));
+    --t-hover: oklch(clamp(10%, calc(var(--t-l) - (8% * var(--m-direction))), 98%) var(--t-c) var(--t-h));
+    --t-active: oklch(clamp(10%, calc(var(--t-l) - (15% * var(--m-direction))), 98%) var(--t-c) var(--t-h));
 
-    /* Subtle-based States */
     --t-surface: color-mix(in oklab, var(--t-main), var(--m-current-bg) calc(88% + 4% * (var(--m-direction) - 1)));
     --t-surface-hover: color-mix(
       in oklab,
@@ -38,11 +36,10 @@
     --t-on-surface: oklch(
       calc(var(--m-bg-l) - (65% * var(--m-direction)) - (5% * (var(--m-direction) - 1) / -2)) var(--t-c) var(--t-h)
     );
+    --t-on-transparent: oklch(calc(var(--t-l) + (10% * (var(--m-direction) - 1) / -2)) var(--t-c) var(--t-h));
 
-    /* Subtle Border Tint */
-    --t-soft-border: color-mix(in oklab, var(--t-main), var(--m-current-bg) calc(80% + 4% * (var(--m-direction) - 1)));
+    --t-soft-border: color-mix(in oklab, var(--t-main), var(--m-current-bg) calc(50% + 5% * (var(--m-direction) - 1)));
     --t-soft-separator: color-mix(in oklab, var(--t-main), var(--t-on-main) 12%);
-
     --t-ring: color-mix(in oklab, var(--t-main), var(--m-current-bg) calc(100% * (1 - var(--m-ring-opacity))));
   }
 }

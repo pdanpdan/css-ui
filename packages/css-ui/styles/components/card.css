@@ -2,15 +2,21 @@
   @layer cssui.l1.l2.l3 {
     @apply relative grid appearance-none content-start overflow-hidden;
     grid-template-columns: fit-content(50%) var(--s-px) 1fr var(--s-px) fit-content(50%);
+
+    --c-bg: var(--v-bg, transparent);
+    --c-fg: var(--v-fg, inherit);
+    --c-border: var(--v-border, transparent);
+    --c-shadow: var(--v-shadow, none);
+
     font-size: var(--s-font-size-sm);
     font-weight: var(--s-font-weight);
     line-height: var(--s-line-height-relaxed);
     border-radius: var(--s-radius);
-    border: var(--s-border-w) solid var(--v-border, transparent);
-    background-color: var(--v-bg);
-    color: var(--v-fg);
+    border: var(--s-border-w) solid var(--c-border);
+    background-color: var(--c-bg);
+    color: var(--c-fg);
     aspect-ratio: var(--s-aspect);
-    box-shadow: var(--v-shadow);
+    box-shadow: var(--c-shadow);
 
     & > * {
       @apply z-1;
@@ -21,7 +27,6 @@
     & > :first-child {
       padding-top: var(--s-py);
     }
-
     & > :last-child {
       padding-bottom: var(--s-py);
     }
@@ -31,6 +36,10 @@
 @utility card-interactive {
   @layer cssui.l1 {
     @apply cursor-pointer;
+
+    --c-bg-hover: var(--v-bg-hover, color-mix(in oklab, var(--m-text) 4%, var(--c-bg)));
+    --c-bg-active: var(--v-bg-active, color-mix(in oklab, var(--m-text) 8%, var(--c-bg)));
+
     outline: 0 solid transparent;
     outline-offset: var(--s-outline-offset, 4px);
 
@@ -44,17 +53,17 @@
       @media (hover: hover) and (pointer: fine) {
         &:where(:hover) {
           @apply z-1;
-          background-color: var(--v-bg-hover);
-          color: var(--v-fg);
-          box-shadow: var(--v-shadow-hover);
+          background-color: var(--c-bg-hover);
+          color: var(--c-fg);
+          box-shadow: var(--v-shadow-hover, var(--c-shadow));
           transform: var(--transform-hover);
         }
       }
 
       &:where(.state-hover) {
-        background-color: var(--v-bg-hover);
-        color: var(--v-fg);
-        box-shadow: var(--v-shadow-hover);
+        background-color: var(--c-bg-hover);
+        color: var(--c-fg);
+        box-shadow: var(--v-shadow-hover, var(--c-shadow));
         transform: var(--transform-hover);
       }
 
@@ -67,9 +76,9 @@
         .state-active,
         :has(.card-selector:checked)
       ) {
-        background-color: var(--v-bg-active);
-        color: var(--v-fg);
-        box-shadow: var(--v-shadow-active);
+        background-color: var(--c-bg-active);
+        color: var(--c-fg);
+        box-shadow: var(--v-shadow-active, var(--c-shadow));
       }
 
       &:where(:active) {

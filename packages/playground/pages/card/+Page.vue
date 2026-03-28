@@ -34,7 +34,7 @@
             quas harumSed atque.
           </p>
           <div class="card-actions justify-between">
-            <button type="button" class="btn theme-neutral variant-style-ghost">Cancel</button>
+            <button type="button" class="btn variant-style-ghost theme-neutral">Cancel</button>
 
             <button type="button" class="btn variant-style-soft">Subscribe</button>
           </div>
@@ -183,7 +183,7 @@
             quas harumSed atque.
           </p>
           <div class="card-actions justify-between">
-            <button type="button" class="btn theme-neutral variant-style-ghost">Cancel</button>
+            <button type="button" class="btn variant-style-ghost theme-neutral">Cancel</button>
 
             <button type="button" class="btn variant-style-soft">Subscribe</button>
           </div>
@@ -199,7 +199,7 @@
             quas harumSed atque.
           </p>
           <div class="card-actions flex-col items-end">
-            <button type="button" class="btn theme-neutral variant-style-ghost">Cancel</button>
+            <button type="button" class="btn variant-style-ghost theme-neutral">Cancel</button>
 
             <button type="button" class="btn variant-style-soft">Subscribe</button>
           </div>
@@ -215,7 +215,7 @@
             quas harumSed atque.
           </p>
           <div class="card-actions flex-col items-end">
-            <button type="button" class="btn theme-neutral variant-style-ghost">Cancel</button>
+            <button type="button" class="btn variant-style-ghost theme-neutral">Cancel</button>
 
             <button type="button" class="btn variant-style-soft">Subscribe</button>
           </div>
@@ -231,7 +231,7 @@
             quas harumSed atque.
           </p>
           <div class="card-actions flex-col items-end">
-            <button type="button" class="btn theme-neutral variant-style-filled">Cancel</button>
+            <button type="button" class="btn variant-style-filled theme-neutral">Cancel</button>
 
             <button type="button" class="btn variant-style-filled">Subscribe</button>
           </div>
@@ -241,6 +241,25 @@
       <h4>Interactive Cards</h4>
       <div v-for="mode in modes" class="flex flex-wrap items-start justify-end gap-4 surface p-4" :class="mode">
         <em class="w-full">{{ mode }}</em>
+        <template v-for="s in ['', ...states]" :key="s">
+          <article :class="[...componentClass, s]" tabindex="0" class="card-interactive max-w-80 min-w-60 flex-1">
+            <h5 class="card-title">
+              <code>{{ s || 'rest' }}</code>
+            </h5>
+
+            <p>
+              Et soluta neque <strong>Id sint</strong> in quia exercitationem ad illo reiciendis. Non possimus velit est
+              quas harumSed atque.
+            </p>
+            <p>
+              Est tempore omnisQui nisi et laudantium libero quo adipisci tenetur et praesentium blanditiis eum corrupti
+              voluptatem hic autem totam. Quo voluptatem veritatis
+              <em>Non autem rem velit similique qui earum officia</em> et quibusdam facilis. Non quia vitae
+              <strong>Non enim ex quod nemo</strong>.
+            </p>
+          </article>
+        </template>
+        <div class="w-full" />
         <template v-for="s in ['', ...states]" :key="s">
           <article
             :class="[...componentClass, s]"

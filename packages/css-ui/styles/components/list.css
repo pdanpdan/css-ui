@@ -10,6 +10,10 @@
 @utility list-row {
   @layer cssui.l1.l2.l3 {
     @apply relative grid appearance-none grid-flow-col items-center;
+
+    --c-bg: var(--v-bg, transparent);
+    --c-fg: var(--v-fg, inherit);
+
     --list-grid-cols: minmax(0, auto) 1fr;
     grid-template-columns: var(--list-grid-cols);
     gap: var(--s-gap);
@@ -17,15 +21,15 @@
     font-weight: var(--s-font-weight);
     line-height: var(--s-line-height-relaxed);
     padding: var(--s-py) var(--s-px);
-    background-color: var(--v-bg);
-    color: var(--v-fg);
+    background-color: var(--c-bg);
+    color: var(--c-fg);
 
     &:has(+ [class~='list-row'])::after {
       @apply absolute bottom-0 z-1 text-center leading-0;
       --tw-content: '';
       content: var(--tw-content);
       inset-inline: 0;
-      border-bottom: var(--s-separator-w) solid var(--v-separator);
+      border-bottom: var(--s-separator-w) solid var(--v-separator, var(--t-soft-border));
     }
 
     &:has(.list-col-grow:nth-child(1)) {
@@ -68,8 +72,12 @@
 @utility list-row-interactive {
   @layer cssui.l1 {
     @apply cursor-pointer;
+
+    --c-bg-hover: var(--v-bg-hover, color-mix(in oklab, var(--m-text) 6%, var(--c-bg)));
+    --c-bg-active: var(--v-bg-active, color-mix(in oklab, var(--m-text) 12%, var(--c-bg)));
+
     outline: 0 solid transparent;
-    outline-offset: var(--s-outline-offset, -4px);
+    outline-offset: var(--s-outline-offset, -2px);
 
     @media (prefers-reduced-motion: no-preference) {
       transition: var(--transition, all var(--transition-timing));
@@ -81,17 +89,17 @@
       @media (hover: hover) and (pointer: fine) {
         &:where(:hover) {
           @apply z-1;
-          background-color: var(--v-bg-hover);
-          color: var(--v-fg);
-          box-shadow: var(--v-shadow-hover);
+          background-color: var(--c-bg-hover);
+          color: var(--c-fg);
+          box-shadow: var(--v-shadow-hover, none);
           transform: var(--transform-hover);
         }
       }
 
       &:where(.state-hover) {
-        background-color: var(--v-bg-hover);
-        color: var(--v-fg);
-        box-shadow: var(--v-shadow-hover);
+        background-color: var(--c-bg-hover);
+        color: var(--c-fg);
+        box-shadow: var(--v-shadow-hover, none);
         transform: var(--transform-hover);
       }
 
@@ -104,9 +112,9 @@
         .state-active,
         :has(.list-row-selector:checked)
       ) {
-        background-color: var(--v-bg-active);
-        color: var(--v-fg);
-        box-shadow: var(--v-shadow-active);
+        background-color: var(--c-bg-active);
+        color: var(--c-fg);
+        box-shadow: var(--v-shadow-active, none);
       }
 
       &:where(:active) {
@@ -115,6 +123,7 @@
       }
 
       &:where(:focus-visible, .state-focus, :has(.list-row-selector:focus-visible)) {
+        @apply z-1;
         outline: var(--s-outline-w) solid var(--t-ring);
       }
     }

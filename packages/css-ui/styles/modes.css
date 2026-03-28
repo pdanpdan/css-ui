@@ -1,7 +1,7 @@
 @layer base {
   :root,
   :host,
-  :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
+  :where([class*='mode-']) {
     --m-bg: oklch(var(--m-bg-l) var(--m-bg-c, 0.01) var(--m-bg-h, 0));
     --m-surface-1: oklch(
       calc(var(--m-bg-l) - (var(--m-step) * var(--m-direction))) var(--m-bg-c, 0.01) var(--m-bg-h, 0)
@@ -26,7 +26,7 @@
   --m-bg-l: 98%;
   --m-text-l: 12%;
   --m-step: 3%;
-  --m-shadow-color: color-mix(in oklab, var(--m-text), transparent 35%);
+  --m-shadow-color: color-mix(in oklab, var(--m-text), transparent 80%);
 }
 
 @utility mode-dark {
@@ -35,7 +35,7 @@
   --m-bg-l: 12%;
   --m-text-l: 96%;
   --m-step: 5%;
-  --m-shadow-color: color-mix(in oklab, var(--m-text), transparent 55%);
+  --m-shadow-color: oklch(0% 0 0 / 60%);
 }
 
 @utility mode-auto {

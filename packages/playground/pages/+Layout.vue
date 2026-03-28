@@ -1,8 +1,8 @@
 <template>
-  <div class="flex min-h-screen size-md theme-neutral variant-style-soft" @touchstart="">
+  <div class="flex min-h-screen variant-style-soft theme-neutral size-md" @touchstart="">
     <label
       for="drawer-toggle"
-      class="fixed inset-s-1 top-1 btn z-10 surface size-xs theme-neutral variant-density-dense variant-style-ghost variant-aspect-square variant-shape-pill lg:hidden"
+      class="fixed inset-s-1 top-1 btn z-10 surface variant-density-dense variant-style-ghost theme-neutral variant-aspect-square size-xs variant-shape-pill lg:hidden"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,7 @@
           CSS-UI
           <a
             href="https://github.com/pdanpdan/css-ui"
-            class="btn size-xs theme-neutral variant-density-dense variant-style-ghost variant-aspect-square variant-shape-pill"
+            class="btn variant-density-dense variant-style-ghost theme-neutral variant-aspect-square size-xs variant-shape-pill"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Repository"
