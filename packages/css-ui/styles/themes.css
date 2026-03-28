@@ -1,118 +1,96 @@
-@utility theme--mixin {
-  --t-main: oklch(var(--t-l) var(--t-c) var(--t-h));
-  --t-on-main: oklch(99% 0.01 var(--t-h));
+@theme inline {
+  --color-theme: var(--t-main);
+  --color-theme-on: var(--t-on-main);
+  --color-theme-hover: var(--t-hover);
+  --color-theme-active: var(--t-active);
+  --color-theme-surface: var(--t-surface);
+  --color-theme-surface-hover: var(--t-surface-hover);
+  --color-theme-surface-active: var(--t-surface-active);
+  --color-theme-on-surface: var(--t-on-surface);
+  --color-theme-soft-border: var(--t-soft-border);
+  --color-theme-soft-separator: var(--t-soft-separator);
+  --color-theme-ring: var(--t-ring);
+}
 
-  /* Fill-based States */
-  --t-hover: oklch(calc(var(--t-l) - (8% * var(--m-direction))) var(--t-c) var(--t-h));
-  --t-active: oklch(calc(var(--t-l) - (15% * var(--m-direction))) var(--t-c) var(--t-h));
+@layer base {
+  :root,
+  :host,
+  :where([class*='mode-'], [class*='size-'], [class*='theme-'], [class*='variant-']) {
+    --t-main: oklch(var(--t-l) var(--t-c) var(--t-h));
+    --t-on-main: oklch(99% 0.01 var(--t-h));
 
-  /* Subtle-based States */
-  --t-surface: color-mix(in oklab, var(--t-main), var(--m-current-bg) calc(88% + 4% * (var(--m-direction) - 1)));
-  --t-surface-hover: color-mix(in oklab, var(--t-main), var(--m-current-bg) calc(80% + 4% * (var(--m-direction) - 1)));
-  --t-surface-active: color-mix(in oklab, var(--t-main), var(--m-current-bg) calc(68% + 4% * (var(--m-direction) - 1)));
-  --t-on-surface: oklch(
-    calc(var(--m-bg-l) - (65% * var(--m-direction)) - (5% * (var(--m-direction) - 1) / -2)) var(--t-c) var(--t-h)
-  );
+    /* Fill-based States */
+    --t-hover: oklch(calc(var(--t-l) - (8% * var(--m-direction))) var(--t-c) var(--t-h));
+    --t-active: oklch(calc(var(--t-l) - (15% * var(--m-direction))) var(--t-c) var(--t-h));
 
-  /* Subtle Border Tint */
-  --t-soft-border: color-mix(in oklab, var(--t-main), var(--m-current-bg) calc(80% + 4% * (var(--m-direction) - 1)));
-  --t-soft-separator: color-mix(in oklab, var(--t-main), var(--t-on-main) 12%);
+    /* Subtle-based States */
+    --t-surface: color-mix(in oklab, var(--t-main), var(--m-current-bg) calc(88% + 4% * (var(--m-direction) - 1)));
+    --t-surface-hover: color-mix(
+      in oklab,
+      var(--t-main),
+      var(--m-current-bg) calc(80% + 4% * (var(--m-direction) - 1))
+    );
+    --t-surface-active: color-mix(
+      in oklab,
+      var(--t-main),
+      var(--m-current-bg) calc(68% + 4% * (var(--m-direction) - 1))
+    );
+    --t-on-surface: oklch(
+      calc(var(--m-bg-l) - (65% * var(--m-direction)) - (5% * (var(--m-direction) - 1) / -2)) var(--t-c) var(--t-h)
+    );
 
-  --t-ring: color-mix(in oklab, var(--t-main), var(--m-current-bg) calc(100% * (1 - var(--m-ring-opacity))));
+    /* Subtle Border Tint */
+    --t-soft-border: color-mix(in oklab, var(--t-main), var(--m-current-bg) calc(80% + 4% * (var(--m-direction) - 1)));
+    --t-soft-separator: color-mix(in oklab, var(--t-main), var(--t-on-main) 12%);
+
+    --t-ring: color-mix(in oklab, var(--t-main), var(--m-current-bg) calc(100% * (1 - var(--m-ring-opacity))));
+  }
 }
 
 @utility theme-neutral {
-  @scope (&) to ([class~="theme-"]) {
-    &,
-    * {
-      @apply theme--mixin;
-      --t-h: 0;
-      --t-c: 0;
-      --t-l: 45%;
-    }
-  }
+  --t-h: 0;
+  --t-c: 0;
+  --t-l: 45%;
 }
 
 @utility theme-primary {
-  @scope (&) to ([class~="theme-"]) {
-    &,
-    * {
-      @apply theme--mixin;
-      --t-h: 260;
-      --t-c: 0.2;
-      --t-l: 50%;
-    }
-  }
+  --t-h: 260;
+  --t-c: 0.2;
+  --t-l: 50%;
 }
 
 @utility theme-secondary {
-  @scope (&) to ([class~="theme-"]) {
-    &,
-    * {
-      @apply theme--mixin;
-      --t-h: 310;
-      --t-c: 0.18;
-      --t-l: 50%;
-    }
-  }
+  --t-h: 310;
+  --t-c: 0.18;
+  --t-l: 50%;
 }
 
 @utility theme-accent {
-  @scope (&) to ([class~="theme-"]) {
-    &,
-    * {
-      @apply theme--mixin;
-      --t-h: 195;
-      --t-c: 0.28;
-      --t-l: 52%;
-    }
-  }
+  --t-h: 195;
+  --t-c: 0.28;
+  --t-l: 52%;
 }
 
 @utility theme-success {
-  @scope (&) to ([class~="theme-"]) {
-    &,
-    * {
-      @apply theme--mixin;
-      --t-h: 145;
-      --t-c: 0.16;
-      --t-l: 42%;
-    }
-  }
+  --t-h: 145;
+  --t-c: 0.16;
+  --t-l: 42%;
 }
 
 @utility theme-warning {
-  @scope (&) to ([class~="theme-"]) {
-    &,
-    * {
-      @apply theme--mixin;
-      --t-h: 90;
-      --t-c: 0.24;
-      --t-l: 50%;
-    }
-  }
+  --t-h: 90;
+  --t-c: 0.24;
+  --t-l: 50%;
 }
 
 @utility theme-error {
-  @scope (&) to ([class~="theme-"]) {
-    &,
-    * {
-      @apply theme--mixin;
-      --t-h: 25;
-      --t-c: 0.18;
-      --t-l: 52%;
-    }
-  }
+  --t-h: 25;
+  --t-c: 0.18;
+  --t-l: 52%;
 }
 
 @utility theme-info {
-  @scope (&) to ([class~="theme-"]) {
-    &,
-    * {
-      @apply theme--mixin;
-      --t-h: 225;
-      --t-c: 0.15;
-      --t-l: 50%;
-    }
-  }
+  --t-h: 225;
+  --t-c: 0.15;
+  --t-l: 50%;
 }
