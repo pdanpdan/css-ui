@@ -25,6 +25,18 @@
     "max-statements": "off",
     "no-ternary": "off",
     "no-magic-numbers": "off",
+    "no-async-await": "off",
+    "no-rest-spread-properties": "off",
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "log",
+          "info",
+          "warn"
+        ]
+      }
+    ],
     "func-style": [
       "error",
       "declaration",

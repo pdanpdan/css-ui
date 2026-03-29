@@ -60,3 +60,15 @@ dd {
   @apply h-8 w-0.5 border-0;
   background-color: var(--m-surface-3);
 }
+
+.form-input {
+  @apply ml-2 border-b bg-transparent font-bold outline-none;
+}
+
+.form-label {
+  @apply font-bold;
+}
+
+.form-help {
+  @apply text-xs opacity-70;
+}

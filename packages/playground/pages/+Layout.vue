@@ -39,6 +39,11 @@
           <AppLink href="/" v-slot="{ active, href }">
             <a :href="href" class="list-row list-row-interactive" :class="{ 'state-active': active }">Home</a>
           </AppLink>
+          <AppLink href="/config/themes" v-slot="{ active, href }">
+            <a :href="href" class="list-row list-row-interactive" :class="{ 'state-active': active }"
+              >Theme Generator</a
+            >
+          </AppLink>
           <AppLink href="/components/btn" v-slot="{ active, href }">
             <a :href="href" class="list-row list-row-interactive" :class="{ 'state-active': active }">Buttons</a>
           </AppLink>
