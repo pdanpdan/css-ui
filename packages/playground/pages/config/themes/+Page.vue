@@ -812,8 +812,8 @@ function updateValue(prefix: string, mode: 'light' | 'dark', event: Event): void
   const baseKey = `${prefix}Base` as keyof ThemeConfig;
   const slopeKey = `${prefix}Slope` as keyof ThemeConfig;
 
-  let light = (editingTheme.value[baseKey] as number) - (editingTheme.value[slopeKey] as number);
-  let dark = (editingTheme.value[baseKey] as number) + (editingTheme.value[slopeKey] as number);
+  let light = (editingTheme.value[baseKey] as number) + (editingTheme.value[slopeKey] as number);
+  let dark = (editingTheme.value[baseKey] as number) - (editingTheme.value[slopeKey] as number);
 
   if (mode === 'light') {
     light = val;
@@ -822,7 +822,7 @@ function updateValue(prefix: string, mode: 'light' | 'dark', event: Event): void
   }
 
   (editingTheme.value[baseKey] as number) = (light + dark) / 2;
-  (editingTheme.value[slopeKey] as number) = (dark - light) / 2;
+  (editingTheme.value[slopeKey] as number) = (light - dark) / 2;
 }
 
 function getVal(prefix: string, mode: 'light' | 'dark'): number {
@@ -831,7 +831,7 @@ function getVal(prefix: string, mode: 'light' | 'dark'): number {
   }
   const base = editingTheme.value[`${prefix}Base` as keyof ThemeConfig] as number;
   const slope = editingTheme.value[`${prefix}Slope` as keyof ThemeConfig] as number;
-  return mode === 'light' ? base - slope : base + slope;
+  return mode === 'light' ? base + slope : base - slope;
 }
 
 function isValidColor(mode: 'light' | 'dark', onMain = false): boolean {
@@ -882,8 +882,8 @@ function copyValue(prefix: string, fromMode: 'light' | 'dark'): void {
   const baseKey = `${prefix}Base` as keyof ThemeConfig;
   const slopeKey = `${prefix}Slope` as keyof ThemeConfig;
 
-  let light = (editingTheme.value[baseKey] as number) - (editingTheme.value[slopeKey] as number);
-  let dark = (editingTheme.value[baseKey] as number) + (editingTheme.value[slopeKey] as number);
+  let light = (editingTheme.value[baseKey] as number) + (editingTheme.value[slopeKey] as number);
+  let dark = (editingTheme.value[baseKey] as number) - (editingTheme.value[slopeKey] as number);
 
   if (toMode === 'light') {
     light = val;
@@ -892,7 +892,7 @@ function copyValue(prefix: string, fromMode: 'light' | 'dark'): void {
   }
 
   (editingTheme.value[baseKey] as number) = (light + dark) / 2;
-  (editingTheme.value[slopeKey] as number) = (dark - light) / 2;
+  (editingTheme.value[slopeKey] as number) = (light - dark) / 2;
 }
 
 const hueGradient =
