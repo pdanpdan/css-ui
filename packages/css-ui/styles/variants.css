@@ -59,27 +59,27 @@
   --v-py-mult: 0.5;
   --v-px-mult: 1.25;
   --v-gap-mult: 0.5;
-  --v-lh-tight: 1.2;
+  --v-lh-tight: 1.25;
   --v-lh: 1.5;
-  --v-lh-relaxed: 1.625;
+  --v-lh-relaxed: 1.75;
 }
 
 @utility variant-density-dense {
-  --v-py-mult: 0.25;
-  --v-px-mult: 0.75;
-  --v-gap-mult: 0.25;
-  --v-lh-tight: 1.1;
-  --v-lh: 1.3;
-  --v-lh-relaxed: 1.5;
+  --v-py-mult: 0.4;
+  --v-px-mult: 1;
+  --v-gap-mult: 0.4;
+  --v-lh-tight: 1;
+  --v-lh: 1.2;
+  --v-lh-relaxed: 1.4;
 }
 
 @utility variant-density-lax {
-  --v-py-mult: 0.75;
-  --v-px-mult: 1.75;
-  --v-gap-mult: 0.75;
-  --v-lh-tight: 1.4;
-  --v-lh: 1.7;
-  --v-lh-relaxed: 1.925;
+  --v-py-mult: 0.625;
+  --v-px-mult: 1.5625;
+  --v-gap-mult: 0.625;
+  --v-lh-tight: 1.5625;
+  --v-lh: 1.875;
+  --v-lh-relaxed: 2.1875;
 }
 
 @utility variant-shape-default {

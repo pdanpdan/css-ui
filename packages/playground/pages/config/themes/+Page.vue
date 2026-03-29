@@ -161,7 +161,7 @@
             </button>
             <button
               type="button"
-              class="btn ms-2 theme-primary variant-density-dense variant-style-ghost variant-aspect-square size-lg variant-shape-pill"
+              class="btn ms-2 theme-primary variant-density-dense variant-style-ghost variant-aspect-square size-md variant-shape-pill"
               aria-label="Save changes"
               @click="saveTheme"
             >

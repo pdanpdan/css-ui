@@ -1,21 +1,21 @@
 @theme {
-  --s-base-xs: 0.75rem;
-  --s-base-sm: 0.875rem;
+  --s-base-xs: 0.64rem;
+  --s-base-sm: 0.8rem;
   --s-base-md: 1rem;
-  --s-base-lg: 1.125rem;
-  --s-base-xl: 1.525rem;
-  --s-base-2xl: 1.875rem;
+  --s-base-lg: 1.25rem;
+  --s-base-xl: 1.6rem;
+  --s-base-2xl: 2rem;
 }
 
 @layer base {
   :root,
   :host,
   :where([class*='size-'], [class*='variant-']) {
-    --s-font-size-xs: calc(var(--s-base, 1rem) * 0.75);
-    --s-font-size-sm: calc(var(--s-base, 1rem) * 0.875);
+    --s-font-size-xs: calc(var(--s-base, 1rem) * 0.64);
+    --s-font-size-sm: calc(var(--s-base, 1rem) * 0.8);
     --s-font-size: var(--s-base, 1rem);
     --s-font-size-lg: calc(var(--s-base, 1rem) * 1.25);
-    --s-font-size-xl: calc(var(--s-base, 1rem) * 1.5);
+    --s-font-size-xl: calc(var(--s-base, 1rem) * 1.6);
     --s-font-size-2xl: calc(var(--s-base, 1rem) * 2);
 
     --s-font-weight: 500;

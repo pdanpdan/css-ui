@@ -14,6 +14,7 @@
     font-size: var(--s-font-size);
     font-weight: var(--s-font-weight);
     line-height: var(--s-line-height);
+    min-height: calc(var(--s-font-size) * var(--s-line-height) + 2 * var(--s-py) + 2 * var(--s-border-w));
     padding: var(--s-py) var(--s-px);
     border-radius: var(--s-radius);
     border: var(--s-border-w) solid var(--c-border);
