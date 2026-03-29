@@ -1,5 +1,5 @@
 <template>
-  <div class="flex min-h-screen variant-style-soft theme-neutral size-md" @touchstart="">
+  <div class="flex min-h-screen theme-neutral variant-style-soft size-md" @touchstart="">
     <label
       for="drawer-toggle"
       class="fixed start-1 top-1 btn z-10 variant-density-dense variant-aspect-square variant-shape-pill lg:hidden"
@@ -19,7 +19,7 @@
           CSS-UI
           <a
             href="https://github.com/pdanpdan/css-ui"
-            class="btn variant-density-dense variant-style-ghost theme-neutral variant-aspect-square size-xs variant-shape-pill"
+            class="btn theme-neutral variant-density-dense variant-style-ghost variant-aspect-square size-xs variant-shape-pill"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Repository"
@@ -39,13 +39,13 @@
           <AppLink href="/" v-slot="{ active, href }">
             <a :href="href" class="list-row list-row-interactive" :class="{ 'state-active': active }">Home</a>
           </AppLink>
-          <AppLink href="/btn" v-slot="{ active, href }">
+          <AppLink href="/components/btn" v-slot="{ active, href }">
             <a :href="href" class="list-row list-row-interactive" :class="{ 'state-active': active }">Buttons</a>
           </AppLink>
-          <AppLink href="/card" v-slot="{ active, href }">
+          <AppLink href="/components/card" v-slot="{ active, href }">
             <a :href="href" class="list-row list-row-interactive" :class="{ 'state-active': active }">Cards</a>
           </AppLink>
-          <AppLink href="/list" v-slot="{ active, href }">
+          <AppLink href="/components/list" v-slot="{ active, href }">
             <a :href="href" class="list-row list-row-interactive" :class="{ 'state-active': active }">List</a>
           </AppLink>
         </nav>
@@ -59,8 +59,8 @@
 </template>
 
 <script setup lang="ts">
-import '../assets/main.css';
-import AppLink from '../components/AppLink.vue';
+import '/assets/main.css';
+import AppLink from '/components/AppLink.vue';
 
 function toggleMode(): void {
   const { body } = document;

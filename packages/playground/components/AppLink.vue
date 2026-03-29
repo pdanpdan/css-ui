@@ -1,8 +1,7 @@
 <script lang="ts" setup>
+import { matchHref, normalizeHref } from '/lib/url';
 import { usePageContext } from 'vike-vue/usePageContext';
 import { computed } from 'vue';
-
-import { matchHref, normalizeHref } from '../lib/url';
 
 const { href } = defineProps<{
   href: string;

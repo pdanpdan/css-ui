@@ -34,7 +34,7 @@
             quas harumSed atque.
           </p>
           <div class="card-actions justify-between">
-            <button type="button" class="btn variant-style-ghost theme-neutral">Cancel</button>
+            <button type="button" class="btn theme-neutral variant-style-ghost">Cancel</button>
 
             <button type="button" class="btn variant-style-soft">Subscribe</button>
           </div>
@@ -183,7 +183,7 @@
             quas harumSed atque.
           </p>
           <div class="card-actions justify-between">
-            <button type="button" class="btn variant-style-ghost theme-neutral">Cancel</button>
+            <button type="button" class="btn theme-neutral variant-style-ghost">Cancel</button>
 
             <button type="button" class="btn variant-style-soft">Subscribe</button>
           </div>
@@ -199,7 +199,7 @@
             quas harumSed atque.
           </p>
           <div class="card-actions flex-col items-end">
-            <button type="button" class="btn variant-style-ghost theme-neutral">Cancel</button>
+            <button type="button" class="btn theme-neutral variant-style-ghost">Cancel</button>
 
             <button type="button" class="btn variant-style-soft">Subscribe</button>
           </div>
@@ -215,7 +215,7 @@
             quas harumSed atque.
           </p>
           <div class="card-actions flex-col items-end">
-            <button type="button" class="btn variant-style-ghost theme-neutral">Cancel</button>
+            <button type="button" class="btn theme-neutral variant-style-ghost">Cancel</button>
 
             <button type="button" class="btn variant-style-soft">Subscribe</button>
           </div>
@@ -231,7 +231,7 @@
             quas harumSed atque.
           </p>
           <div class="card-actions flex-col items-end">
-            <button type="button" class="btn variant-style-filled theme-neutral">Cancel</button>
+            <button type="button" class="btn theme-neutral variant-style-filled">Cancel</button>
 
             <button type="button" class="btn variant-style-filled">Subscribe</button>
           </div>
@@ -311,8 +311,8 @@
 </template>
 
 <script setup lang="ts">
-import DemoSelector from '../../components/DemoSelector.vue';
-import { demoSelectors, modes, states } from '../../settings';
+import DemoSelector from '/components/DemoSelector.vue';
+import { demoSelectors, modes, states } from '/settings';
 
 const componentClass = [`card`, ...demoSelectors];
 </script>

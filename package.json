@@ -10,7 +10,7 @@
     "build": "pnpm -r build",
     "dev": "pnpm --filter playground dev",
     "format": "pnpm -r format",
-    "lint": "pnpm -r lint && pnpm -r type-check"
+    "lint": "pnpm -r type-check && pnpm -r lint"
   },
   "devDependencies": {
     "@stylistic/eslint-plugin": "catalog:",

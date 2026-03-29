@@ -26,5 +26,5 @@
 </template>
 
 <script setup lang="ts">
-import { sizes, themes, variants } from '../settings';
+import { sizes, themes, variants } from '/settings';
 </script>
