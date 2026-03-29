@@ -2,14 +2,9 @@
   <div class="flex min-h-screen variant-style-soft theme-neutral size-md" @touchstart="">
     <label
       for="drawer-toggle"
-      class="fixed inset-s-1 top-1 btn z-10 surface variant-density-dense variant-style-ghost theme-neutral variant-aspect-square size-xs variant-shape-pill lg:hidden"
+      class="fixed start-1 top-1 btn z-10 variant-density-dense variant-aspect-square variant-shape-pill lg:hidden"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        class="inline-block size-6 stroke-current"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="size-6 stroke-current">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
     </label>

@@ -1,6 +1,6 @@
 @utility btn {
   @layer cssui.l1.l2.l3 {
-    @apply inline-flex min-h-fit min-w-fit cursor-pointer appearance-none items-center justify-center select-none;
+    @apply inline-flex h-auto w-0 min-w-fit shrink-0 cursor-pointer appearance-none items-center justify-center select-none;
 
     --c-bg: var(--v-bg, transparent);
     --c-fg: var(--v-fg, inherit);
