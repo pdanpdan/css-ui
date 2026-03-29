@@ -27,6 +27,14 @@
     "no-magic-numbers": "off",
     "no-async-await": "off",
     "no-rest-spread-properties": "off",
+    "complexity": "off",
+    "prefer-destructuring": [
+      "error",
+      {
+        "array": false,
+        "object": true,
+      }
+    ],
     "no-console": [
       "error",
       {

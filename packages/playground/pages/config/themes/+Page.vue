@@ -57,7 +57,15 @@
             <input type="text" v-model="selectedGroup.name" class="form-input" />
             <button
               type="button"
-              class="btn ms-auto variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+              class="btn ms-auto theme-neutral variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+              aria-label="Import from CSS"
+              @click="isImporting = !isImporting"
+            >
+              <IconUpload />
+            </button>
+            <button
+              type="button"
+              class="btn ms-2 variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
               aria-label="Copy group CSS"
               @click="copyGroupCss(selectedGroup)"
             >
@@ -72,6 +80,30 @@
             >
               <IconPlus />
             </button>
+          </div>
+
+          <div v-if="isImporting" class="card-bleed flex flex-col gap-2 bg-surface-2 p-4">
+            <textarea
+              v-model="importCssText"
+              class="form-input min-h-32 w-full font-mono text-xs"
+              placeholder="Paste CSS here..."
+            ></textarea>
+            <div class="flex items-center justify-between">
+              <button
+                type="button"
+                class="btn theme-neutral variant-density-dense variant-style-ghost size-sm"
+                @click="isImporting = false"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn theme-primary variant-density-dense variant-style-filled size-sm"
+                @click="importThemesFromCss"
+              >
+                Import
+              </button>
+            </div>
           </div>
 
           <ul class="card-bleed list py-0 variant-style-ghost variant-shape-sharp">
@@ -458,9 +490,20 @@ import IconPlus from '/components/IconPlus.vue';
 import IconRotateCcw from '/components/IconRotateCcw.vue';
 import IconSave from '/components/IconSave.vue';
 import IconTrash from '/components/IconTrash.vue';
+import IconUpload from '/components/IconUpload.vue';
 import IconWarning from '/components/IconWarning.vue';
 import { modes, states, variants } from '/settings';
 import { computed, onMounted, ref, watch } from 'vue';
+
+type ThemeConfigValueKeys =
+  | 'hBase'
+  | 'hSlope'
+  | 'cBase'
+  | 'cSlope'
+  | 'lBase'
+  | 'lSlope'
+  | 'onMainLBase'
+  | 'onMainLSlope';
 
 interface ThemeConfig {
   id: string;
@@ -600,6 +643,8 @@ const groups = ref<ThemeGroup[]>([]);
 const selectedGroupId = ref<string | null>(null);
 const selectedThemeId = ref<string | null>(null);
 const editingTheme = ref<ThemeConfig | null>(null);
+const isImporting = ref(false);
+const importCssText = ref('');
 
 const selectedGroup = computed(() => groups.value.find((group) => group.id === selectedGroupId.value));
 const selectedTheme = computed(() => selectedGroup.value?.themes.find((theme) => theme.id === selectedThemeId.value));
@@ -686,6 +731,77 @@ function removeTheme(themeId: string): void {
   if (selectedThemeId.value === themeId) {
     selectedThemeId.value = null;
   }
+}
+
+function importThemesFromCss(): void {
+  if (!selectedGroup.value || !importCssText.value) {
+    return;
+  }
+
+  const { themes } = selectedGroup.value;
+  const themeBlocks = importCssText.value.matchAll(/(?:@utility\s+)?(?:theme-)?([a-z0-9-_]+)\s*\{([^}]*)\}/gi);
+
+  for (const block of themeBlocks) {
+    const name = block[1].toLowerCase();
+    const content = block[2];
+
+    const config: Partial<ThemeConfig> = { name };
+
+    const props = content.matchAll(/--t-([a-z-]+)-(base|slope):\s*([-0-9.]+)(%?)/gi);
+    for (const prop of props) {
+      const type = prop[1];
+      const part = prop[2];
+      const val = parseFloat(prop[3]);
+
+      let key = '';
+      if (type === 'h') {
+        key = 'h';
+      } else if (type === 'c') {
+        key = 'c';
+      } else if (type === 'l') {
+        key = 'l';
+      } else if (type === 'on-main-l') {
+        key = 'onMainL';
+      }
+
+      if (key) {
+        const fullKey = `${key}${part.charAt(0).toUpperCase()}${part.slice(1)}`;
+        config[fullKey as ThemeConfigValueKeys] = val;
+      }
+    }
+
+    if (Object.keys(config).length > 1) {
+      const existing = themes.find((theme) => theme.name === name);
+      if (existing) {
+        Object.assign(existing, {
+          cBase: config.cBase ?? existing.cBase,
+          cSlope: config.cSlope ?? existing.cSlope,
+          hBase: config.hBase ?? existing.hBase,
+          hSlope: config.hSlope ?? existing.hSlope,
+          lBase: config.lBase ?? existing.lBase,
+          lSlope: config.lSlope ?? existing.lSlope,
+          onMainLBase: config.onMainLBase ?? existing.onMainLBase,
+          onMainLSlope: config.onMainLSlope ?? existing.onMainLSlope,
+        });
+      } else {
+        themes.push({
+          cBase: config.cBase ?? 0,
+          cSlope: config.cSlope ?? 0,
+          hBase: config.hBase ?? 0,
+          hSlope: config.hSlope ?? 0,
+          id: generateId(),
+          lBase: config.lBase ?? 50,
+          lSlope: config.lSlope ?? 0,
+          name,
+          onMainLBase: config.onMainLBase ?? 99,
+          onMainLSlope: config.onMainLSlope ?? 0,
+        });
+      }
+    }
+  }
+
+  isImporting.value = false;
+  importCssText.value = '';
 }
 
 function updateValue(prefix: string, mode: 'light' | 'dark', event: Event): void {
