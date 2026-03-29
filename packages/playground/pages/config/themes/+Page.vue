@@ -1,6 +1,6 @@
 <template>
   <article class="space-y-8">
-    <h2>Theme Configurator</h2>
+    <h2>Theme Generator</h2>
     <p>Create, manage, and preview OKLCH themes.</p>
 
     <p v-if="!isLoaded" class="text-center">Loading configuration...</p>
@@ -16,20 +16,7 @@
               aria-label="Add new group"
               @click="addGroup"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="1em"
-                height="1em"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
+              <IconPlus />
             </button>
           </div>
           <ul class="card-bleed list py-0 variant-style-ghost variant-shape-sharp">
@@ -45,26 +32,20 @@
 
               <button
                 type="button"
+                class="btn z-1 variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+                aria-label="Copy group CSS"
+                @click="copyGroupCss(group)"
+              >
+                <IconCopy />
+              </button>
+
+              <button
+                type="button"
                 class="btn z-1 theme-error variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
                 aria-label="Remove group"
                 @click="removeGroup(group.id)"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="3 6 5 6 21 6"></polyline>
-                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                  <line x1="10" y1="11" x2="10" y2="17"></line>
-                  <line x1="14" y1="11" x2="14" y2="17"></line>
-                </svg>
+                <IconTrash />
               </button>
             </li>
           </ul>
@@ -80,20 +61,7 @@
               aria-label="Copy group CSS"
               @click="copyGroupCss(selectedGroup)"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="1em"
-                height="1em"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-              </svg>
+              <IconCopy />
             </button>
 
             <button
@@ -102,20 +70,7 @@
               aria-label="Add new theme"
               @click="addTheme"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="1em"
-                height="1em"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-              </svg>
+              <IconPlus />
             </button>
           </div>
 
@@ -136,20 +91,7 @@
                 aria-label="Copy theme CSS"
                 @click="copyThemeCss(theme)"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
+                <IconCopy />
               </button>
 
               <button
@@ -158,22 +100,7 @@
                 aria-label="Delete theme"
                 @click="removeTheme(theme.id)"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="3 6 5 6 21 6"></polyline>
-                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                  <line x1="10" y1="11" x2="10" y2="17"></line>
-                  <line x1="14" y1="11" x2="14" y2="17"></line>
-                </svg>
+                <IconTrash />
               </button>
             </li>
           </ul>
@@ -184,135 +111,225 @@
         <section v-if="editingTheme" class="card">
           <div class="card-title flex flex-wrap items-center pb-2">
             Edit Theme:
-            <input type="text" v-model="editingTheme.name" class="form-input" />
-            <button type="button" class="btn ms-auto theme-primary variant-style-filled size-sm" @click="saveTheme">
-              Save Changes
+            <input
+              type="text"
+              :value="editingTheme.name"
+              @input="
+                editingTheme.name = ($event.target as HTMLInputElement).value.toLowerCase().replace(/[^a-z0-9-_]/g, '-')
+              "
+              class="form-input"
+            />
+            <button
+              type="button"
+              class="btn ms-auto theme-neutral variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+              aria-label="Undo changes"
+              @click="undoChanges"
+            >
+              <IconRotateCcw />
+            </button>
+            <button
+              type="button"
+              class="btn ms-2 theme-primary variant-density-dense variant-style-ghost variant-aspect-square size-lg variant-shape-pill"
+              aria-label="Save changes"
+              @click="saveTheme"
+            >
+              <IconSave />
             </button>
           </div>
 
           <div class="form-layout grid grid-cols-1 gap-6 md:grid-cols-2">
             <div class="form-group space-y-2">
-              <div class="form-label">Hue Base & Slope</div>
-              <p class="form-help">
-                Defines the color family (0-360). Slope adjusts the hue when switching to dark mode.
-              </p>
+              <div class="form-label">Hue (deg)</div>
+              <p class="form-help">Defines the color family (0-360).</p>
               <div class="flex items-center gap-4">
-                <span class="w-12 text-sm">Base:</span>
+                <span class="w-12 text-sm">Light:</span>
                 <input
                   type="range"
                   min="0"
                   max="360"
                   step="1"
-                  v-model.number="editingTheme.hBase"
+                  :value="getVal('h', 'light')"
+                  @input="updateValue('h', 'light', $event)"
                   class="form-range flex-1"
+                  :style="{ '--range-gradient': hueGradient }"
                 />
+                <button
+                  type="button"
+                  class="btn theme-neutral variant-density-dense variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+                  aria-label="Copy hue to dark"
+                  @click="copyValue('h', 'light')"
+                >
+                  <IconCopyToDark />
+                </button>
                 <input
                   type="number"
                   min="0"
                   max="360"
-                  v-model.number="editingTheme.hBase"
+                  :value="getVal('h', 'light')"
+                  @input="updateValue('h', 'light', $event)"
                   class="form-input w-16 text-end"
                 />
               </div>
               <div class="flex items-center gap-4">
-                <span class="w-12 text-sm">Slope:</span>
+                <span class="w-12 text-sm">Dark:</span>
                 <input
                   type="range"
-                  min="-360"
+                  min="0"
                   max="360"
                   step="1"
-                  v-model.number="editingTheme.hSlope"
+                  :value="getVal('h', 'dark')"
+                  @input="updateValue('h', 'dark', $event)"
                   class="form-range flex-1"
+                  :style="{ '--range-gradient': hueGradient }"
                 />
+                <button
+                  type="button"
+                  class="btn theme-neutral variant-density-dense variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+                  aria-label="Copy hue to light"
+                  @click="copyValue('h', 'dark')"
+                >
+                  <IconCopyToLight />
+                </button>
                 <input
                   type="number"
-                  min="-360"
+                  min="0"
                   max="360"
-                  v-model.number="editingTheme.hSlope"
+                  :value="getVal('h', 'dark')"
+                  @input="updateValue('h', 'dark', $event)"
                   class="form-input w-16 text-end"
                 />
               </div>
             </div>
 
             <div class="form-group space-y-2">
-              <div class="form-label">Chroma Base & Slope</div>
-              <p class="form-help">Defines the color intensity/vibrancy (0.00 - 0.40). Lower values are greyer.</p>
+              <div class="form-label">Chroma</div>
+              <p class="form-help">Defines the color intensity/vibrancy (0.00 - 0.40).</p>
               <div class="flex items-center gap-4">
-                <span class="w-12 text-sm">Base:</span>
+                <span class="w-12 text-sm">Light:</span>
                 <input
                   type="range"
                   min="0"
                   max="0.4"
                   step="0.01"
-                  v-model.number="editingTheme.cBase"
+                  :value="getVal('c', 'light')"
+                  @input="updateValue('c', 'light', $event)"
                   class="form-range flex-1"
+                  :style="{ '--range-gradient': getChromaGradient('light') }"
                 />
+                <button
+                  type="button"
+                  class="btn theme-neutral variant-density-dense variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+                  aria-label="Copy chroma to dark"
+                  @click="copyValue('c', 'light')"
+                >
+                  <IconCopyToDark />
+                </button>
                 <input
                   type="number"
                   min="0"
                   max="0.4"
                   step="0.01"
-                  v-model.number="editingTheme.cBase"
+                  :value="getVal('c', 'light')"
+                  @input="updateValue('c', 'light', $event)"
                   class="form-input w-16 text-end"
                 />
               </div>
               <div class="flex items-center gap-4">
-                <span class="w-12 text-sm">Slope:</span>
+                <span class="w-12 text-sm">Dark:</span>
                 <input
                   type="range"
-                  min="-0.4"
+                  min="0"
                   max="0.4"
                   step="0.01"
-                  v-model.number="editingTheme.cSlope"
+                  :value="getVal('c', 'dark')"
+                  @input="updateValue('c', 'dark', $event)"
                   class="form-range flex-1"
+                  :style="{ '--range-gradient': getChromaGradient('dark') }"
                 />
+                <button
+                  type="button"
+                  class="btn theme-neutral variant-density-dense variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+                  aria-label="Copy chroma to light"
+                  @click="copyValue('c', 'dark')"
+                >
+                  <IconCopyToLight />
+                </button>
                 <input
                   type="number"
-                  min="-0.4"
+                  min="0"
                   max="0.4"
                   step="0.01"
-                  v-model.number="editingTheme.cSlope"
+                  :value="getVal('c', 'dark')"
+                  @input="updateValue('c', 'dark', $event)"
                   class="form-input w-16 text-end"
                 />
               </div>
             </div>
 
             <div class="form-group space-y-2">
-              <div class="form-label">Lightness Base & Slope (%)</div>
-              <p class="form-help">Defines how bright the background is (0 - 100). Higher is brighter.</p>
+              <div class="form-label">Lightness (%)</div>
+              <p class="form-help">Defines how bright the background is (0 - 100).</p>
               <div class="flex items-center gap-4">
-                <span class="w-12 text-sm">Base:</span>
+                <span class="flex w-14 items-center gap-2 text-sm">
+                  Light:
+                  <IconWarning v-if="!isValidColor('light')" class="shrink-0 text-theme theme-warning" />
+                </span>
                 <input
                   type="range"
                   min="0"
                   max="100"
                   step="1"
-                  v-model.number="editingTheme.lBase"
+                  :value="getVal('l', 'light')"
+                  @input="updateValue('l', 'light', $event)"
                   class="form-range flex-1"
+                  :style="{ '--range-gradient': getLightnessGradient('light') }"
                 />
+                <button
+                  type="button"
+                  class="btn theme-neutral variant-density-dense variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+                  aria-label="Copy lightness to dark"
+                  @click="copyValue('l', 'light')"
+                >
+                  <IconCopyToDark />
+                </button>
                 <input
                   type="number"
                   min="0"
                   max="100"
-                  v-model.number="editingTheme.lBase"
+                  :value="getVal('l', 'light')"
+                  @input="updateValue('l', 'light', $event)"
                   class="form-input w-16 text-end"
                 />
               </div>
               <div class="flex items-center gap-4">
-                <span class="w-12 text-sm">Slope:</span>
+                <span class="flex w-14 items-center gap-2 text-sm">
+                  Dark:
+                  <IconWarning v-if="!isValidColor('dark')" class="shrink-0 text-theme theme-warning" />
+                </span>
                 <input
                   type="range"
-                  min="-100"
+                  min="0"
                   max="100"
                   step="1"
-                  v-model.number="editingTheme.lSlope"
+                  :value="getVal('l', 'dark')"
+                  @input="updateValue('l', 'dark', $event)"
                   class="form-range flex-1"
+                  :style="{ '--range-gradient': getLightnessGradient('dark') }"
                 />
+                <button
+                  type="button"
+                  class="btn theme-neutral variant-density-dense variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+                  aria-label="Copy lightness to light"
+                  @click="copyValue('l', 'dark')"
+                >
+                  <IconCopyToLight />
+                </button>
                 <input
                   type="number"
-                  min="-100"
+                  min="0"
                   max="100"
-                  v-model.number="editingTheme.lSlope"
+                  :value="getVal('l', 'dark')"
+                  @input="updateValue('l', 'dark', $event)"
                   class="form-input w-16 text-end"
                 />
               </div>
@@ -320,42 +337,68 @@
 
             <div class="form-group space-y-2">
               <div class="form-label">Foreground Lightness (%)</div>
-              <p class="form-help">
-                Forces text to be light (e.g. 99) or dark (e.g. 10) on filled buttons to ensure contrast.
-              </p>
+              <p class="form-help">Forces text to be light (e.g. 99) or dark (e.g. 10) on filled buttons.</p>
               <div class="flex items-center gap-4">
-                <span class="w-12 text-sm">Base:</span>
+                <span class="flex w-14 items-center gap-2 text-sm">
+                  Light:
+                  <IconWarning v-if="!isValidColor('light', true)" class="shrink-0 text-theme theme-warning" />
+                </span>
                 <input
                   type="range"
                   min="0"
                   max="100"
                   step="1"
-                  v-model.number="editingTheme.onMainLBase"
+                  :value="getVal('onMainL', 'light')"
+                  @input="updateValue('onMainL', 'light', $event)"
                   class="form-range flex-1"
+                  :style="{ '--range-gradient': getOnMainLightnessGradient('light') }"
                 />
+                <button
+                  type="button"
+                  class="btn theme-neutral variant-density-dense variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+                  aria-label="Copy foreground lightness to dark"
+                  @click="copyValue('onMainL', 'light')"
+                >
+                  <IconCopyToDark />
+                </button>
                 <input
                   type="number"
                   min="0"
                   max="100"
-                  v-model.number="editingTheme.onMainLBase"
+                  :value="getVal('onMainL', 'light')"
+                  @input="updateValue('onMainL', 'light', $event)"
                   class="form-input w-16 text-end"
                 />
               </div>
               <div class="flex items-center gap-4">
-                <span class="w-12 text-sm">Slope:</span>
+                <span class="flex w-14 items-center gap-2 text-sm">
+                  Dark:
+                  <IconWarning v-if="!isValidColor('dark', true)" class="shrink-0 text-theme theme-warning" />
+                </span>
                 <input
                   type="range"
-                  min="-100"
+                  min="0"
                   max="100"
                   step="1"
-                  v-model.number="editingTheme.onMainLSlope"
+                  :value="getVal('onMainL', 'dark')"
+                  @input="updateValue('onMainL', 'dark', $event)"
                   class="form-range flex-1"
+                  :style="{ '--range-gradient': getOnMainLightnessGradient('dark') }"
                 />
+                <button
+                  type="button"
+                  class="btn theme-neutral variant-density-dense variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+                  aria-label="Copy foreground lightness to light"
+                  @click="copyValue('onMainL', 'dark')"
+                >
+                  <IconCopyToLight />
+                </button>
                 <input
                   type="number"
-                  min="-100"
+                  min="0"
                   max="100"
-                  v-model.number="editingTheme.onMainLSlope"
+                  :value="getVal('onMainL', 'dark')"
+                  @input="updateValue('onMainL', 'dark', $event)"
                   class="form-input w-16 text-end"
                 />
               </div>
@@ -408,6 +451,14 @@
 </template>
 
 <script setup lang="ts">
+import IconCopy from '/components/IconCopy.vue';
+import IconCopyToDark from '/components/IconCopyToDark.vue';
+import IconCopyToLight from '/components/IconCopyToLight.vue';
+import IconPlus from '/components/IconPlus.vue';
+import IconRotateCcw from '/components/IconRotateCcw.vue';
+import IconSave from '/components/IconSave.vue';
+import IconTrash from '/components/IconTrash.vue';
+import IconWarning from '/components/IconWarning.vue';
 import { modes, states, variants } from '/settings';
 import { computed, onMounted, ref, watch } from 'vue';
 
@@ -452,7 +503,7 @@ const defaultGroups: ThemeGroup[] = [
         id: 'th-neutral',
         lBase: 54,
         lSlope: -38,
-        name: 'Neutral',
+        name: 'neutral',
         onMainLBase: 54.5,
         onMainLSlope: 44.5,
       },
@@ -464,7 +515,7 @@ const defaultGroups: ThemeGroup[] = [
         id: 'th-primary',
         lBase: 45,
         lSlope: 0,
-        name: 'Primary',
+        name: 'primary',
         onMainLBase: 99,
         onMainLSlope: 0,
       },
@@ -476,7 +527,7 @@ const defaultGroups: ThemeGroup[] = [
         id: 'th-secondary',
         lBase: 55,
         lSlope: 0,
-        name: 'Secondary',
+        name: 'secondary',
         onMainLBase: 99,
         onMainLSlope: 0,
       },
@@ -488,7 +539,7 @@ const defaultGroups: ThemeGroup[] = [
         id: 'th-accent',
         lBase: 60,
         lSlope: 0,
-        name: 'Accent',
+        name: 'accent',
         onMainLBase: 99,
         onMainLSlope: 0,
       },
@@ -500,7 +551,7 @@ const defaultGroups: ThemeGroup[] = [
         id: 'th-success',
         lBase: 55,
         lSlope: 0,
-        name: 'Success',
+        name: 'success',
         onMainLBase: 99,
         onMainLSlope: 0,
       },
@@ -512,7 +563,7 @@ const defaultGroups: ThemeGroup[] = [
         id: 'th-warning',
         lBase: 85,
         lSlope: 0,
-        name: 'Warning',
+        name: 'warning',
         onMainLBase: 10,
         onMainLSlope: 0,
       },
@@ -524,7 +575,7 @@ const defaultGroups: ThemeGroup[] = [
         id: 'th-error',
         lBase: 52,
         lSlope: 0,
-        name: 'Error',
+        name: 'error',
         onMainLBase: 99,
         onMainLSlope: 0,
       },
@@ -536,7 +587,7 @@ const defaultGroups: ThemeGroup[] = [
         id: 'th-info',
         lBase: 40,
         lSlope: 0,
-        name: 'Info',
+        name: 'info',
         onMainLBase: 99,
         onMainLSlope: 0,
       },
@@ -637,9 +688,136 @@ function removeTheme(themeId: string): void {
   }
 }
 
+function updateValue(prefix: string, mode: 'light' | 'dark', event: Event): void {
+  if (!editingTheme.value) {
+    return;
+  }
+  const val = parseFloat((event.target as HTMLInputElement).value);
+  const baseKey = `${prefix}Base` as keyof ThemeConfig;
+  const slopeKey = `${prefix}Slope` as keyof ThemeConfig;
+
+  let light = (editingTheme.value[baseKey] as number) - (editingTheme.value[slopeKey] as number);
+  let dark = (editingTheme.value[baseKey] as number) + (editingTheme.value[slopeKey] as number);
+
+  if (mode === 'light') {
+    light = val;
+  } else {
+    dark = val;
+  }
+
+  (editingTheme.value[baseKey] as number) = (light + dark) / 2;
+  (editingTheme.value[slopeKey] as number) = (dark - light) / 2;
+}
+
+function getVal(prefix: string, mode: 'light' | 'dark'): number {
+  if (!editingTheme.value) {
+    return 0;
+  }
+  const base = editingTheme.value[`${prefix}Base` as keyof ThemeConfig] as number;
+  const slope = editingTheme.value[`${prefix}Slope` as keyof ThemeConfig] as number;
+  return mode === 'light' ? base - slope : base + slope;
+}
+
+function isValidColor(mode: 'light' | 'dark', onMain = false): boolean {
+  if (!editingTheme.value) {
+    return true;
+  }
+  const hue = getVal('h', mode);
+  const chroma = getVal('c', mode);
+  const lightness = getVal(onMain ? 'onMainL' : 'l', mode);
+
+  if (lightness <= 0 || lightness >= 100) {
+    return true;
+  }
+  if (chroma <= 0.001) {
+    return true;
+  }
+
+  // OKLCH -> OKLab
+  const l_val = lightness / 100;
+  const a = chroma * Math.cos((hue * Math.PI) / 180);
+  const b = chroma * Math.sin((hue * Math.PI) / 180);
+
+  // OKLab -> LMS
+  const l_ = l_val + 0.3963377774 * a + 0.2158037573 * b;
+  const m_ = l_val - 0.1055613458 * a - 0.0638541728 * b;
+  const s_ = l_val - 0.0894841775 * a - 1.291485548 * b;
+
+  const l3 = l_ * l_ * l_;
+  const m3 = m_ * m_ * m_;
+  const s3 = s_ * s_ * s_;
+
+  // LMS -> Linear sRGB
+  const rL = 4.0767416621 * l3 - 3.3077115913 * m3 + 0.2309699292 * s3;
+  const gL = -1.2684380046 * l3 + 2.6097574011 * m3 - 0.3413193965 * s3;
+  const bL = -0.0041960863 * l3 - 0.7034186147 * m3 + 1.7076065408 * s3;
+
+  const eps = 0.001;
+  return rL >= -eps && rL <= 1 + eps && gL >= -eps && gL <= 1 + eps && bL >= -eps && bL <= 1 + eps;
+}
+
+function copyValue(prefix: string, fromMode: 'light' | 'dark'): void {
+  if (!editingTheme.value) {
+    return;
+  }
+  const toMode = fromMode === 'light' ? 'dark' : 'light';
+  const val = getVal(prefix, fromMode);
+
+  const baseKey = `${prefix}Base` as keyof ThemeConfig;
+  const slopeKey = `${prefix}Slope` as keyof ThemeConfig;
+
+  let light = (editingTheme.value[baseKey] as number) - (editingTheme.value[slopeKey] as number);
+  let dark = (editingTheme.value[baseKey] as number) + (editingTheme.value[slopeKey] as number);
+
+  if (toMode === 'light') {
+    light = val;
+  } else {
+    dark = val;
+  }
+
+  (editingTheme.value[baseKey] as number) = (light + dark) / 2;
+  (editingTheme.value[slopeKey] as number) = (dark - light) / 2;
+}
+
+const hueGradient =
+  'linear-gradient(to right, oklch(70% 0.25 0), oklch(70% 0.25 60), oklch(70% 0.25 120), oklch(70% 0.25 180), oklch(70% 0.25 240), oklch(70% 0.25 300), oklch(70% 0.25 360))';
+
+function getChromaGradient(mode: 'light' | 'dark'): string {
+  const hue = getVal('h', mode);
+  return `linear-gradient(to right, oklch(70% 0 ${hue}), oklch(70% 0.4 ${hue}))`;
+}
+
+function getLightnessGradient(mode: 'light' | 'dark'): string {
+  const hue = getVal('h', mode);
+  const chroma = getVal('c', mode);
+  return `linear-gradient(to right, oklch(0% ${chroma} ${hue}), oklch(100% ${chroma} ${hue}))`;
+}
+
+function getOnMainLightnessGradient(mode: 'light' | 'dark'): string {
+  const hue = getVal('h', mode);
+  const chroma = getVal('c', mode);
+  return `linear-gradient(to right, oklch(0% ${chroma} ${hue}), oklch(100% ${chroma} ${hue}))`;
+}
+
+function sanitizeThemeName(name: string): string {
+  const sanitized = name
+    .toLowerCase()
+    .replace(/[^a-z0-9-_]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  return sanitized.startsWith('theme-') ? sanitized : `theme-${sanitized}`;
+}
+
 function saveTheme(): void {
   if (selectedTheme.value && editingTheme.value) {
+    editingTheme.value.name = sanitizeThemeName(editingTheme.value.name).replace(/^theme-/, '');
     Object.assign(selectedTheme.value, editingTheme.value);
+  }
+}
+
+function undoChanges(): void {
+  if (selectedTheme.value) {
+    editingTheme.value = { ...selectedTheme.value };
   }
 }
 
@@ -649,14 +827,6 @@ async function copyToClipboard(text: string): Promise<void> {
   } catch (error) {
     console.warn('Failed to copy to clipboard', error);
   }
-}
-
-function sanitizeThemeName(name: string): string {
-  const sanitized = name
-    .toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/[^a-z0-9-_]/g, '');
-  return sanitized.startsWith('theme-') ? sanitized : `theme-${sanitized}`;
 }
 
 function generateThemeCss(theme: ThemeConfig): string {

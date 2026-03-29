@@ -37,6 +37,21 @@
         ]
       }
     ],
+    "id-length": [
+      "error",
+      {
+        "exceptions": [
+          "x",
+          "y",
+          "i",
+          "j",
+          "a",
+          "b",
+          "v",
+          "o"
+        ]
+      }
+    ],
     "func-style": [
       "error",
       "declaration",

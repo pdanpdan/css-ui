@@ -72,3 +72,28 @@ dd {
 .form-help {
   @apply text-xs opacity-70;
 }
+
+.form-range {
+  @apply h-6 w-full cursor-pointer appearance-none bg-transparent;
+  background-image: var(--range-gradient);
+  background-size: 100% 0.5rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 999px;
+
+  &::-webkit-slider-runnable-track {
+    @apply h-2 w-full rounded-full bg-transparent;
+  }
+
+  &::-webkit-slider-thumb {
+    @apply -mt-1 size-4 appearance-none rounded-full border-2 border-white bg-transparent shadow-sm;
+  }
+
+  &::-moz-range-track {
+    @apply h-2 w-full rounded-full bg-transparent;
+  }
+
+  &::-moz-range-thumb {
+    @apply size-4 appearance-none rounded-full border-2 border-white bg-transparent shadow-sm;
+  }
+}
