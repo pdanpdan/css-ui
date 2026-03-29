@@ -31,10 +31,10 @@
     &,
     :where([class*='mode-'], [class*='theme-'], [class*='variant-']) {
       --v-bg: transparent;
-      --v-bg-hover: var(--t-surface);
-      --v-bg-active: var(--t-surface-active);
+      --v-bg-hover: var(--t-transparent-hover);
+      --v-bg-active: var(--t-transparent-active);
       --v-fg: var(--t-on-transparent);
-      --v-border: var(--t-on-transparent);
+      --v-border: var(--t-soft-border);
       --v-separator: var(--t-soft-border);
     }
   }
@@ -45,8 +45,8 @@
     &,
     :where([class*='mode-'], [class*='theme-'], [class*='variant-']) {
       --v-bg: transparent;
-      --v-bg-hover: var(--t-surface);
-      --v-bg-active: var(--t-surface-active);
+      --v-bg-hover: var(--t-transparent-hover);
+      --v-bg-active: var(--t-transparent-active);
       --v-fg: var(--t-on-transparent);
       --v-border: transparent;
       /* --v-separator: var(--t-soft-border); */
