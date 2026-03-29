@@ -53,22 +53,6 @@
   }
 }
 
-@utility list-row-separator-inset {
-  @layer cssui.l1.l2 {
-    &::after {
-      inset-inline: var(--s-px);
-    }
-  }
-}
-
-@utility list-row-separator-none {
-  @layer cssui.l1.l2 {
-    &::after {
-      @apply border-transparent;
-    }
-  }
-}
-
 @utility list-row-interactive {
   @layer cssui.l1 {
     @apply cursor-pointer;
@@ -104,7 +88,7 @@
       }
 
       &:where(
-        :active,
+        :active:not(:has(:not(.list-row-action):active)),
         :target,
         [aria-current='page'],
         [aria-pressed]:not([aria-pressed='false']),
@@ -117,7 +101,7 @@
         box-shadow: var(--v-shadow-active, none);
       }
 
-      &:where(:active) {
+      &:where(:active:not(:has(:not(.list-row-action):active))) {
         @apply z-1;
         transform: var(--transform-active);
       }
@@ -159,5 +143,38 @@
   @layer cssui.l1.l2.l3 {
     grid-row: 2;
     grid-column: 1 / -1;
+  }
+}
+
+@utility list-row-separator-inset {
+  @layer cssui.l1.l2 {
+    &::after {
+      inset-inline: var(--s-px);
+    }
+  }
+}
+
+@utility list-row-separator-none {
+  @layer cssui.l1.l2 {
+    &::after {
+      @apply border-transparent;
+    }
+  }
+}
+
+@utility list-row-action {
+  @layer cssui.l1.l2 {
+    &:where(
+        :not(
+          :disabled,
+          [disabled]:not([disabled='false']),
+          [aria-disabled]:not([aria-disabled='false']),
+          .state-disabled
+        )
+      )::after {
+      @apply absolute inset-0 cursor-pointer;
+      --tw-content: '';
+      content: var(--tw-content);
+    }
   }
 }

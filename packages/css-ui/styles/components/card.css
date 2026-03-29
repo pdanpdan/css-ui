@@ -68,7 +68,7 @@
       }
 
       &:where(
-        :active,
+        :active:not(:has(:not(.card-action):active)),
         :target,
         [aria-current='page'],
         [aria-pressed]:not([aria-pressed='false']),
@@ -81,7 +81,7 @@
         box-shadow: var(--v-shadow-active, var(--c-shadow));
       }
 
-      &:where(:active) {
+      &:where(:active:not(:has(:not(.card-action):active))) {
         @apply z-1;
         transform: var(--transform-active, translateY(1px));
       }
@@ -116,6 +116,23 @@
     font-weight: var(--s-font-weight-bold);
     line-height: var(--s-line-height-tight);
     padding-top: var(--s-py);
+  }
+}
+
+@utility card-action {
+  @layer cssui.l1.l2 {
+    &:where(
+        :not(
+          :disabled,
+          [disabled]:not([disabled='false']),
+          [aria-disabled]:not([aria-disabled='false']),
+          .state-disabled
+        )
+      )::after {
+      @apply absolute inset-0 cursor-pointer;
+      --tw-content: '';
+      content: var(--tw-content);
+    }
   }
 }
 
