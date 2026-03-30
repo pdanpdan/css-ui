@@ -7,7 +7,7 @@
       --v-bg-active: var(--t-surface-active);
       --v-fg: var(--t-on-surface);
       --v-border: var(--t-soft-border);
-      --v-separator: var(--t-soft-border);
+      --v-separator: var(--t-soft-separator);
     }
   }
 }
@@ -35,7 +35,7 @@
       --v-bg-active: var(--t-transparent-active);
       --v-fg: var(--t-on-transparent);
       --v-border: var(--t-soft-border);
-      --v-separator: var(--t-soft-border);
+      --v-separator: var(--t-soft-separator);
     }
   }
 }
@@ -49,7 +49,7 @@
       --v-bg-active: var(--t-transparent-active);
       --v-fg: var(--t-on-transparent);
       --v-border: transparent;
-      /* --v-separator: var(--t-soft-border); */
+      /* --v-separator: var(--t-soft-separator); */
       --v-separator: transparent;
     }
   }
@@ -105,8 +105,9 @@
   @scope (&) {
     &,
     :where([class*='mode-'], [class*='theme-'], [class*='variant-']) {
-      --depth: calc(1 + --value(integer));
-      --depth-hover: calc(1 + 2 * --value(integer));
+      --depth: calc(--value(integer) + 1);
+      --depth-hover: calc(--value(integer) + 2);
+      --depth-active: calc(2 * --value(integer) - 2);
 
       --v-shadow:
         0 calc(1px * var(--depth)) calc(2px * var(--depth)) calc(-1px * var(--depth)) var(--m-shadow-color),
@@ -120,8 +121,8 @@
           color-mix(in oklab, var(--m-shadow-color), transparent 50%);
 
       --v-shadow-active:
-        0 calc(1px * var(--depth)) calc(2px * var(--depth)) calc(-1px * var(--depth)) var(--m-shadow-color),
-        0 calc(2px * var(--depth)) calc(6px * var(--depth)) calc(-1px * var(--depth))
+        0 calc(1px * var(--depth-active)) calc(2px * var(--depth-active)) calc(-1px * var(--depth-active)) var(--m-shadow-color),
+        0 calc(2px * var(--depth-active)) calc(6px * var(--depth-active)) calc(-1px * var(--depth-active))
           color-mix(in oklab, var(--m-shadow-color), transparent 50%);
     }
   }

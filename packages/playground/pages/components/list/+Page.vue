@@ -18,11 +18,11 @@
             <span class="list-title">Item 1</span>
             <span class="list-subtitle">default separator</span>
           </li>
-          <li class="list-row list-row-separator-inset">
+          <li class="list-row list-separator-inset">
             <span class="list-title">Item 2</span>
             <span class="list-subtitle">inset separator</span>
           </li>
-          <li class="list-row list-row-separator-none after:content-['🙜_🙜_🙜']">
+          <li class="list-row list-separator-none after:content-['🙜_🙜_🙜']">
             <span class="list-title">Item 3</span>
             <span class="list-subtitle">no separator line</span>
           </li>

@@ -33,7 +33,11 @@
         </h1>
 
         <nav class="list">
-          <button type="button" class="list-row list-row-interactive theme-accent" @click="toggleMode">
+          <button
+            type="button"
+            class="list-row list-row-interactive list-separator-none theme-accent"
+            @click="toggleMode"
+          >
             Toggle Mode
           </button>
           <AppLink href="/" v-slot="{ active, href }">

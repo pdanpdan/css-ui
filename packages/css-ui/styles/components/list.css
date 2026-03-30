@@ -88,7 +88,8 @@
       }
 
       &:where(
-        :active:not(:has(:not(.list-row-action):active)),
+        :active:not(:has(.list-row-action)),
+        :has(.list-row-action:active),
         :target,
         [aria-current='page'],
         [aria-pressed]:not([aria-pressed='false']),
@@ -101,7 +102,7 @@
         box-shadow: var(--v-shadow-active, none);
       }
 
-      &:where(:active:not(:has(:not(.list-row-action):active))) {
+      &:where(:active:not(:has(.list-row-action)), :has(.list-row-action:active)) {
         @apply z-1;
         transform: var(--transform-active);
       }
@@ -146,7 +147,15 @@
   }
 }
 
-@utility list-row-separator-inset {
+@utility list-separator-bleed {
+  @layer cssui.l1.l2 {
+    &::after {
+      inset-inline: 0;
+    }
+  }
+}
+
+@utility list-separator-inset {
   @layer cssui.l1.l2 {
     &::after {
       inset-inline: var(--s-px);
@@ -154,10 +163,10 @@
   }
 }
 
-@utility list-row-separator-none {
+@utility list-separator-none {
   @layer cssui.l1.l2 {
     &::after {
-      @apply border-transparent;
+      inset-inline: 100%;
     }
   }
 }

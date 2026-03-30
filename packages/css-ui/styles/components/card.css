@@ -68,7 +68,8 @@
       }
 
       &:where(
-        :active:not(:has(:not(.card-action):active)),
+        :active:not(:has(.card-action)),
+        :has(.card-action:active),
         :target,
         [aria-current='page'],
         [aria-pressed]:not([aria-pressed='false']),
@@ -81,7 +82,7 @@
         box-shadow: var(--v-shadow-active, var(--c-shadow));
       }
 
-      &:where(:active:not(:has(:not(.card-action):active))) {
+      &:where(:active:not(:has(.card-action)), :has(.card-action:active)) {
         @apply z-1;
         transform: var(--transform-active, translateY(1px));
       }

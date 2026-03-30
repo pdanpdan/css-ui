@@ -39,7 +39,7 @@
     --t-on-transparent: color-mix(in oklab, var(--t-main), var(--m-text) 30%);
 
     --t-soft-border: color-mix(in oklab, var(--t-main) 45%, var(--m-current-bg));
-    --t-soft-separator: color-mix(in oklab, var(--t-main) 12%, var(--t-on-main));
+    --t-soft-separator: color-mix(in oklab, var(--t-main) 20%, var(--t-on-main) 10%);
     --t-ring: color-mix(in oklab, var(--t-main) 40%, transparent);
   }
 }
