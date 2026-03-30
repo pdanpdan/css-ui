@@ -27,6 +27,7 @@
     "no-magic-numbers": "off",
     "no-async-await": "off",
     "no-rest-spread-properties": "off",
+    "no-eq-null": "off",
     "complexity": "off",
     "prefer-destructuring": [
       "error",

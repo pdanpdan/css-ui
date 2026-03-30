@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import IconWarning from '/components/IconWarning.vue';
-import { inGamut } from 'culori';
+import { converter, inGamut } from 'culori';
 import { computed } from 'vue';
 
 const { color } = defineProps<{
@@ -9,20 +9,25 @@ const { color } = defineProps<{
 
 const inRgbSpace = inGamut('rgb');
 const inP3Space = inGamut('p3');
+const oklch = converter('oklch');
 
 const space = computed(() => {
-  if (inRgbSpace(color)) {
-    return {
-      name: 'RGB',
-      class: 'theme-success',
-    };
-  }
+  const oklchColor = oklch(color);
 
-  if (inP3Space(color)) {
-    return {
-      name: 'P3',
-      class: 'theme-neutral',
-    };
+  if (oklchColor != null) {
+    if (oklchColor.l <= 0 || oklchColor.l >= 1 || oklchColor.c <= 0.001 || inRgbSpace(oklchColor)) {
+      return {
+        name: 'RGB',
+        class: 'theme-success',
+      };
+    }
+
+    if (inP3Space(oklchColor)) {
+      return {
+        name: 'P3',
+        class: 'theme-neutral',
+      };
+    }
   }
 
   return {
