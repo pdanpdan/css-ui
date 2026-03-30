@@ -56,8 +56,10 @@
 }
 
 @utility variant-density-default {
-  --v-py-mult: 0.375;
-  --v-px-mult: 1;
+  --v-py-mult: 0.25;
+  --v-py-offset: 2px;
+  --v-px-mult: 0.5;
+  --v-px-offset: 4px;
   --v-gap-mult: 0.5;
   --v-lh-tight: 1.25;
   --v-lh: 1.5;
@@ -65,21 +67,25 @@
 }
 
 @utility variant-density-dense {
-  --v-py-mult: 0.3;
-  --v-px-mult: 0.8;
+  --v-py-mult: 0.125;
+  --v-py-offset: 1px;
+  --v-px-mult: 0.25;
+  --v-px-offset: 2px;
   --v-gap-mult: 0.4;
-  --v-lh-tight: 1;
-  --v-lh: 1.2;
-  --v-lh-relaxed: 1.4;
+  --v-lh-tight: calc(1.5 - 6px / var(--s-base));
+  --v-lh: calc(1.75 - 6px / var(--s-base));
+  --v-lh-relaxed: calc(2 - 6px / var(--s-base));
 }
 
 @utility variant-density-lax {
-  --v-py-mult: 0.46875;
-  --v-px-mult: 1.25;
+  --v-py-mult: 0.375;
+  --v-py-offset: 3px;
+  --v-px-mult: 0.75;
+  --v-px-offset: 6px;
   --v-gap-mult: 0.625;
-  --v-lh-tight: 1.5625;
-  --v-lh: 1.875;
-  --v-lh-relaxed: 2.1875;
+  --v-lh-tight: calc(1 + 6px / var(--s-base));
+  --v-lh: calc(1.25 + 6px / var(--s-base));
+  --v-lh-relaxed: calc(1.5 + 6px / var(--s-base));
 }
 
 @utility variant-shape-default {
@@ -121,7 +127,8 @@
           color-mix(in oklab, var(--m-shadow-color), transparent 50%);
 
       --v-shadow-active:
-        0 calc(1px * var(--depth-active)) calc(2px * var(--depth-active)) calc(-1px * var(--depth-active)) var(--m-shadow-color),
+        0 calc(1px * var(--depth-active)) calc(2px * var(--depth-active)) calc(-1px * var(--depth-active))
+          var(--m-shadow-color),
         0 calc(2px * var(--depth-active)) calc(6px * var(--depth-active)) calc(-1px * var(--depth-active))
           color-mix(in oklab, var(--m-shadow-color), transparent 50%);
     }

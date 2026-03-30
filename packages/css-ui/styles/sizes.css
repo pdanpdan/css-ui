@@ -1,35 +1,35 @@
 @theme {
-  --s-base-xs: 0.6rem;
-  --s-base-sm: 0.8rem;
+  --s-base-xs: 0.5rem;
+  --s-base-sm: 0.75rem;
   --s-base-md: 1rem;
-  --s-base-lg: 1.2rem;
-  --s-base-xl: 1.4rem;
-  --s-base-2xl: 1.6rem;
+  --s-base-lg: 1.25rem;
+  --s-base-xl: 1.5rem;
+  --s-base-2xl: 1.75rem;
 }
 
 @layer base {
   :root,
   :host,
   :where([class*='size-'], [class*='variant-']) {
-    --s-font-size-xs: calc(var(--s-base, 1rem) * 0.64);
-    --s-font-size-sm: calc(var(--s-base, 1rem) * 0.8);
-    --s-font-size: var(--s-base, 1rem);
-    --s-font-size-lg: calc(var(--s-base, 1rem) * 1.25);
-    --s-font-size-xl: calc(var(--s-base, 1rem) * 1.6);
-    --s-font-size-2xl: calc(var(--s-base, 1rem) * 2);
+    --s-font-size-xs: calc(var(--s-base, 1rem) * 0.75);
+    --s-font-size-sm: calc(var(--s-base, 1rem) * 0.875);
+    --s-font-size: round(to-zero, var(--s-base, 1rem), 1px);
+    --s-font-size-lg: calc(var(--s-base, 1rem) * 1.125);
+    --s-font-size-xl: calc(var(--s-base, 1rem) * 1.25);
+    --s-font-size-2xl: calc(var(--s-base, 1rem) * 1.5);
 
     --s-font-weight: 500;
     --s-font-weight-semibold: 600;
     --s-font-weight-bold: 800;
 
-    --s-line-height-tight: var(--v-lh-tight, 1.2);
+    --s-line-height-tight: var(--v-lh-tight, 1.25);
     --s-line-height: var(--v-lh, 1.5);
-    --s-line-height-relaxed: var(--v-lh-relaxed, 1.625);
+    --s-line-height-relaxed: var(--v-lh-relaxed, 1.75);
 
-    --s-py: calc(var(--s-base, 1rem) * var(--v-py-mult, 0.5));
-    --s-px: calc(var(--s-base, 1rem) * var(--v-px-mult, 1.25));
-    --s-gap: calc(var(--s-base, 1rem) * var(--v-gap-mult, 0.5));
-    --s-radius: calc(var(--s-base, 1rem) * var(--v-radius-mult, 0.5));
+    --s-py: round(to-zero, calc(var(--v-py-offset, 2px) + var(--s-base, 1rem) * var(--v-py-mult, 0.25)), 1px);
+    --s-px: round(to-zero, calc(var(--v-px-offset, 4px) + var(--s-base, 1rem) * var(--v-px-mult, 0.5)), 1px);
+    --s-gap: round(to-zero, calc(var(--s-base, 1rem) * var(--v-gap-mult, 0.5)), 1px);
+    --s-radius: round(to-zero, calc(var(--s-base, 1rem) * var(--v-radius-mult, 0.5)), 1px);
     --s-aspect: var(--v-aspect, auto);
 
     --s-separator-w: 1px;
