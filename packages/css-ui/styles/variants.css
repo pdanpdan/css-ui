@@ -56,8 +56,8 @@
 }
 
 @utility variant-density-default {
-  --v-py-mult: 0.5;
-  --v-px-mult: 1.25;
+  --v-py-mult: 0.375;
+  --v-px-mult: 1;
   --v-gap-mult: 0.5;
   --v-lh-tight: 1.25;
   --v-lh: 1.5;
@@ -65,8 +65,8 @@
 }
 
 @utility variant-density-dense {
-  --v-py-mult: 0.4;
-  --v-px-mult: 1;
+  --v-py-mult: 0.3;
+  --v-px-mult: 0.8;
   --v-gap-mult: 0.4;
   --v-lh-tight: 1;
   --v-lh: 1.2;
@@ -74,8 +74,8 @@
 }
 
 @utility variant-density-lax {
-  --v-py-mult: 0.625;
-  --v-px-mult: 1.5625;
+  --v-py-mult: 0.46875;
+  --v-px-mult: 1.25;
   --v-gap-mult: 0.625;
   --v-lh-tight: 1.5625;
   --v-lh: 1.875;

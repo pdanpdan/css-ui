@@ -1,10 +1,10 @@
 @theme {
-  --s-base-xs: 0.64rem;
+  --s-base-xs: 0.6rem;
   --s-base-sm: 0.8rem;
   --s-base-md: 1rem;
-  --s-base-lg: 1.25rem;
-  --s-base-xl: 1.6rem;
-  --s-base-2xl: 2rem;
+  --s-base-lg: 1.2rem;
+  --s-base-xl: 1.4rem;
+  --s-base-2xl: 1.6rem;
 }
 
 @layer base {
