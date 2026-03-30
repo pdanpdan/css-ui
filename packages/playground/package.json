@@ -11,17 +11,19 @@
   },
   "dependencies": {
     "@pdanpdan/css-ui": "workspace:*",
+    "culori": "catalog:",
     "vike": "catalog:",
     "vike-vue": "catalog:",
     "vue": "catalog:"
   },
   "devDependencies": {
     "@tailwindcss/vite": "catalog:",
+    "@types/culori": "catalog:",
     "@types/node": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
     "autoprefixer": "catalog:",
-    "oxlint": "catalog:",
     "oxfmt": "catalog:",
+    "oxlint": "catalog:",
     "postcss": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",

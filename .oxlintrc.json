@@ -74,6 +74,7 @@
         "includeExports": true
       }
     ],
+    "sort-keys": "off",
     "sort-imports": [
       "error",
       {

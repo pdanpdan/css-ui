@@ -62,7 +62,7 @@ dd {
 }
 
 .form-input {
-  @apply ml-2 border-b bg-transparent font-bold outline-none;
+  @apply border-b bg-transparent font-bold outline-none;
 }
 
 .form-label {

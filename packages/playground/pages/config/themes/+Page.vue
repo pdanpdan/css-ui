@@ -54,7 +54,7 @@
         <section v-if="selectedGroup" class="card">
           <div class="card-title flex flex-wrap items-center pb-2">
             Themes in:
-            <input type="text" v-model="selectedGroup.name" class="form-input" />
+            <input type="text" v-model="selectedGroup.name" class="form-input ml-2 max-w-50" />
             <button
               type="button"
               class="btn ms-auto theme-neutral variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
@@ -149,29 +149,12 @@
               @input="
                 editingTheme.name = ($event.target as HTMLInputElement).value.toLowerCase().replace(/[^a-z0-9-_]/g, '-')
               "
-              class="form-input"
-            />
-
-            <input
-              v-model="isRGBTarget"
-              class="btn ms-auto theme-neutral variant-density-dense variant-style-ghost size-sm"
-              type="radio"
-              name="rgbTarget"
-              :value="false"
-              aria-label="P3"
-            />
-            <input
-              v-model="isRGBTarget"
-              class="btn ms-1 theme-neutral variant-density-dense variant-style-ghost size-sm"
-              type="radio"
-              name="rgbTarget"
-              :value="true"
-              aria-label="RGB"
+              class="form-input ml-2 max-w-50"
             />
 
             <button
               type="button"
-              class="btn ms-2 theme-neutral variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+              class="btn ms-auto theme-neutral variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
               aria-label="Undo changes"
               @click="undoChanges"
             >
@@ -319,14 +302,9 @@
             <div class="form-group space-y-2">
               <div class="form-label">Lightness (%)</div>
               <p class="form-help">Defines how bright the background is (0 - 100).</p>
-              <div class="flex items-center gap-4">
-                <span class="flex w-14 items-center gap-2 text-sm">
-                  Light:
-                  <IconWarning
-                    v-if="!isValidColor('light', false, isRGBTarget)"
-                    class="shrink-0 text-theme theme-warning"
-                  />
-                </span>
+              <div class="flex items-center gap-2">
+                <span class="flex w-8 items-center gap-2 text-sm">Light:</span>
+                <ColorSpace :color="getColorString('light', false)" />
                 <input
                   type="range"
                   min="0"
@@ -354,14 +332,9 @@
                   class="form-input w-16 text-end"
                 />
               </div>
-              <div class="flex items-center gap-4">
-                <span class="flex w-14 items-center gap-2 text-sm">
-                  Dark:
-                  <IconWarning
-                    v-if="!isValidColor('dark', false, isRGBTarget)"
-                    class="shrink-0 text-theme theme-warning"
-                  />
-                </span>
+              <div class="flex items-center gap-2">
+                <span class="flex w-8 items-center gap-2 text-sm">Dark:</span>
+                <ColorSpace :color="getColorString('dark', false)" />
                 <input
                   type="range"
                   min="0"
@@ -394,14 +367,9 @@
             <div class="form-group space-y-2">
               <div class="form-label">Foreground Lightness (%)</div>
               <p class="form-help">Forces text to be light (e.g. 99) or dark (e.g. 10) on filled buttons.</p>
-              <div class="flex items-center gap-4">
-                <span class="flex w-14 items-center gap-2 text-sm">
-                  Light:
-                  <IconWarning
-                    v-if="!isValidColor('light', true, isRGBTarget)"
-                    class="shrink-0 text-theme theme-warning"
-                  />
-                </span>
+              <div class="flex items-center gap-2">
+                <span class="flex w-8 items-center gap-2 text-sm">Light:</span>
+                <ColorSpace :color="getColorString('light', true)" />
                 <input
                   type="range"
                   min="0"
@@ -429,14 +397,9 @@
                   class="form-input w-16 text-end"
                 />
               </div>
-              <div class="flex items-center gap-4">
-                <span class="flex w-14 items-center gap-2 text-sm">
-                  Dark:
-                  <IconWarning
-                    v-if="!isValidColor('dark', true, isRGBTarget)"
-                    class="shrink-0 text-theme theme-warning"
-                  />
-                </span>
+              <div class="flex items-center gap-2">
+                <span class="flex w-8 items-center gap-2 text-sm">Dark:</span>
+                <ColorSpace :color="getColorString('dark', true)" />
                 <input
                   type="range"
                   min="0"
@@ -513,6 +476,7 @@
 </template>
 
 <script setup lang="ts">
+import ColorSpace from '/components/ColorSpace.vue';
 import IconCopy from '/components/IconCopy.vue';
 import IconCopyToDark from '/components/IconCopyToDark.vue';
 import IconCopyToLight from '/components/IconCopyToLight.vue';
@@ -521,7 +485,6 @@ import IconRotateCcw from '/components/IconRotateCcw.vue';
 import IconSave from '/components/IconSave.vue';
 import IconTrash from '/components/IconTrash.vue';
 import IconUpload from '/components/IconUpload.vue';
-import IconWarning from '/components/IconWarning.vue';
 import { modes, states, variants } from '/settings';
 import { computed, onMounted, ref, watch } from 'vue';
 
@@ -865,55 +828,14 @@ function getVal(prefix: string, mode: 'light' | 'dark'): number {
   return Math.round((mode === 'light' ? base + slope : base - slope) * 10000) / 10000;
 }
 
-function isValidColor(mode: 'light' | 'dark', onMain = false, rgbTarget = false): boolean {
+function getColorString(mode: 'light' | 'dark', onMain = false): string {
   if (!editingTheme.value) {
-    return true;
+    return '';
   }
   const hue = getVal('h', mode);
   const chroma = getVal('c', mode);
   const lightness = getVal(onMain ? 'onMainL' : 'l', mode);
-
-  // Black, white, and pure grays are always in gamut
-  if (lightness <= 0 || lightness >= 100) {
-    return true;
-  }
-  if (chroma <= 0.001) {
-    return true;
-  }
-
-  // OKLCH -> OKLab
-  const l_val = lightness / 100;
-  const a = chroma * Math.cos((hue * Math.PI) / 180);
-  const b = chroma * Math.sin((hue * Math.PI) / 180);
-
-  // OKLab -> LMS
-  const l_ = l_val + 0.3963377774 * a + 0.2158037573 * b;
-  const m_ = l_val - 0.1055613458 * a - 0.0638541728 * b;
-  const s_ = l_val - 0.0894841775 * a - 1.291485548 * b;
-
-  const l3 = l_ * l_ * l_;
-  const m3 = m_ * m_ * m_;
-  const s3 = s_ * s_ * s_;
-
-  let rL = 0;
-  let gL = 0;
-  let bL = 0;
-
-  if (rgbTarget === true) {
-    // LMS -> Linear sRGB
-    rL = 4.0767416621 * l3 - 3.3077115913 * m3 + 0.2309699292 * s3;
-    gL = -1.2684380046 * l3 + 2.6097574011 * m3 - 0.3413193965 * s3;
-    bL = -0.0041960863 * l3 - 0.7034186147 * m3 + 1.707614701 * s3;
-  } else {
-    // LMS -> Linear Display P3
-    rL = 2.4934969119 * l3 - 0.9313836179 * m3 - 0.4027107845 * s3;
-    gL = -0.8294889696 * l3 + 1.7626640603 * m3 + 0.0236246858 * s3;
-    bL = 0.0358458302 * l3 - 0.0761723893 * m3 + 0.956884524 * s3;
-  }
-
-  // Check if within sRGB bounds (0 to 1)
-  const eps = 0.00001;
-  return rL >= -eps && rL <= 1 + eps && gL >= -eps && gL <= 1 + eps && bL >= -eps && bL <= 1 + eps;
+  return `oklch(${lightness}% ${chroma} ${hue})`;
 }
 
 function copyValue(prefix: string, fromMode: 'light' | 'dark'): void {
