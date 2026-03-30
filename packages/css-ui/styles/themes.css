@@ -95,7 +95,7 @@
 @utility theme-success {
   --t-h-base: 145;
   --t-h-slope: 0;
-  --t-c-base: 0.22;
+  --t-c-base: 0.17;
   --t-c-slope: 0;
   --t-l-base: 55%;
   --t-l-slope: 0%;
@@ -105,11 +105,11 @@
 }
 
 @utility theme-warning {
-  --t-h-base: 90;
+  --t-h-base: 75;
   --t-h-slope: 0;
-  --t-c-base: 0.24;
+  --t-c-base: 0.17;
   --t-c-slope: 0;
-  --t-l-base: 85%;
+  --t-l-base: 84%;
   --t-l-slope: 0%;
 
   --t-on-main-l-base: 10%;
@@ -129,11 +129,11 @@
 }
 
 @utility theme-info {
-  --t-h-base: 225;
+  --t-h-base: 235;
   --t-h-slope: 0;
-  --t-c-base: 0.24;
+  --t-c-base: 0.12;
   --t-c-slope: 0;
-  --t-l-base: 40%;
+  --t-l-base: 57%;
   --t-l-slope: 0%;
 
   --t-on-main-l-base: 99%;

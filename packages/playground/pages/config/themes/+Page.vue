@@ -261,7 +261,7 @@
                   type="number"
                   min="0"
                   max="0.4"
-                  step="0.01"
+                  step="0.005"
                   :value="getVal('c', 'light')"
                   @input="updateValue('c', 'light', $event)"
                   class="form-input w-16 text-end"
@@ -291,7 +291,7 @@
                   type="number"
                   min="0"
                   max="0.4"
-                  step="0.01"
+                  step="0.005"
                   :value="getVal('c', 'dark')"
                   @input="updateValue('c', 'dark', $event)"
                   class="form-input w-16 text-end"
@@ -532,98 +532,98 @@ const defaultGroups: ThemeGroup[] = [
     name: 'Default',
     themes: [
       {
-        cBase: 0,
-        cSlope: 0,
+        id: 'th-neutral',
+        name: 'neutral',
         hBase: 0,
         hSlope: 0,
-        id: 'th-neutral',
+        cBase: 0,
+        cSlope: 0,
         lBase: 54,
         lSlope: -38,
-        name: 'neutral',
         onMainLBase: 54.5,
         onMainLSlope: 44.5,
       },
       {
-        cBase: 0.16,
-        cSlope: 0,
+        id: 'th-primary',
+        name: 'primary',
         hBase: 250,
         hSlope: 0,
-        id: 'th-primary',
+        cBase: 0.16,
+        cSlope: 0,
         lBase: 45,
         lSlope: 0,
-        name: 'primary',
         onMainLBase: 99,
         onMainLSlope: 0,
       },
       {
-        cBase: 0.08,
-        cSlope: 0,
-        hBase: 210,
-        hSlope: 0,
         id: 'th-secondary',
-        lBase: 55,
-        lSlope: 0,
         name: 'secondary',
-        onMainLBase: 99,
-        onMainLSlope: 0,
-      },
-      {
-        cBase: 0.18,
-        cSlope: 0,
-        hBase: 45,
+        hBase: 290,
         hSlope: 0,
-        id: 'th-accent',
-        lBase: 60,
-        lSlope: 0,
-        name: 'accent',
-        onMainLBase: 99,
-        onMainLSlope: 0,
-      },
-      {
-        cBase: 0.22,
-        cSlope: 0,
-        hBase: 145,
-        hSlope: 0,
-        id: 'th-success',
-        lBase: 55,
-        lSlope: 0,
-        name: 'success',
-        onMainLBase: 99,
-        onMainLSlope: 0,
-      },
-      {
         cBase: 0.24,
         cSlope: 0,
-        hBase: 90,
-        hSlope: 0,
-        id: 'th-warning',
-        lBase: 85,
+        lBase: 55,
         lSlope: 0,
+        onMainLBase: 99,
+        onMainLSlope: 0,
+      },
+      {
+        id: 'th-accent',
+        name: 'accent',
+        hBase: 45,
+        hSlope: 0,
+        cBase: 0.18,
+        cSlope: 0,
+        lBase: 60,
+        lSlope: 0,
+        onMainLBase: 99,
+        onMainLSlope: 0,
+      },
+      {
+        id: 'th-success',
+        name: 'success',
+        hBase: 145,
+        hSlope: 0,
+        cBase: 0.17,
+        cSlope: 0,
+        lBase: 55,
+        lSlope: 0,
+        onMainLBase: 99,
+        onMainLSlope: 0,
+      },
+      {
+        id: 'th-warning',
         name: 'warning',
+        hBase: 75,
+        hSlope: 0,
+        cBase: 0.17,
+        cSlope: 0,
+        lBase: 84,
+        lSlope: 0,
         onMainLBase: 10,
         onMainLSlope: 0,
       },
       {
-        cBase: 0.18,
-        cSlope: 0,
+        id: 'th-error',
+        name: 'error',
         hBase: 25,
         hSlope: 0,
-        id: 'th-error',
+        cBase: 0.18,
+        cSlope: 0,
         lBase: 52,
         lSlope: 0,
-        name: 'error',
         onMainLBase: 99,
         onMainLSlope: 0,
       },
       {
-        cBase: 0.24,
-        cSlope: 0,
-        hBase: 225,
-        hSlope: 0,
         id: 'th-info',
-        lBase: 40,
-        lSlope: 0,
         name: 'info',
+        hBase: 235,
+        hSlope: 0,
+        cBase: 0.12,
+        cSlope: 0,
+        lBase: 57,
+        lSlope: 0,
         onMainLBase: 99,
         onMainLSlope: 0,
       },
@@ -637,7 +637,6 @@ const selectedGroupId = ref<string | null>(null);
 const selectedThemeId = ref<string | null>(null);
 const editingTheme = ref<ThemeConfig | null>(null);
 const isImporting = ref(false);
-const isRGBTarget = ref(false);
 const importCssText = ref('');
 
 const selectedGroup = computed(() => groups.value.find((group) => group.id === selectedGroupId.value));
