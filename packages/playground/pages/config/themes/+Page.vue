@@ -151,9 +151,27 @@
               "
               class="form-input"
             />
+
+            <input
+              v-model="isRGBTarget"
+              class="btn ms-auto theme-neutral variant-density-dense variant-style-ghost size-sm"
+              type="radio"
+              name="rgbTarget"
+              :value="false"
+              aria-label="P3"
+            />
+            <input
+              v-model="isRGBTarget"
+              class="btn ms-1 theme-neutral variant-density-dense variant-style-ghost size-sm"
+              type="radio"
+              name="rgbTarget"
+              :value="true"
+              aria-label="RGB"
+            />
+
             <button
               type="button"
-              class="btn ms-auto theme-neutral variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
+              class="btn ms-2 theme-neutral variant-style-ghost variant-aspect-square size-sm variant-shape-pill"
               aria-label="Undo changes"
               @click="undoChanges"
             >
@@ -304,7 +322,10 @@
               <div class="flex items-center gap-4">
                 <span class="flex w-14 items-center gap-2 text-sm">
                   Light:
-                  <IconWarning v-if="!isValidColor('light')" class="shrink-0 text-theme theme-warning" />
+                  <IconWarning
+                    v-if="!isValidColor('light', false, isRGBTarget)"
+                    class="shrink-0 text-theme theme-warning"
+                  />
                 </span>
                 <input
                   type="range"
@@ -336,7 +357,10 @@
               <div class="flex items-center gap-4">
                 <span class="flex w-14 items-center gap-2 text-sm">
                   Dark:
-                  <IconWarning v-if="!isValidColor('dark')" class="shrink-0 text-theme theme-warning" />
+                  <IconWarning
+                    v-if="!isValidColor('dark', false, isRGBTarget)"
+                    class="shrink-0 text-theme theme-warning"
+                  />
                 </span>
                 <input
                   type="range"
@@ -373,7 +397,10 @@
               <div class="flex items-center gap-4">
                 <span class="flex w-14 items-center gap-2 text-sm">
                   Light:
-                  <IconWarning v-if="!isValidColor('light', true)" class="shrink-0 text-theme theme-warning" />
+                  <IconWarning
+                    v-if="!isValidColor('light', true, isRGBTarget)"
+                    class="shrink-0 text-theme theme-warning"
+                  />
                 </span>
                 <input
                   type="range"
@@ -405,7 +432,10 @@
               <div class="flex items-center gap-4">
                 <span class="flex w-14 items-center gap-2 text-sm">
                   Dark:
-                  <IconWarning v-if="!isValidColor('dark', true)" class="shrink-0 text-theme theme-warning" />
+                  <IconWarning
+                    v-if="!isValidColor('dark', true, isRGBTarget)"
+                    class="shrink-0 text-theme theme-warning"
+                  />
                 </span>
                 <input
                   type="range"
@@ -644,6 +674,7 @@ const selectedGroupId = ref<string | null>(null);
 const selectedThemeId = ref<string | null>(null);
 const editingTheme = ref<ThemeConfig | null>(null);
 const isImporting = ref(false);
+const isRGBTarget = ref(false);
 const importCssText = ref('');
 
 const selectedGroup = computed(() => groups.value.find((group) => group.id === selectedGroupId.value));
@@ -808,7 +839,7 @@ function updateValue(prefix: string, mode: 'light' | 'dark', event: Event): void
   if (!editingTheme.value) {
     return;
   }
-  const val = parseFloat((event.target as HTMLInputElement).value);
+  const val = parseFloat((event.target as HTMLInputElement).value) || 0;
   const baseKey = `${prefix}Base` as keyof ThemeConfig;
   const slopeKey = `${prefix}Slope` as keyof ThemeConfig;
 
@@ -829,12 +860,12 @@ function getVal(prefix: string, mode: 'light' | 'dark'): number {
   if (!editingTheme.value) {
     return 0;
   }
-  const base = editingTheme.value[`${prefix}Base` as keyof ThemeConfig] as number;
-  const slope = editingTheme.value[`${prefix}Slope` as keyof ThemeConfig] as number;
-  return mode === 'light' ? base + slope : base - slope;
+  const base = (editingTheme.value[`${prefix}Base` as keyof ThemeConfig] || 0) as number;
+  const slope = (editingTheme.value[`${prefix}Slope` as keyof ThemeConfig] || 0) as number;
+  return Math.round((mode === 'light' ? base + slope : base - slope) * 10000) / 10000;
 }
 
-function isValidColor(mode: 'light' | 'dark', onMain = false): boolean {
+function isValidColor(mode: 'light' | 'dark', onMain = false, rgbTarget = false): boolean {
   if (!editingTheme.value) {
     return true;
   }
@@ -842,6 +873,7 @@ function isValidColor(mode: 'light' | 'dark', onMain = false): boolean {
   const chroma = getVal('c', mode);
   const lightness = getVal(onMain ? 'onMainL' : 'l', mode);
 
+  // Black, white, and pure grays are always in gamut
   if (lightness <= 0 || lightness >= 100) {
     return true;
   }
@@ -863,12 +895,24 @@ function isValidColor(mode: 'light' | 'dark', onMain = false): boolean {
   const m3 = m_ * m_ * m_;
   const s3 = s_ * s_ * s_;
 
-  // LMS -> Linear sRGB
-  const rL = 4.0767416621 * l3 - 3.3077115913 * m3 + 0.2309699292 * s3;
-  const gL = -1.2684380046 * l3 + 2.6097574011 * m3 - 0.3413193965 * s3;
-  const bL = -0.0041960863 * l3 - 0.7034186147 * m3 + 1.7076065408 * s3;
+  let rL = 0;
+  let gL = 0;
+  let bL = 0;
 
-  const eps = 0.001;
+  if (rgbTarget === true) {
+    // LMS -> Linear sRGB
+    rL = 4.0767416621 * l3 - 3.3077115913 * m3 + 0.2309699292 * s3;
+    gL = -1.2684380046 * l3 + 2.6097574011 * m3 - 0.3413193965 * s3;
+    bL = -0.0041960863 * l3 - 0.7034186147 * m3 + 1.707614701 * s3;
+  } else {
+    // LMS -> Linear Display P3
+    rL = 2.4934969119 * l3 - 0.9313836179 * m3 - 0.4027107845 * s3;
+    gL = -0.8294889696 * l3 + 1.7626640603 * m3 + 0.0236246858 * s3;
+    bL = 0.0358458302 * l3 - 0.0761723893 * m3 + 0.956884524 * s3;
+  }
+
+  // Check if within sRGB bounds (0 to 1)
+  const eps = 0.00001;
   return rL >= -eps && rL <= 1 + eps && gL >= -eps && gL <= 1 + eps && bL >= -eps && bL <= 1 + eps;
 }
 
