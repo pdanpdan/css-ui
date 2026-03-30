@@ -69,9 +69,9 @@
 }
 
 @utility theme-secondary {
-  --t-h-base: 210;
+  --t-h-base: 290;
   --t-h-slope: 0;
-  --t-c-base: 0.08;
+  --t-c-base: 0.24;
   --t-c-slope: 0;
   --t-l-base: 55%;
   --t-l-slope: 0%;
