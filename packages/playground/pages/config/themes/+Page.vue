@@ -184,7 +184,7 @@
                   :value="getVal('h', 'light')"
                   @input="updateValue('h', 'light', $event)"
                   class="form-range flex-1"
-                  :style="{ '--range-gradient': hueGradient }"
+                  :style="{ '--range-gradient': getHueGradient('light') }"
                 />
                 <button
                   type="button"
@@ -213,7 +213,7 @@
                   :value="getVal('h', 'dark')"
                   @input="updateValue('h', 'dark', $event)"
                   class="form-range flex-1"
-                  :style="{ '--range-gradient': hueGradient }"
+                  :style="{ '--range-gradient': getHueGradient('dark') }"
                 />
                 <button
                   type="button"
@@ -243,7 +243,7 @@
                   type="range"
                   min="0"
                   max="0.4"
-                  step="0.01"
+                  step="0.005"
                   :value="getVal('c', 'light')"
                   @input="updateValue('c', 'light', $event)"
                   class="form-range flex-1"
@@ -273,7 +273,7 @@
                   type="range"
                   min="0"
                   max="0.4"
-                  step="0.01"
+                  step="0.005"
                   :value="getVal('c', 'dark')"
                   @input="updateValue('c', 'dark', $event)"
                   class="form-range flex-1"
@@ -301,7 +301,7 @@
 
             <div class="form-group space-y-2">
               <div class="form-label">Lightness (%)</div>
-              <p class="form-help">Defines how bright the background is (0 - 100).</p>
+              <p class="form-help">Defines how bright the color is (0 - 100).</p>
               <div class="flex items-center gap-2">
                 <span class="flex w-8 items-center gap-2 text-sm">Light:</span>
                 <ColorSpace :color="getColorString('light', false)" />
@@ -366,7 +366,7 @@
 
             <div class="form-group space-y-2">
               <div class="form-label">Foreground Lightness (%)</div>
-              <p class="form-help">Forces text to be light (e.g. 99) or dark (e.g. 10) on filled buttons.</p>
+              <p class="form-help">Text brightness on color.</p>
               <div class="flex items-center gap-2">
                 <span class="flex w-8 items-center gap-2 text-sm">Light:</span>
                 <ColorSpace :color="getColorString('light', true)" />
@@ -378,7 +378,7 @@
                   :value="getVal('onMainL', 'light')"
                   @input="updateValue('onMainL', 'light', $event)"
                   class="form-range flex-1"
-                  :style="{ '--range-gradient': getOnMainLightnessGradient('light') }"
+                  :style="{ '--range-gradient': getLightnessGradient('light') }"
                 />
                 <button
                   type="button"
@@ -408,7 +408,7 @@
                   :value="getVal('onMainL', 'dark')"
                   @input="updateValue('onMainL', 'dark', $event)"
                   class="form-range flex-1"
-                  :style="{ '--range-gradient': getOnMainLightnessGradient('dark') }"
+                  :style="{ '--range-gradient': getLightnessGradient('dark') }"
                 />
                 <button
                   type="button"
@@ -861,23 +861,21 @@ function copyValue(prefix: string, fromMode: 'light' | 'dark'): void {
   (editingTheme.value[slopeKey] as number) = (light - dark) / 2;
 }
 
-const hueGradient =
-  'linear-gradient(to right, oklch(70% 0.25 0), oklch(70% 0.25 60), oklch(70% 0.25 120), oklch(70% 0.25 180), oklch(70% 0.25 240), oklch(70% 0.25 300), oklch(70% 0.25 360))';
+function getHueGradient(mode: 'light' | 'dark'): string {
+  const lightness = getVal('l', mode);
+  const chroma = getVal('c', mode);
+  return `linear-gradient(to right, ${[...Array(37).keys()].map((val) => `oklch(${lightness}% ${chroma} ${val * 10})`).join(', ')})`;
+}
 
 function getChromaGradient(mode: 'light' | 'dark'): string {
+  const lightness = getVal('l', mode);
   const hue = getVal('h', mode);
-  return `linear-gradient(to right, oklch(70% 0 ${hue}), oklch(70% 0.4 ${hue}))`;
+  return `linear-gradient(to right, oklch(${lightness}% 0 ${hue}), oklch(${lightness}% 0.4 ${hue}))`;
 }
 
 function getLightnessGradient(mode: 'light' | 'dark'): string {
-  const hue = getVal('h', mode);
   const chroma = getVal('c', mode);
-  return `linear-gradient(to right, oklch(0% ${chroma} ${hue}), oklch(100% ${chroma} ${hue}))`;
-}
-
-function getOnMainLightnessGradient(mode: 'light' | 'dark'): string {
   const hue = getVal('h', mode);
-  const chroma = getVal('c', mode);
   return `linear-gradient(to right, oklch(0% ${chroma} ${hue}), oklch(100% ${chroma} ${hue}))`;
 }
 
