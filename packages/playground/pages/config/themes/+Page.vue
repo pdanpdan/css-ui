@@ -517,7 +517,7 @@ interface ThemeGroup {
   themes: ThemeConfig[];
 }
 
-const STORAGE_KEY = 'oklch-theme-groups';
+const STORAGE_KEY = 'cssui-theme-groups';
 
 const variantsStyle = variants.style;
 
@@ -529,7 +529,7 @@ const statesList = ['', ...states].map((state) => ({
 const defaultGroups: ThemeGroup[] = [
   {
     id: 'grp-default',
-    name: 'Default Palette',
+    name: 'Default',
     themes: [
       {
         cBase: 0,
