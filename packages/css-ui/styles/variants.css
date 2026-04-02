@@ -100,7 +100,7 @@
 
 @utility variant-aspect-default {
   --v-aspect: auto;
-  --v-px-mult: 1.25;
+  --v-px-mult: 0.5;
 }
 @utility variant-aspect-square {
   --v-aspect: 1/1;
