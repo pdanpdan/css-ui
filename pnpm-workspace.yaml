@@ -1,21 +1,27 @@
 packages:
   - 'packages/*'
+allowBuilds:
+  esbuild: true
 
 catalog:
-  '@tailwindcss/vite': '^4.2.2'
-  '@types/culori': '^4.0.1'
-  '@types/node': '^25.5.0'
-  '@vitejs/plugin-vue': '^6.0.5'
-  'autoprefixer': '^10.4.27'
-  'culori': '^4.0.2'
-  'oxlint': '^1.58.0'
-  'oxfmt': '^0.43.0'
-  'postcss': '^8.5.8'
-  'tailwindcss': '^4.2.2'
-  'typescript': '^6.0.2'
   '@stylistic/eslint-plugin': '^5.10.0'
-  'vike': '^0.4.255'
+  '@tailwindcss/vite': '^4.3.0'
+  '@types/culori': '^4.0.1'
+  '@types/node': '^25.9.1'
+  '@vitejs/plugin-vue': '^6.0.7'
+  'autoprefixer': '^10.5.0'
+  'culori': '^4.0.2'
+  'oxfmt': '^0.52.0'
+  'oxlint': '^1.67.0'
+  'postcss': '^8.5.15'
+  'tailwindcss': '^4.3.0'
+  'typescript': '^6.0.3'
+  'vike': '^0.4.259'
   'vike-vue': '^0.9.11'
-  'vite': '^8.0.3'
-  'vue': '^3.5.31'
-  'vue-tsc': '^3.2.6'
+  'vite': '^8.0.14'
+  'vue': '^3.5.35'
+  'vue-tsc': '^3.3.3'
+
+minimumReleaseAgeExclude:
+  - '@vue/language-core@3.3.3'
+  - vue-tsc@3.3.3

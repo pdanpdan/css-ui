@@ -46,21 +46,7 @@
         ]
       }
     ],
-    "id-length": [
-      "error",
-      {
-        "exceptions": [
-          "x",
-          "y",
-          "i",
-          "j",
-          "a",
-          "b",
-          "v",
-          "o"
-        ]
-      }
-    ],
+    "id-length": "off",
     "func-style": [
       "error",
       "declaration",
@@ -75,6 +61,7 @@
         "includeExports": true
       }
     ],
+    "no-non-null-assertion": "off",
     "sort-keys": "off",
     "sort-imports": [
       "error",
